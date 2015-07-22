@@ -3,10 +3,10 @@
     <div id="pushNext" style="height: 150px;width: 15px;background-color: gray;float: right; "></div>
     <div style="height:150px;overflow: hidden;max-width: 1140px; ">
         <div id="productImgList">
-            <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/1_b.jpg" title="cold forest (picturesbywalther)">
+            <a class="fancybox-button" rel="fancybox-button" data-fancybox-href="../picBase/demo/1_b.jpg" title="cold forest (picturesbywalther)" href="javascript:void(0);">
                 <img src="../picBase/demo/1_s.jpg" alt="" />
             </a>
-            <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/2_b.jpg" title="Holly blue (Masa_N)">
+            <a class="fancybox-button" rel="fancybox-button" data-fancybox-href="../picBase/demo/2_b.jpg" title="Holly blue (Masa_N)">
                 <img src="../picBase/demo/2_s.jpg" alt="" />
             </a>
             <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/3_b.jpg" title="limits (life-and-camera)">
