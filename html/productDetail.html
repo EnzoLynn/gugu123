@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <script type="text/javascript" src="/framework/sea.js"></script>
+    <script type="text/javascript" src="/framework/seajs-text.js"></script>
+    <script type="text/javascript" src="/framework/seajs-css.js"></script>
+    <script type="text/javascript" src="/js/seaConfig.js"></script>
+    <script type="text/javascript">
+    seajs.use("modules/productDetail");
+    </script>
+    <title>register</title>
+    <base href="../">
+</head>
+
+<body>
+     <!-- 新分类菜单 -->
+    <div class="include-logheadCategoryDiv container-fluid">
+    </div>
+    <!-- 顶部 -->
+    <div class="include-topNavigator container-fluid hidden-sm hidden-xs">
+    </div>
+    <!-- Log -->
+    <div class="include-indexLogFloor container-fluid">
+    </div>
+     <div class="clearfix"></div>
+    <!-- 固定最大宽度 -->
+    <div class="container-fluid bodyMain">
+        <div style="width:100%;min-height: 1px;"></div>
+        <!-- 页面主体 -->
+        <div id="gugumain">           
+            <!-- 路径导航 -->
+            <div class="include-breadcrumb container-fluid"></div>
+            <!-- 产品主图楼层 -->
+            <div class="include-productImageFloor container-fluid"></div>
+            <!-- 产品灯箱 大图 -->
+            <div class="include-productImgList container-fluid"></div>
+            <!-- 商品介绍 规格 -->
+            <div class="include-productIntro container-fluid"></div>
+            <!-- 底部 -->
+            <div class="include-indexBottom container-fluid" style="padding: 50px 50px;">
+            </div>
+        </div>
+        <div style="width:100%;min-height: 1px;"></div>
+    </div>
+</body>
+
+</html>
