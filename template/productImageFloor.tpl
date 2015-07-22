@@ -1,15 +1,11 @@
-<div class="row" > 
-    <div class='zoom col-lg-84' style="float:left;">
-        <img class="img-responsive headerPic" src='../picBase/example-images/3_standard_4.jpg'
-        bsrc="../picBase/example-images/3_zoom_4.jpg"
-        
-        id='proMainPic' style="border: 2px solid #666666;" alt=''/>
+<div class="row">
+    <div class='zoom col-lg-84  dd' style="float:left;">
+        <img class="img-responsive headerPic" src='../picBase/example-images/3_standard_4.jpg' bsrc="../picBase/example-images/3_zoom_4.jpg" id='proMainPic' style="border: 2px solid #666666;" alt='' />
         <div class="transparent">
             <ul class="thumbnails transparent productImgThum" style="list-style: none;padding-left: 5px;">
                 <li style="float:left;margin-right: 15px;">
                     <a href="javascript:void(0);" data-standard="../picBase/example-images/3_standard_1.jpg" data-zoom="../picBase/example-images/3_zoom_1.jpg">
-                        <img class="img-responsive" src="../picBase/example-images/3_thumbnail_1.jpg"
-                        alt="" />
+                        <img class="img-responsive" src="../picBase/example-images/3_thumbnail_1.jpg" alt="" />
                     </a>
                 </li>
                 <li style="float:left;margin-right: 15px;">
@@ -34,12 +30,27 @@
                 </li>
             </ul>
         </div>
-        
     </div>
     <div class="col-lg-36">
+        <div style="background-color: gray;color:white;">
+            <h3>MARSHALL 马歇尔 DSL5C</h3>
+            <h4>电子管一体式 电吉他音箱</h4>
+            <small>如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱</small>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                <label>数量:</label>
+                <div class="input-group">
+                    <span class="input-group-addon">-</span>
+                    <input type="text" class="form-control txtNum" placeholder="数量">
+                    <span class="input-group-addon">+</span>
+                </div>
+                <label>累计销售数量77件</label>
+            </div>
+        </div>
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">购买
         </button>
-    </div> 
+    </div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -51,7 +62,7 @@
             </div>
             <div class="modal-body">
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
-                购买
+                    购买
                 </button>
             </div>
             <div class="modal-footer">
@@ -70,7 +81,7 @@
             </div>
             <div class="modal-body">
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                222222222222222
+                    222222222222222
                 </button>
             </div>
             <div class="modal-footer">
