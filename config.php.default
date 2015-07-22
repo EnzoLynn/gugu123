@@ -1,7 +1,6 @@
 <?php
 // HTTP
 define('HTTP_SERVER', 'http://opencn.com/');
-//define('HTTP_SERVER', 'http://192.168.91.102/');
 
 // HTTPS
 define('HTTPS_SERVER', 'http://opencn.com/');
