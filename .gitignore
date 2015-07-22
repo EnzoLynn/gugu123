@@ -1,0 +1,17 @@
+compiler.jar
+*.rar
+/debug/*
+/fonts/*
+/framework/agjs1.40/*
+/framework/angularui/*
+/framework/bootstrap.min.js
+/framework/handlebars-v2.0.0.js
+/framework/jquery-1.11.3.min.js
+/grunt/*
+/seamodules/*
+/less/*
+/css/*
+bscmd.bat
+compiler.jar
+*.zip
+web.config
