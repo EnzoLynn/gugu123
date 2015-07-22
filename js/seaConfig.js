@@ -2,8 +2,8 @@ seajs.config({
     base: "/",
     paths: {
         template: '/template',
-        css: 'css',
-        modules:'seamodules'
+        css: '/dist/css',
+        modules:'/dist/seamodules'
     },
     alias: {
         "jquery": "/dist/seamodules/jquery.sea",
