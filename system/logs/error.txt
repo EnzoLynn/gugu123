@@ -157,3 +157,15 @@
 2015-07-20 12:12:46 - PHP Notice:  Undefined index: route in E:\website\opencart_cn\front\controller\common\seo_url.php on line 73
 2015-07-21 14:23:35 - PHP Notice:  Undefined index: master_category_id in E:\website\opencart_cn\front\controller\product\product.php on line 217
 2015-07-21 14:23:35 - PHP Notice:  Undefined index: parent_id in E:\website\opencart_cn\front\model\catalog\category.php on line 74
+2015-07-22 16:31:42 - PHP Warning:  fopen(E:/gugu123/system/cache/cache.store.1437557502): failed to open stream: No such file or directory in E:\gugu123\system\library\cache\file.php on line 49
+2015-07-22 16:31:42 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 51
+2015-07-22 16:31:42 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 53
+2015-07-22 16:31:42 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 55
+2015-07-22 16:31:42 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 57
+2015-07-22 16:31:42 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 59
+2015-07-22 16:31:42 - PHP Warning:  fopen(E:/gugu123/system/cache/cache.order_status.1.1437557502): failed to open stream: No such file or directory in E:\gugu123\system\library\cache\file.php on line 49
+2015-07-22 16:31:42 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 51
+2015-07-22 16:31:42 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 53
+2015-07-22 16:31:42 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 55
+2015-07-22 16:31:42 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 57
+2015-07-22 16:31:42 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 59
