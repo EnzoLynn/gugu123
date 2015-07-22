@@ -15,8 +15,8 @@ bscmd.bat
 compiler.jar
 *.zip
 web.config
-/config_db.php
-/config.php
+config_db.php
+config.php
 /admin/config.php
 /.idea/*
 /system/cache/*
