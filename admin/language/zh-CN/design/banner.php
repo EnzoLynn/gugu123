@@ -20,6 +20,7 @@ $_['entry_name']         = '横幅广告名称';
 $_['entry_title']        = '标题';
 $_['entry_link']         = '链接';
 $_['entry_image']        = '图像';
+$_['entry_background']  = '背景色';
 $_['entry_status']       = '状态';
 $_['entry_sort_order']   = '排序';
 

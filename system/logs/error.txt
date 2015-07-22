@@ -169,3 +169,6 @@
 2015-07-22 16:31:42 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 55
 2015-07-22 16:31:42 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 57
 2015-07-22 16:31:42 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\gugu123\system\library\cache\file.php on line 59
+2015-07-22 17:44:21 - PHP Notice:  Undefined index: background in E:\gugu123\admin\model\design\banner.php on line 121
+2015-07-22 17:44:21 - PHP Notice:  Undefined index: background in E:\gugu123\admin\model\design\banner.php on line 121
+2015-07-22 17:44:21 - PHP Notice:  Undefined index: background in E:\gugu123\admin\model\design\banner.php on line 121
