@@ -52,19 +52,19 @@
                     <div class="left text">谷谷相册</div>
                 </div>
                 <div class="row">
-                    <div class="left"><img lazy_src="picBase/pics/相片-1.jpg" alt=""></div>
-                    <div class="left"><img lazy_src="picBase/pics/相片-2.jpg" alt=""></div>
-                    <div class="left"><img lazy_src="picBase/pics/相片-3.jpg" alt=""></div>
+                    <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-1.jpg" alt=""></div>
+                    <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-2.jpg" alt=""></div>
+                    <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-3.jpg" alt=""></div>
                 </div>
                 <div class="row">
-                    <div class="left"><img lazy_src="picBase/pics/相片-4.jpg" alt=""></div>
-                    <div class="left"><img lazy_src="picBase/pics/相片-5.jpg" alt=""></div>
-                    <div class="left"><img lazy_src="picBase/pics/相片-6.jpg" alt=""></div>
+                    <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-4.jpg" alt=""></div>
+                    <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-5.jpg" alt=""></div>
+                    <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-6.jpg" alt=""></div>
                 </div>
                 <div class="row">
-                    <div class="left"><img lazy_src="picBase/pics/相片-7.jpg" alt=""></div>
-                    <div class="left"><img lazy_src="picBase/pics/相片-8.jpg" alt=""></div>
-                    <div class="left"><img lazy_src="picBase/pics/相片-9.jpg" alt=""></div>
+                    <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-7.jpg" alt=""></div>
+                    <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-8.jpg" alt=""></div>
+                    <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-9.jpg" alt=""></div>
                 </div>
             </div>
         </div>
