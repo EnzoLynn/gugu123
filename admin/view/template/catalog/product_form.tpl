@@ -429,10 +429,10 @@
             <div class="tab-pane" id="tab-attribute">
               <div class="row center-block" style="margin-bottom: 10px;">
                   <div class="col-xs-3">
-                      <select id="sel_customize" class="form-control">
-                          <option value="" selected="selected">-- <?php echo $entry_customize_attribute; ?> --</option>
-                          <?php foreach ($attribute_group_customizes as $customize) : ?>
-                          <option value="<?php echo $customize['customize_id']; ?>"><?php echo $customize['customize_name']; ?></option>
+                      <select id="product_type" class="form-control">
+                          <option value="" selected="selected">-- <?php echo $entry_product_type; ?> --</option>
+                          <?php foreach ($product_types as $product_type) : ?>
+                          <option value="<?php echo $product_type['type_id']; ?>"><?php echo $product_type['type_name']; ?></option>
                           <?php endforeach; ?>
                       </select>
                   </div>
@@ -1223,18 +1223,18 @@ function addFilterByData(data) {
     filter_group_row++;
 }
 
-$("#sel_customize").change(function() {
-    var customize_id = $(this).val();
-    if(customize_id == '') {
+$("#product_type").change(function() {
+    var type_id = $(this).val();
+    if(type_id == '') {
         return ;
     }
     if($('#attribute tbody tr').length > 0) {
-        if (!confirm("<?php echo $text_confirm_customize; ?>")) {
+        if (!confirm("<?php echo $text_confirm_change_type; ?>")) {
             return;
         }
     }
     $.ajax({
-        url: 'index.php?route=catalog/attribute_group_customize/getOptionsJSON&token=<?php echo $token; ?>&customize_id=' +  encodeURIComponent(customize_id),
+        url: 'index.php?route=catalog/product_type/getOptionsJSON&token=<?php echo $token; ?>&type_id=' +  encodeURIComponent(type_id),
         dataType: 'json',
         success: function(json) {
             attribute_row = 0;
@@ -1248,7 +1248,7 @@ $("#sel_customize").change(function() {
     });
 
     $.ajax({
-        url: 'index.php?route=catalog/attribute_group_customize/getFilterJSON&token=<?php echo $token; ?>&customize_id=' +  encodeURIComponent(customize_id),
+        url: 'index.php?route=catalog/product_type/getFilterJSON&token=<?php echo $token; ?>&type_id=' +  encodeURIComponent(type_id),
         dataType: 'json',
         success: function(json) {
             filter_group_row = 0;

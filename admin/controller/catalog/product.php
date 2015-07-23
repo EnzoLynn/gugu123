@@ -542,7 +542,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['text_select'] = $this->language->get('text_select');
 		$data['text_percent'] = $this->language->get('text_percent');
 		$data['text_amount'] = $this->language->get('text_amount');
-        $data['text_confirm_customize'] = $this->language->get('text_confirm_customize');
+        $data['text_confirm_change_type'] = $this->language->get('text_confirm_change_type');
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_description'] = $this->language->get('entry_description');
@@ -598,7 +598,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_reward'] = $this->language->get('entry_reward');
 		$data['entry_layout'] = $this->language->get('entry_layout');
 		$data['entry_recurring'] = $this->language->get('entry_recurring');
-        $data['entry_customize_attribute'] = $this->language->get('entry_customize_attribute');
+        $data['entry_product_type'] = $this->language->get('entry_product_type');
 
 		$data['help_keyword'] = $this->language->get('help_keyword');
 		$data['help_sku'] = $this->language->get('help_sku');
@@ -1148,15 +1148,15 @@ class ControllerCatalogProduct extends Controller {
         }
 
 
-        // 自定义属性组
-        $this->load->model('catalog/attribute_group_customize');
+        // 自定义商品类型
+        $this->load->model('catalog/product_type');
 
-        $data['attribute_group_customizes'] = array();
-        $results = $this->model_catalog_attribute_group_customize->getAttributeGroupsCustomizes();
+        $data['product_types'] = array();
+        $results = $this->model_catalog_product_type->getProductTypes();
         foreach ($results as $result) {
-            $data['attribute_group_customizes'][] = array(
-                'customize_id'  => $result['customize_id'],
-                'customize_name'=> $result['customize_name']
+            $data['product_types'][] = array(
+                'type_id'  => $result['type_id'],
+                'type_name'=> $result['type_name']
             );
         }
 
