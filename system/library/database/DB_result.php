@@ -777,7 +777,9 @@ class CI_DB_result {
      * 扩展处理结果，键值查询  2011-12-12
      *
      * @access	public
-     * @return	array
+     * @param string $key 键，默认为0
+     * @param string $value 值，默认为1
+     * @return	array $key=>$value
      */
     public function fetch_option($k_name = 0, $v_name = 1)
     {

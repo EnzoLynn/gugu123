@@ -255,13 +255,10 @@ WHERE fgd.language_id = '1' AND fgd.`name` LIKE '%" . $this->db->escape($data['f
      * @author 周辉
      * @date 20150723
      * @access public
-     * @param mixed $data 过滤项数组
-     * @return array 排序后的过滤项数组
+     * @param mixed $data 过滤项ID数组
+     * @return array 排序后的过滤项ID数组
      */
     public function sortOrderFilterIds($filter_ids) {
-//        select f.filter_id from gu_product_filter gf, gu_filter f, gu_filter_group fg where
-//gf.filter_id = f.filter_id AND f.filter_group_id = fg.filter_group_id AND gf.product_id=52
-//ORDER BY fg.sort_order
         $this->db_ci->distinct();
         $this->db_ci->select('f.filter_id');
         $this->db_ci->from('product_filter gf');
@@ -272,12 +269,9 @@ WHERE fgd.language_id = '1' AND fgd.`name` LIKE '%" . $this->db->escape($data['f
         $this->db_ci->order_by('fg.sort_order');
 
         $query = $this->db_ci->get();
-        //echo $this->db_ci->last_query();exit;
 
         $temp = array();
-        foreach ($query->result_array() as $row) {
-            $temp[] = $row['filter_id'];
-        }
+        $temp = $query->fetch_column();
         return $temp;
     }
 }
