@@ -1,31 +1,31 @@
 <div class="row">
     <div class='zoom col-md-84 col-lg-84'>
-        <img class="img-responsive headerPic" src='../picBase/example-images/3_standard_4.jpg' bsrc="../picBase/example-images/3_zoom_4.jpg" id='proMainPic' style="border: 2px solid #666666;" alt='' />
-        <div class="transparent" style="top:-50px;left:20%;z-index: 22;position: relative;">
+        <img class="img-responsive headerPic" lazy_src='../picBase/example-images/3_standard_4.jpg' blazy_src="../picBase/example-images/3_zoom_4.jpg" id='proMainPic' style="border: 1px solid #666666;" alt='' />
+        <div class="transparent" style="top:-60px;left:20%;z-index: 22;position: relative;">
             <ul class="thumbnails transparent productImgThum" style="list-style: none;padding-left: 5px;">
                 <li style="float:left;margin-right: 15px;">
                     <a href="javascript:void(0);" data-standard="../picBase/example-images/3_standard_1.jpg" data-zoom="../picBase/example-images/3_zoom_1.jpg">
-                        <img class="img-responsive" src="../picBase/example-images/3_thumbnail_1.jpg" alt="" />
+                        <img class="img-responsive active" lazy_src="../picBase/example-images/3_thumbnail_1.jpg" alt="" />
                     </a>
                 </li>
                 <li style="float:left;margin-right: 15px;">
                     <a href="javascript:void(0);" data-standard="../picBase/example-images/3_standard_2.jpg" data-zoom="../picBase/example-images/3_zoom_2.jpg">
-                        <img class="img-responsive" src="../picBase/example-images/3_thumbnail_2.jpg" alt="" />
+                        <img class="img-responsive" lazy_src="../picBase/example-images/3_thumbnail_2.jpg" alt="" />
                     </a>
                 </li>
                 <li style="float:left;margin-right: 15px;">
                     <a href="javascript:void(0);" data-standard="../picBase/example-images/3_standard_3.jpg" data-zoom="../picBase/example-images/3_zoom_3.jpg">
-                        <img class="img-responsive" src="../picBase/example-images/3_thumbnail_3.jpg" alt="" />
+                        <img class="img-responsive" lazy_src="../picBase/example-images/3_thumbnail_3.jpg" alt="" />
                     </a>
                 </li>
                 <li style="float:left;margin-right: 15px;">
                     <a href="javascript:void(0);" data-standard="../picBase/example-images/3_standard_4.jpg" data-zoom="../picBase/example-images/3_zoom_4.jpg">
-                        <img class="img-responsive" src="../picBase/example-images/3_thumbnail_4.jpg" alt="" />
+                        <img class="img-responsive" lazy_src="../picBase/example-images/3_thumbnail_4.jpg" alt="" />
                     </a>
                 </li>
                 <li class="hidden-xs" style="float:left;margin-right: 15px;">
                     <a href="javascript:void(0);" data-standard="../picBase/example-images/3_standard_4.jpg" data-zoom="../picBase/example-images/3_zoom_4.jpg">
-                        <img class="img-responsive" src="../picBase/example-images/3_thumbnail_4.jpg" alt="" />
+                        <img class="img-responsive" lazy_src="../picBase/example-images/3_thumbnail_4.jpg" alt="" />
                     </a>
                 </li>
             </ul>
