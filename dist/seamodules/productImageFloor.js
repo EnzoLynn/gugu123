@@ -1,0 +1,1 @@
+define(function(require,exports,moudle){var $=require("jquery");$(function(){$(".productImgThum a").on("click",function(){$(".headerPic").attr("src",$(this).attr("data-standard")).attr("bsrc",$(this).attr("data-zoom")),$(".zoomPic").css({backgroundImage:"url('"+$(this).attr("data-zoom")+"')"}),$(".imgPic").attr("src",$(this).attr("data-zoom"))}),$(".txtNum").numeral()})});

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class='zoom col-lg-84  dd' style="float:left;">
+    <div class='zoom col-md-84 col-lg-84' >
         <img class="img-responsive headerPic" src='../picBase/example-images/3_standard_4.jpg' bsrc="../picBase/example-images/3_zoom_4.jpg" id='proMainPic' style="border: 2px solid #666666;" alt='' />
         <div class="transparent">
             <ul class="thumbnails transparent productImgThum" style="list-style: none;padding-left: 5px;">
@@ -31,7 +31,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-lg-36">
+    <div class="col-md-36 col-lg-36">
         <div style="background-color: gray;color:white;">
             <h3>MARSHALL 马歇尔 DSL5C</h3>
             <h4>电子管一体式 电吉他音箱</h4>
@@ -40,14 +40,14 @@
         <div class="form-inline">
             <div class="form-group">
                 <label>数量:</label>
-                <div class="input-group">
+                <div class="input-group numberGroup">
                     <span class="input-group-addon">-</span>
-                    <input type="text" class="form-control txtNum" placeholder="数量">
+                    <input  type="text" class="form-control txtNum" placeholder="数量">
                     <span class="input-group-addon">+</span>
                 </div>
                 <label>累计销售数量77件</label>
             </div>
-        </div>
+        </div> 
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">购买
         </button>
     </div>
