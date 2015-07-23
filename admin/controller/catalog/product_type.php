@@ -73,17 +73,41 @@ class ControllerCatalogProductType extends Controller {
         $this->getForm();
     }
 
-    public function delete($type_id) {
-        $this->load->language('catalog/attribute_group');
+    public function delete() {
+        $this->load->language('catalog/product_type');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
         $this->load->model('catalog/product_type');
 
+        $type_id = (int)$this->request->get['type_id'];
         $this->model_catalog_product_type->deleteProductType($type_id);
 
         $this->getList();
     }
+
+    public function copy() {
+        $this->load->language('catalog/product_type');
+
+        $this->document->setTitle($this->language->get('heading_title'));
+
+        $this->load->model('catalog/product_type');
+
+        if (isset($this->request->post['selected']) && $this->validateCopy()) {
+            foreach ($this->request->post['selected'] as $type_id) {
+                $this->model_catalog_product_type->copyProductType($type_id);
+            }
+
+            $this->session->data['success'] = $this->language->get('text_success');
+
+            $url = '';
+
+            $this->response->redirect($this->url->link('catalog/product_type', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+        }
+
+        $this->getList();
+    }
+
 
     protected function getList() {
         $url = '';
@@ -101,6 +125,7 @@ class ControllerCatalogProductType extends Controller {
         );
 
         $data['add'] = $this->url->link('catalog/product_type/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
+        $data['copy'] = $this->url->link('catalog/product_type/copy', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
         $data['product_types'] = array();
 
@@ -128,6 +153,7 @@ class ControllerCatalogProductType extends Controller {
         $data['column_action'] = $this->language->get('column_action');
         $data['column_attribute_num'] = $this->language->get('column_attribute_num');
 
+        $data['button_copy'] = $this->language->get('button_copy');
         $data['button_add'] = $this->language->get('button_add');
         $data['button_edit'] = $this->language->get('button_edit');
         $data['button_delete'] = $this->language->get('button_delete');
@@ -144,6 +170,12 @@ class ControllerCatalogProductType extends Controller {
             unset($this->session->data['success']);
         } else {
             $data['success'] = '';
+        }
+
+        if (isset($this->request->post['selected'])) {
+            $data['selected'] = (array)$this->request->post['selected'];
+        } else {
+            $data['selected'] = array();
         }
 
         $url = '';
@@ -258,6 +290,14 @@ class ControllerCatalogProductType extends Controller {
         $data['footer'] = $this->load->controller('common/footer');
 
         $this->response->setOutput($this->load->view('catalog/product_type_form.tpl', $data));
+    }
+
+    protected function validateCopy() {
+        if (!$this->user->hasPermission('modify', 'catalog/product_type')) {
+            $this->error['warning'] = $this->language->get('error_permission');
+        }
+
+        return !$this->error;
     }
 
     protected function validateForm() {

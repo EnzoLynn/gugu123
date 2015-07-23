@@ -2,7 +2,10 @@
 <div id="content">
     <div class="page-header">
         <div class="container-fluid">
-            <div class="pull-right"><a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a></div>
+            <div class="pull-right">
+              <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+              <button type="button" data-toggle="tooltip" title="<?php echo $button_copy; ?>" class="btn btn-default" onclick="$('#form-product-type').attr('action', '<?php echo $copy; ?>').submit()"><i class="fa fa-copy"></i></button>
+            </div>
             <h1><?php echo $heading_title; ?></h1>
             <ul class="breadcrumb">
                 <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -27,10 +30,12 @@
                 <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
             </div>
             <div class="panel-body">
+                <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-product-type">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
+                            <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
                             <td class="text-center"><?php echo $column_id; ?></td>
                             <td class="text-left"><?php echo $column_name; ?></td>
                             <td class="text-right"><?php echo $column_action; ?></td>
@@ -40,6 +45,11 @@
                         <?php if ($product_types) { ?>
                         <?php foreach ($product_types as $product_type) { ?>
                         <tr>
+                            <td class="text-center"><?php if (in_array($product_type['type_id'], $selected)) { ?>
+                                <input type="checkbox" name="selected[]" value="<?php echo $product_type['type_id']; ?>" checked="checked" />
+                                <?php } else { ?>
+                                <input type="checkbox" name="selected[]" value="<?php echo $product_type['type_id']; ?>" />
+                                <?php } ?></td>
                             <td class="text-center"><?php echo $product_type['type_id']; ?></td>
                             <td class="text-left"><?php echo $product_type['type_name']; ?></td>
                             <td class="text-right">
@@ -56,6 +66,7 @@
                         </tbody>
                     </table>
                 </div>
+                </form>
             </div>
         </div>
     </div>

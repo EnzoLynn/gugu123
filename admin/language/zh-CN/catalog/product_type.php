@@ -10,7 +10,7 @@ $_['heading_title']     = '商品类型';
 
 // Text
 $_['text_success']      = '成功: 已经修改商品类型！';
-$_['text_list']         = '属性分组列表';
+$_['text_list']         = '商品类型列表';
 $_['text_add']          = '添加商品类型';
 $_['text_edit']         = '编辑商品类型';
 

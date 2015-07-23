@@ -9,38 +9,34 @@ class ModelCatalogProductType extends Model
 {
     public function addProductType($data)
     {
-        $this->event->trigger('pre.admin.product_type.add', $data);
+        $product_type = array(
+            'type_name' => $data['type_name'],
+            'filter_group_ids' => $data['filter_group_ids'],
+            'attribute_ids' => $data['attribute_ids']
+        );
+        $this->db_ci->insert('product_type', $product_type);
 
-        $this->db->query("INSERT INTO " . DB_PREFIX . "product_type SET type_name = '" . $this->db->escape($data['type_name']) . "', filter_group_ids = '" .  $this->db->escape($data['filter_group_ids']) . "', attribute_ids = '" .  $this->db->escape($data['attribute_ids']) . "'");
-
-        $customize_id = $this->db->getLastId();
-
-        $this->event->trigger('post.admin.product_type.add', $customize_id);
-
-        return $customize_id;
+        $type_id = $this->db_ci->insert_id();
     }
 
     public function editProductType($type_id, $data)
     {
-        $this->event->trigger('pre.admin.product_type.edit', $data);
-
-        $this->db->query("UPDATE " . DB_PREFIX . "product_type SET type_name = '" . $this->db->escape($data['type_name']) . "', filter_group_ids = '" .  $this->db->escape($data['filter_group_ids']) . "', attribute_ids = '" .  $this->db->escape($data['attribute_ids']) . "' WHERE type_id = '" . (int)$type_id . "'");
-
-        $this->event->trigger('post.admin.product_type.edit', $type_id);
+        $product_type = array(
+            'type_name' => $data['type_name'],
+            'filter_group_ids' => $data['filter_group_ids'],
+            'attribute_ids' => $data['attribute_ids']
+        );
+        $this->db_ci->where('type_id', $type_id);
+        $this->db_ci->update('product_type', $product_type);
     }
 
     public function deleteProductType($type_id)
     {
-        $this->event->trigger('pre.admin.product_type.delete', $type_id);
-
-        $this->db->query("DELETE FROM " . DB_PREFIX . "product_type WHERE attribute_id = '" . (int)$type_id . "'");
-
-        $this->event->trigger('post.admin.product_type.delete', $type_id);
+        return $this->db_ci->delete('product_type', array('type_id' => $type_id));
     }
 
     public function getProductType($type_id)
     {
-
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_type WHERE type_id = '" . (int)$type_id . "'");
 
         return $query->row;
@@ -51,5 +47,12 @@ class ModelCatalogProductType extends Model
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_type ORDER BY type_id");
 
         return $query->rows;
+    }
+
+    public function copyProductType($type_id) {
+        $product_type = $this->getProductType($type_id);
+
+        $product_type['type_name'] = $product_type['type_name'] . '_copy';
+        return $this->addProductType($product_type);
     }
 }
