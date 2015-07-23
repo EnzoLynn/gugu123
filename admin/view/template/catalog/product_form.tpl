@@ -336,7 +336,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-parent"><?php echo $entry_master_category; ?></label>
+                <label class="col-sm-2 control-label" for="input-parent"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_master_category; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="master_category" value="<?php echo $master_category; ?>" placeholder="<?php echo $entry_master_category; ?>" id="input-parent" class="form-control" />
                   <input type="hidden" name="master_category_id" value="<?php echo $master_category_id; ?>" />
@@ -355,7 +355,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
+              <!--<div class="form-group">
                 <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
@@ -367,7 +367,7 @@
                     <?php } ?>
                   </div>
                 </div>
-              </div>
+              </div>-->
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
                 <div class="col-sm-10">
@@ -438,7 +438,7 @@
                   </div>
 
               </div>
-              <div class="table-responsive col-xs-12">
+              <div class="table-responsive col-xs-6">
                 <table id="attribute" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr>
@@ -472,24 +472,30 @@
                 </table>
               </div>
                 <!--filter-->
-                <div class="table-responsive col-xs-6" style="display: none;">
-                    <table id="attribute" class="table table-striped table-bordered table-hover">
+                <div class="table-responsive col-xs-6">
+                    <table id="filters" class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
                             <td class="text-left"><?php echo $entry_filter; ?></td>
                             <td class="text-left"><?php echo $entry_option_value; ?></td>
-                            <td></td>
                         </tr>
                         </thead>
                         <tbody>
-
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td class="text-left"><button type="button" onclick="addAttribute();" data-toggle="tooltip" title="<?php echo $button_attribute_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                        <?php $filter_row = 0; ?>
+                        <?php foreach ($product_filters as $product_filter) { ?>
+                        <tr id="filter-row<?php echo $filter_row; ?>">
+                            <td class="text-left" style="width: 40%;"><label for=""><?php echo $product_filter['group_name']; ?></label></td>
+                            <td class="text-left">
+                                <select class="form-control" name="product_filter[]">
+                                    <?php foreach ($product_filter['filters'] as $filter) { ?>
+                                    <option  <?php if ($product_filter['filter_id'] == $filter['filter_id']) { echo 'selected'; } ?>  value="<?php echo $filter['filter_id']; ?>"><?php echo $filter['filter_description']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </td>
                         </tr>
-                        </tfoot>
+                        <?php $filter_row++; ?>
+                        <?php } ?>
+                        </tbody>
                     </table>
                 </div>
 
@@ -1046,33 +1052,33 @@ $('#product-category').delegate('.fa-minus-circle', 'click', function() {
 });
 
 // Filter
-$('input[name=\'filter\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/filter/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',			
-			success: function(json) {
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['filter_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'filter\']').val('');
-		
-		$('#product-filter' + item['value']).remove();
-		
-		$('#product-filter').append('<div id="product-filter' + item['value'] + '" class="col-xs-3"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_filter[]" value="' + item['value'] + '" /></div>');
-	}	
-});
-
-$('#product-filter').delegate('.fa-minus-circle', 'click', function() {
-	$(this).parent().remove();
-});
+//$('input[name=\'filter\']').autocomplete({
+//	'source': function(request, response) {
+//		$.ajax({
+//			url: 'index.php?route=catalog/filter/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+//			dataType: 'json',
+//			success: function(json) {
+//				response($.map(json, function(item) {
+//					return {
+//						label: item['name'],
+//						value: item['filter_id']
+//					}
+//				}));
+//			}
+//		});
+//	},
+//	'select': function(item) {
+//		$('input[name=\'filter\']').val('');
+//
+//		$('#product-filter' + item['value']).remove();
+//
+//		$('#product-filter').append('<div id="product-filter' + item['value'] + '" class="col-xs-3"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_filter[]" value="' + item['value'] + '" /></div>');
+//	}
+//});
+//
+//$('#product-filter').delegate('.fa-minus-circle', 'click', function() {
+//	$(this).parent().remove();
+//});
 
 // Downloads
 $('input[name=\'download\']').autocomplete({
@@ -1134,6 +1140,7 @@ $('#product-related').delegate('.fa-minus-circle', 'click', function() {
 //--></script> 
   <script type="text/javascript"><!--
 var attribute_row = <?php echo $attribute_row; ?>;
+var filter_group_row = 0;
 
 function addAttribute() {
     html  = '<tr id="attribute-row' + attribute_row + '">';
@@ -1187,7 +1194,7 @@ function addAttributeByData(data) {
     html  = '<tr id="attribute-row' + attribute_row + '">';
     html += '  <td class="text-left" style="width: 40%;"><input type="text" name="product_attribute[' + attribute_row + '][name]" value="' + data['name'] + '" placeholder="<?php echo $entry_attribute; ?>" class="form-control" /><input type="hidden" name="product_attribute[' + attribute_row + '][attribute_id]" value="' + data['attribute_id'] + '" /></td>';
     html += '  <td class="text-left">';
-<?php foreach ($languages as $language) { ?>
+    <?php foreach ($languages as $language) { ?>
         html += '<div class="input-group"><span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span><input name="product_attribute[' + attribute_row + '][product_attribute_description][<?php echo $language['language_id']; ?>][text]" placeholder="<?php echo $entry_text; ?>" class="form-control" /></div>';
     <?php } ?>
     html += '  </td>';
@@ -1201,13 +1208,30 @@ function addAttributeByData(data) {
     attribute_row++;
 }
 
+function addFilterByData(data) {
+    html  = '<tr id="filter-row' + filter_group_row + '">';
+    html += '  <td class="text-left" style="width: 40%;"><label for="">' + data['group_name'] + '</label></td>';
+    html += '  <td class="text-left"><select class="form-control" name="product_filter[]">';
+    for (var p in data['filters']) {
+        html += '  <option value="' + data['filters'][p]['filter_id'] + '">' + data['filters'][p]['filter_description'] + '</option>';
+    }
+    html += '  </select></td>';
+    html += '</tr>';
+
+    $('#filters tbody').append(html);
+
+    filter_group_row++;
+}
+
 $("#sel_customize").change(function() {
     var customize_id = $(this).val();
     if(customize_id == '') {
         return ;
     }
-    if(!confirm("<?php echo $text_confirm_customize; ?>")) {
-        return ;
+    if($('#attribute tbody tr').length > 0) {
+        if (!confirm("<?php echo $text_confirm_customize; ?>")) {
+            return;
+        }
     }
     $.ajax({
         url: 'index.php?route=catalog/attribute_group_customize/getOptionsJSON&token=<?php echo $token; ?>&customize_id=' +  encodeURIComponent(customize_id),
@@ -1219,6 +1243,19 @@ $("#sel_customize").change(function() {
             for(var p in json) {
                 addAttributeByData(json[p]);
                 //alert(p + ':' + json[p]['attribute_id'] + json[p]['name']);
+            }
+        }
+    });
+
+    $.ajax({
+        url: 'index.php?route=catalog/attribute_group_customize/getFilterJSON&token=<?php echo $token; ?>&customize_id=' +  encodeURIComponent(customize_id),
+        dataType: 'json',
+        success: function(json) {
+            filter_group_row = 0;
+            $('#filters tbody tr').remove();
+
+            for(var p in json) {
+                addFilterByData(json[p]);
             }
         }
     });

@@ -273,9 +273,6 @@ class ControllerCatalogAttributeGroupCustomize extends Controller {
     }
 
     public function getOptionsJSON() {
-
-        $json = array();
-
         $this->load->model('catalog/attribute');
         $this->load->model('catalog/attribute_group_customize');
 
@@ -303,5 +300,30 @@ class ControllerCatalogAttributeGroupCustomize extends Controller {
 
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($data['attributes']));
+    }
+
+    public function getFilterJSON() {
+        $data['filter_groups'] = array();
+        $this->load->model('catalog/filter');
+        $this->load->model('catalog/attribute_group_customize');
+
+        $customize_id = (int)$this->request->get['customize_id'];
+
+        $customize_info = array();
+        $customize_info = $this->model_catalog_attribute_group_customize->getAttributeGroupCustomize($customize_id);
+
+        // Filter group
+        $filter_group_ids = explode(',', $customize_info['filter_group_ids']);
+        foreach ($filter_group_ids as $filter_group_id) {
+            $filters = $this->model_catalog_filter->getFiltersByGroupID($filter_group_id);
+
+            $filter_group = $this->model_catalog_filter->getFilterGroup($filter_group_id);
+            $data['filter_groups'][] = array(
+                'group_name' => $filter_group['name'],
+                'filters'   => $filters
+            );
+        }
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($data['filter_groups']));
     }
 }
