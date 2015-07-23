@@ -729,4 +729,78 @@ class CI_DB_result {
 		return array();
 	}
 
+
+    /**
+     * 扩展，单值查询  2011-12-12
+     *
+     * Overridden by driver result classes.
+     *
+     * @return	object
+     */
+    public function fetch_one()
+    {
+        $result = $this->result();
+
+        if (count($result) == 0)
+        {
+            return $result;
+        }
+        $fields = $this->list_fields();
+        @$one = $result[0][$fields[0]];
+        return $one;
+    }
+    /**
+     * 扩展处理结果，单列查询  2011-12-12
+     *
+     * Overridden by driver result classes.
+     *
+     * @return	array
+     */
+    public function fetch_column()
+    {
+        $result = $this->result_array();
+
+        if (count($result) == 0)
+        {
+            return $result;
+        }
+
+        $fields = $this->list_fields();
+        $arr = array();
+        foreach($result as $k => $v)
+        {
+            $arr[] = $v[$fields[0]];
+        }
+        return $arr;
+    }
+    /**
+     * 扩展处理结果，键值查询  2011-12-12
+     *
+     * @access	public
+     * @return	array
+     */
+    public function fetch_option($k_name = 0, $v_name = 1)
+    {
+        $result = $this->result();
+
+        if (count($result) == 0)
+        {
+            return $result;
+        }
+        $arr = array();
+        $fields = $this->list_fields();
+        if($k_name == 0)
+        {
+            $k_name = $fields[$k_name];
+        }
+        if($v_name == 1)
+        {
+            $v_name = $fields[$v_name];
+        }
+        foreach($result as $k => $v)
+        {
+            $arr[$v[$k_name]] = $v[$v_name];
+        }
+        return $arr;
+    }
 }

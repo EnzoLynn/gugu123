@@ -15,7 +15,7 @@ bscmd.bat
 compiler.jar
 *.zip
 web.config
-
+/js/seaConfig.js
 config_db.php
 config.php
 /admin/config.php
@@ -24,4 +24,4 @@ config.php
 /system/logs/
 /image/cache/
 /image/catalog/
-/js/seaConfig.js
+/zzz
