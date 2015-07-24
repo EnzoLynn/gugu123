@@ -371,7 +371,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
                 <div class="col-sm-10">
-                  <div class="well well-sm" style="height: 150px; overflow: auto;">
+                  <div class="well well-sm" style="height:60px; overflow: auto;">
                     <div class="checkbox">
                       <label>
                         <?php if (in_array(0, $product_store)) { ?>

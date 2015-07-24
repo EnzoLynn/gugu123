@@ -74,11 +74,19 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
-		if (isset($data['product_category'])) {
-			foreach ($data['product_category'] as $category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "'");
-			}
-		}
+        $this->load->model('catalog/category');
+        if (isset($data['product_category'])) {
+            $all_category_ids = array();
+
+            foreach ($data['product_category'] as $category_id) {
+                //必须强制依次关联上级类
+                $all_category_ids = array_merge($all_category_ids, $this->model_catalog_category->getPrefixCategoriesID($category_id));
+            }
+
+            foreach ($all_category_ids as $category_id) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "'");
+            }
+        }
 
 		if (isset($data['product_filter'])) {
 			foreach ($data['product_filter'] as $filter_id) {
@@ -215,13 +223,21 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
-		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "'");
 
-		if (isset($data['product_category'])) {
-			foreach ($data['product_category'] as $category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "'");
-			}
-		}
+        $this->load->model('catalog/category');
+        if (isset($data['product_category'])) {
+            $all_category_ids = array();
+
+            foreach ($data['product_category'] as $category_id) {
+                //必须强制依次关联上级类
+                $all_category_ids = array_merge($all_category_ids, $this->model_catalog_category->getPrefixCategoriesID($category_id));
+            }
+
+            foreach ($all_category_ids as $category_id) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "'");
+            }
+        }
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_filter WHERE product_id = '" . (int)$product_id . "'");
 
@@ -359,6 +375,10 @@ class ModelCatalogProduct extends Model {
 			$sql .= " AND p.model LIKE '" . $this->db->escape($data['filter_model']) . "%'";
 		}
 
+        if (isset($data['filter_category_id']) && !is_null($data['filter_category_id'])) {
+            $sql .= " AND p.product_id IN (SELECT product_id FROM " . DB_PREFIX . "product_to_category WHERE category_id = '" . (int)$data['filter_category_id'] . "')";
+        }
+
 		if (isset($data['filter_price']) && !is_null($data['filter_price'])) {
 			$sql .= " AND p.price LIKE '" . $this->db->escape($data['filter_price']) . "%'";
 		}
@@ -370,7 +390,7 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
 			$sql .= " AND p.status = '" . (int)$data['filter_status'] . "'";
 		}
-		
+
 		//$sql .= " GROUP BY p.product_id";
 
 		$sort_data = array(
@@ -623,6 +643,10 @@ class ModelCatalogProduct extends Model {
 		if (!empty($data['filter_model'])) {
 			$sql .= " AND p.model LIKE '" . $this->db->escape($data['filter_model']) . "%'";
 		}
+
+        if (isset($data['filter_category_id']) && !is_null($data['filter_category_id'])) {
+            $sql .= " AND p.product_id IN (SELECT product_id FROM " . DB_PREFIX . "product_to_category WHERE category_id = '" . (int)$data['filter_category_id'] . "')";
+        }
 
 		if (isset($data['filter_price']) && !is_null($data['filter_price'])) {
 			$sql .= " AND p.price LIKE '" . $this->db->escape($data['filter_price']) . "%'";

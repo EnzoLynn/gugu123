@@ -43,10 +43,15 @@
               </div>
             </div>
             <div class="col-sm-4">
-              <div class="form-group">
+                <div class="form-group">
+                    <label class="control-label" for="input-category-id"><?php echo $entry_category_id; ?></label>
+                    <input type="text" name="filter_category" value="<?php echo $filter_category; ?>" placeholder="<?php echo $entry_category_id; ?>" id="input-category" class="form-control" />
+                    <input type="hidden" name="filter_category_id" value="<?php echo $filter_category_id; ?>" />
+                </div>
+              <!--<div class="form-group">
                 <label class="control-label" for="input-price"><?php echo $entry_price; ?></label>
                 <input type="text" name="filter_price" value="<?php echo $filter_price; ?>" placeholder="<?php echo $entry_price; ?>" id="input-price" class="form-control" />
-              </div>
+              </div>-->
               <div class="form-group">
                 <label class="control-label" for="input-quantity"><?php echo $entry_quantity; ?></label>
                 <input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" placeholder="<?php echo $entry_quantity; ?>" id="input-quantity" class="form-control" />
@@ -179,6 +184,12 @@ $('#button-filter').on('click', function() {
 		url += '&filter_model=' + encodeURIComponent(filter_model);
 	}
 
+    var filter_category_id = $('input[name="filter_category_id"]').val();
+
+    if (filter_category_id) {
+        url += '&filter_category_id=' + encodeURIComponent(filter_category_id);
+    }
+
 	var filter_price = $('input[name=\'filter_price\']').val();
 
 	if (filter_price) {
@@ -239,6 +250,33 @@ $('input[name=\'filter_model\']').autocomplete({
 	'select': function(item) {
 		$('input[name=\'filter_model\']').val(item['label']);
 	}
+});
+
+// Category
+$('input[name=\'filter_category\']').autocomplete({
+  'source': function(request, response) {
+      $.ajax({
+          url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+          dataType: 'json',
+          success: function(json) {
+              json.unshift({
+                  category_id: 0,
+                  name: '<?php echo $text_none; ?>'
+              });
+
+              response($.map(json, function(item) {
+                  return {
+                      label: item['name'],
+                      value: item['category_id']
+                  }
+              }));
+          }
+      });
+  },
+  'select': function(item) {
+      $('input[name="filter_category"]').val(item['label']);
+      $('input[name="filter_category_id"]').val(item['value']);
+  }
 });
 //--></script></div>
 <?php echo $footer; ?>

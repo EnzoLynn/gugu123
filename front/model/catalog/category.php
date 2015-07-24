@@ -67,7 +67,13 @@ class ModelCatalogCategory extends Model {
 		return $query->row['total'];
 	}
 
-    //通过种类ID得到包含自身和所有上级类数组（只有ID）
+    /**
+     * 通过种类ID得到包含自身和所有上级类数组（只有ID）
+     * @author 周辉
+     * @access public
+     * @param int $category_id
+     * @return array 分类ID的数组
+     */
     function getPrefixCategoriesID($category_id) {
         $arr_temp[] = $category_id;
         $query = $this->db->query("select parent_id from " . DB_PREFIX . "category where category_id = $category_id");
@@ -89,7 +95,13 @@ class ModelCatalogCategory extends Model {
         return $arr_temp;
     }
 
-    //通过种类ID得到包含自身和所有上级类数组（包含ID和Name）
+    /**
+     * 通过种类ID得到包含自身和所有上级类数组（包含ID和Name）
+     * @author 周辉
+     * @access public
+     * @param minxed $category_ids
+     * @return array 分类信息的数组
+     */
     function getPrefixCategoriesName($category_ids) {//, $language_id = 1
         if(count($category_ids) == 0) {
             return false;
