@@ -9,7 +9,7 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="introduction">
                 <div class="row">
-                    <div class="title text-center col-md-120">Marshall DSL5c</div>
+                    <div class="title text-center">Marshall DSL5c</div>
                 </div>
                 <div class="rtitle row">
                     <div class="col-md-120">GENERAL</div>
