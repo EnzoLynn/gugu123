@@ -15,17 +15,17 @@
                     <div class="left log"><img lazy_src="picBase/pics/谷谷微博.png" alt=""></div>
                     <div class="left text">谷谷微博</div>
                 </div>
-                <div class="row">
-                    <div class="left"><img lazy_src="picBase/pics/图片-5.jpg" alt=""></div>
-                    <div class="left">Big .......................</div>
+                <div class="media row">
+                    <div class="media-left"><img lazy_src="picBase/pics/图片-5.jpg" alt=""></div>
+                    <div class="media-body">Big .......................</div>
                 </div>
-                <div class="row">
-                    <div class="left"><img lazy_src="picBase/pics/图片-3.jpg" alt=""></div>
-                    <div class="left">NRJ ..........................</div>
+                <div class="media row">
+                    <div class="media-left"><img lazy_src="picBase/pics/图片-3.jpg" alt=""></div>
+                    <div class="media-body">NRJ ..........................</div>
                 </div>
-                <div class="row">
-                    <div class="left"><img lazy_src="picBase/pics/图片-1.jpg" alt=""></div>
-                    <div class="left">Aromath........................</div>
+                <div class="media row">
+                    <div class="media-left"><img lazy_src="picBase/pics/图片-1.jpg" alt=""></div>
+                    <div class="media-body">Aromath........................</div>
                 </div>
             </div>
             <div class="col-md-40 avtiveDiv">
@@ -33,17 +33,17 @@
                     <div class="left log"><img lazy_src="picBase/pics/谷谷视频.png" alt=""></div>
                     <div class="left text">谷谷视频</div>
                 </div>
-                <div class="row">
-                    <div class="left"><img lazy_src="picBase/pics/图片-6.jpg" alt=""></div>
-                    <div class="left">Big .......................</div>
+                <div class="row media">
+                    <div class="media-left"><img lazy_src="picBase/pics/图片-6.jpg" alt=""></div>
+                    <div class="media-body">Big .......................</div>
                 </div>
-                <div class="row">
-                    <div class="left"><img lazy_src="picBase/pics/图片-4.jpg" alt=""></div>
-                    <div class="left">NRJ ..........................</div>
+                <div class="row media">
+                    <div class="media-left"><img lazy_src="picBase/pics/图片-4.jpg" alt=""></div>
+                    <div class="media-body">NRJ ..........................</div>
                 </div>
-                <div class="row">
-                    <div class="left"><img lazy_src="picBase/pics/图片-2.jpg" alt=""></div>
-                    <div class="left">Aromath........................</div>
+                <div class="row media">
+                    <div class="media-left"><img lazy_src="picBase/pics/图片-2.jpg" alt=""></div>
+                    <div class="media-body">Aromath........................</div>
                 </div>
             </div>
             <div class="col-md-40 avtiveDiv">
@@ -51,17 +51,17 @@
                     <div class="left log"><img lazy_src="picBase/pics/谷谷相册.png" alt=""></div>
                     <div class="left text">谷谷相册</div>
                 </div>
-                <div class="row">
+                <div class="row media">
                     <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-1.jpg" alt=""></div>
                     <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-2.jpg" alt=""></div>
                     <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-3.jpg" alt=""></div>
                 </div>
-                <div class="row">
+                <div class="row media">
                     <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-4.jpg" alt=""></div>
                     <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-5.jpg" alt=""></div>
                     <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-6.jpg" alt=""></div>
                 </div>
-                <div class="row">
+                <div class="row media">
                     <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-7.jpg" alt=""></div>
                     <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-8.jpg" alt=""></div>
                     <div class="col-xs-40 col-sm-40 col-md-40"><img class="img-responsive" lazy_src="picBase/pics/相片-9.jpg" alt=""></div>
