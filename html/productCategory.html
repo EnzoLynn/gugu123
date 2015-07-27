@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>productCategory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/framework/sea.js"></script>
+    <script type="text/javascript" src="/framework/seajs-text.js"></script>
+    <script type="text/javascript" src="/framework/seajs-css.js"></script>
+    <script type="text/javascript" src="/js/seaConfig.js"></script>
+    <script type="text/javascript">
+    seajs.use("modules/productCategory");
+    </script>
+    <base href="../">
+</head>
+
+<body style="display: none;">
+    <!-- 新分类菜单 -->
+    <div class="include-logheadCategoryDiv container-fluid">
+    </div>
+    <!-- 顶部 -->
+    <div class="include-topNavigator container-fluid hidden-sm hidden-xs">
+    </div>
+    <!-- Log -->
+    <div class="include-indexLogFloor container-fluid">
+    </div>
+    <!-- 路径导航 -->
+    <div class="include-breadcrumb container-fluid"></div>
+    <div class="clearfix"></div>
+    <!-- 固定最大宽度 -->
+    <div class="container-fluid bodyMain">
+        <div class="flexsidediv"></div>
+        <!-- 页面主体 -->
+        <div id="gugumain">
+            <!-- 分类展示 -->
+            <div class="include-categorylistfloor">
+            </div>
+            <!-- 底部 -->
+            <div class="include-indexBottom container-fluid" style="padding: 50px 50px;">
+            </div>
+        </div>
+        <div class="flexsidediv"></div>
+    </div>
+</body>
+
+</html>
