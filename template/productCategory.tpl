@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="filtertitle">
+    <div class="filtertitle col-md-20">
         电吉他 商品筛选 共389个商品
     </div>
-    <div class="filterStr">
+    <div class="filterStr col-md-100">
         <!-- <input type="button" name="" value="xxx"> -->
     </div>
 </div>
@@ -20,12 +20,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="filterkey">价格:</div>
-        <div class="filterval">0-1499 1500-2999</div>
+        <div class="filterkey" data-key="price">价格:</div>
+        <div class="filterval">
+            <a href="javascript:void(0);" data-val="0-1499" title="">0-1499</a>
+            <a href="javascript:void(0);" data-val="1500-2999" title="">1500-2999</a>
+        </div>
         <div class="filterside">
-            <input type="text" name="" value="">-
+            <input type="text" name="" value="">
             <input type="text" name="" value="">
             <input type="button" name="" value="确定">
+        </div>
+    </div>
+    <div class="row">
+        <div class="filterkey" data-key="size">尺寸:</div>
+        <div class="filterval">
+            <a href="javascript:void(0);" data-val="65" title="">65英寸以上</a>
+            <a href="javascript:void(0);" data-val="58" title="">58-60英寸</a>
+        </div>
+        <div class="filterside">
+            <input type="button" name="" value="多选">
         </div>
     </div>
     <div class="filtermore">
