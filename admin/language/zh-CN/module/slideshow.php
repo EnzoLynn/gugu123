@@ -10,7 +10,7 @@ $_['text_edit']        = '编辑幻灯片模块';
 
 // Entry
 $_['entry_name']       = '模块名称';
-$_['entry_banner']     = '横幅广告';
+$_['entry_banner']     = '广告位';
 $_['entry_width']      = '宽度';
 $_['entry_height']     = '高度';
 $_['entry_status']     = '状态';
