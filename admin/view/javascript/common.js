@@ -136,7 +136,7 @@ $(document).ready(function() {
 		});
 					
 		var element = this;
-		
+
 		$(element).popover({
 			html: true,
 			placement: 'right',
@@ -148,11 +148,18 @@ $(document).ready(function() {
 		
 		$(element).popover('show');
 
+        if($(element).attr("directory") == '') {
+            var ajax_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
+        }else{
+            var ajax_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&directory=' + $(element).attr("directory") + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
+        }
+
+
 		$('#button-image').on('click', function() {
 			$('#modal-image').remove();
-		
+
 			$.ajax({
-				url: 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id'),
+				url: ajax_url,
 				dataType: 'html',
 				beforeSend: function() {
 					$('#button-image i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');

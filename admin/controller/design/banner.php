@@ -267,10 +267,12 @@ class ControllerDesignBanner extends Controller {
 		$data['text_disabled'] = $this->language->get('text_disabled');
 		$data['text_default'] = $this->language->get('text_default');
 
+        $data['entry_image_desc'] = $this->language->get('entry_image_desc');
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_title'] = $this->language->get('entry_title');
 		$data['entry_link'] = $this->language->get('entry_link');
 		$data['entry_image'] = $this->language->get('entry_image');
+        $data['entry_image2'] = $this->language->get('entry_image2');
         $data['entry_background'] = $this->language->get('entry_background');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
@@ -354,11 +356,21 @@ class ControllerDesignBanner extends Controller {
 			$data['status'] = true;
 		}
 
+        $this->load->model('tool/image');
+
+        if (isset($this->request->post['image_desc'])) {
+            $data['image_desc'] = $this->request->post['image_desc'];
+        } elseif (!empty($banner_info)) {
+            $data['image_desc'] = $banner_info['image_desc'];
+            $data['image_desc_url'] = $this->model_tool_image->url($banner_info['image_desc']);
+        } else {
+            $data['image_desc'] = '';
+            $data['image_desc_url'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+        }
+
 		$this->load->model('localisation/language');
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
-
-		$this->load->model('tool/image');
 
 		if (isset($this->request->post['banner_image'])) {
 			$banner_images = $this->request->post['banner_image'];
@@ -379,12 +391,22 @@ class ControllerDesignBanner extends Controller {
 				$thumb = 'no_image.png';
 			}
 
+            if (is_file(DIR_IMAGE . $banner_image['image2'])) {
+                $image2 = $banner_image['image2'];
+                $thumb2 = $banner_image['image2'];
+            } else {
+                $image2 = '';
+                $thumb2 = 'no_image.png';
+            }
+
 			$data['banner_images'][] = array(
 				'banner_image_description' => $banner_image['banner_image_description'],
 				'link'                     => $banner_image['link'],
                 'background'              => $banner_image['background'],
 				'image'                    => $image,
 				'thumb'                    => $this->model_tool_image->resize($thumb, 100, 100),
+                'image2'                    => $image2,
+                'thumb2'                    => $this->model_tool_image->resize($thumb2, 100, 100),
 				'sort_order'               => $banner_image['sort_order']
 			);
 		}

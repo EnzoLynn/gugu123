@@ -20,9 +20,12 @@ $_['entry_name']         = '广告位名称';
 $_['entry_title']        = '标题';
 $_['entry_link']         = '链接';
 $_['entry_image']        = '图像';
+$_['entry_image2']        = '图像二';
 $_['entry_background']  = '背景色';
 $_['entry_status']       = '状态';
 $_['entry_sort_order']   = '排序';
+
+$_['entry_image_desc']         = '图片说明';
 
 // Error
 $_['error_permission']   = '警告: 无权限修改广告位！';
