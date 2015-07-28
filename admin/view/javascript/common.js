@@ -154,7 +154,6 @@ $(document).ready(function() {
             var ajax_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&directory=' + $(element).attr("directory") + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
         }
 
-
 		$('#button-image').on('click', function() {
 			$('#modal-image').remove();
 
