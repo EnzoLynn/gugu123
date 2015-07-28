@@ -51,7 +51,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-image-desc"><?php echo $entry_image_desc; ?></label>
             <div class="col-sm-10">
-              <a href="" id="thumb-image-desc" data-toggle="image" class="img-thumbnail"><img src="<?php echo $image_desc_url; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+              <a href="" id="thumb-image-desc" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $image_desc_url; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
               <input type="hidden" name="image_desc" value="<?php echo $image_desc; ?>" id="input-image_desc" />
             </div>
           </div>
