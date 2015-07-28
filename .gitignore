@@ -25,3 +25,4 @@ config.php
 /image/cache/
 /image/catalog/
 /zzz
+/data/*

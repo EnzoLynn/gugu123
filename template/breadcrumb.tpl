@@ -1,7 +1,10 @@
 <div class="row"> 
-	<ol class="breadcrumb col-lg-120">
+ 
+    <div class="col-lg-10 visiable-lg-block"></div>
+	<ol class="breadcrumb col-md-110">
 		<li><a href="#">吉他</a></li>
 		<li><a href="#">二级分类</a></li>
 		<li class="active">三级分类</li>
 	</ol> 
+	<div class="col-lg-10 visiable-lg-block"></div>
 </div>
