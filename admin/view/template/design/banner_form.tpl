@@ -83,7 +83,7 @@
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="4"></td>
+                <td colspan="5"></td>
                 <td class="text-left"><button type="button" onclick="addImage();" data-toggle="tooltip" title="<?php echo $button_banner_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
               </tr>
             </tfoot>
