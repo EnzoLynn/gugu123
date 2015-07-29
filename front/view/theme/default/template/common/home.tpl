@@ -34,19 +34,24 @@
 </div> -->
 <!-- 新分类菜单 -->
 <div class="include-logheadCategoryDiv container-fluid">
+  <?php echo $commonSubMenu; ?>
 </div>
 <!-- 顶部 -->
 <div class="include-topNavigator container-fluid hidden-sm hidden-xs">
+  <?php echo $commonTopNavigator; ?>
 </div>
 <!-- Log -->
 <div class="include-indexLogFloor container-fluid">
+  <?php echo $commonTopMenu; ?>
 </div>
 <div class="clearfix"></div>
 <!-- 搜索条 -->
 <!--  <div class="include-indexCategory container-fluid">
         </div> -->
 <!-- 全幅Banner -->
-<div class="include-bannerPlay container-fluid hidden-sm hidden-xs"></div>
+<div class="include-bannerPlay container-fluid hidden-sm hidden-xs">
+  <?php echo $indexBannerPlay; ?>
+</div>
 <!-- 固定最大宽度 -->
 <div class="container-fluid bodyMain">
   <div class="flexsidediv"></div>
@@ -54,19 +59,21 @@
   <div id="gugumain">
     <!-- 商城品牌 -->
     <div class="include-indexBrandFloor container-fluid">
-      <?php echo $indexBrandFloor; ?>
+      <?php echo $indexBannerIndex; ?>
     </div>
     <!-- 商城活动 -->
     <!-- <div class="include-indexActivity container-fluid">
     </div> -->
     <!-- 谷谷互动 -->
     <div class="include-interactiveFloor container-fluid">
+      <?php echo $indexInteractive; ?>
     </div>
   </div>
   <div class="flexsidediv"></div>
   <!-- 底部 -->
   <div class="container-fluid indexBottom ">
     <div class="include-indexBottom container-fluid">
+      <?php echo $commonBottom; ?>
     </div>
   </div>
 </div>

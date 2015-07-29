@@ -27,7 +27,15 @@ class ControllerCommonHome extends Controller {
 //		$data['footer'] = $this->load->controller('common/footer');
 //		$data['header'] = $this->load->controller('common/header');
 
-        $data['indexBrandFloor'] = $this->load->controller('index/indexBrandFloor');
+
+        $data['commonSubMenu'] = $this->load->controller('common/subMenu');
+        $data['commonTopNavigator'] = $this->load->controller('common/topNavigator');
+        $data['commonTopMenu'] = $this->load->controller('common/topMenu');
+        $data['commonBottom'] = $this->load->controller('common/bottom');
+
+        $data['indexBannerPlay'] = $this->load->controller('index/bannerPlay');
+        $data['indexBannerIndex'] = $this->load->controller('index/bannerIndex');
+        $data['indexInteractive'] = $this->load->controller('index/interactive');
 
         $this->response->setOutput($this->load->view('common/home.tpl', $data));
 	}
