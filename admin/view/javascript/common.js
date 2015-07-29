@@ -22,6 +22,28 @@ function getURLVar(key) {
 	}
 }
 
+(function($) {
+    $.fn.imgShow = function(){
+        var img = $(this);
+        if(img.attr("origin-src") == ''){
+            return;
+        }else{
+            var src = img.attr("origin-src");
+        }
+        img.mouseenter(function(){
+            var temp = document.createElement("div");
+            temp.id = "temp_img_div";
+            temp.style.cssText = "position:fixed; border:1px solid #f60; top:5px; right:5px;";
+            temp.innerHTML = '<img src="'+ src +'"/>';
+            document.body.appendChild(temp);
+        }).mouseleave(function(){
+            if($("#temp_img_div").length>0){
+                $("#temp_img_div").remove();
+            }
+        });
+    }
+})(window.jQuery);
+
 $(document).ready(function() {
 	//Form Submit for IE Browser
 	$('button[type=\'submit\']').on('click', function() {
@@ -126,7 +148,10 @@ $(document).ready(function() {
 			}
 		});	
 	});
-	
+
+    $('img[origin-src]').each(function(){
+        $(this).imgShow();
+    });
 	// Image Manager
 	$(document).delegate('a[data-toggle=\'image\']', 'click', function(e) {
 		e.preventDefault();
