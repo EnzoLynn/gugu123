@@ -7,6 +7,7 @@ compiler.jar
 /framework/bootstrap.min.js
 /framework/handlebars-v2.0.0.js
 /framework/jquery-1.11.3.min.js
+/js/seaConfig.js
 /grunt/*
 /seamodules/*
 /less/*
