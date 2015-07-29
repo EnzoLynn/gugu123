@@ -54,7 +54,7 @@
   <div id="gugumain">
     <!-- 商城品牌 -->
     <div class="include-indexBrandFloor container-fluid">
-
+      <?php echo $indexBrandFloor; ?>
     </div>
     <!-- 商城活动 -->
     <!-- <div class="include-indexActivity container-fluid">
