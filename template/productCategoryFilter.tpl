@@ -1,12 +1,12 @@
-<div class="row filtertitle">
-    电吉他 商品筛选 共389个商品
-</div>
 <div class="row filterStrDiv hidden">
     <div class="text-right col-md-10">
         已选条件:
     </div>
-    <div class="filterStr col-md-110">
+    <div class="filterStr col-md-100">
         <!-- <input type="button" name="" value="xxx"> -->
+    </div>
+    <div class="clearFilter col-md-10">
+        <input class="btn btn-default clearfilterbtn" type="button" name="" value="全部撤销">
     </div>
 </div>
 <div class="filterdiv">
@@ -36,12 +36,12 @@
             <a class="hidden col-md-24" href="javascript:void(0);" data-val="chuangjia" title="">创佳(CANCA)</a>
         </div>
         <div class="filterside col-md-10">
-            <input class="morebtn" type="button" name="" value="更多">
-            <input class="mulselbtn" type="button" name="" value="多选">
+            <input class="morebtn btn btn-default" type="button" name="" value="更多">
+            <input class="mulselbtn btn btn-default" type="button" name="" value="多选">
         </div>
         <div class="filterMulGroup floatcenter">
-            <input class="mulselEnsure" type="button" name="" value="确定">
-            <input class="mulselCancel" type="button" name="" value="取消">
+            <input class="mulselEnsure btn btn-default" type="button" name="" value="确定">
+            <input class="mulselCancel btn btn-default" type="button" name="" value="取消">
         </div>
     </div>
     <!-- 筛选Item price-->
@@ -50,11 +50,11 @@
         <div class="filterval col-md-100">
             <a class="col-md-24" href="javascript:void(0);" data-val="0-1499" title="">0-1499</a>
             <a class="col-md-24" href="javascript:void(0);" data-val="1500-2999" title="">1500-2999</a>
-            <div class="col-md-48">
-                <input class="price-star" type="text" value="">
-                <span>-</span>
-                <input class="price-end" type="text" value="">
-                <input class="price-ensure" type="button" value="确定">
+            <div class="col-md-48 form-inline">
+                <input class="price-star form-control" type="text" value="">
+                <label>-</label>
+                <input class="price-end form-control" type="text" value="">
+                <input class="price-ensure btn btn-default" type="button" value="确定">
             </div>
         </div>
         <div class="filterside col-md-10">
@@ -68,11 +68,11 @@
             <a class="col-md-24" href="javascript:void(0);" data-val="58" title="">58-60英寸</a>
         </div>
         <div class="filterside col-md-10">
-            <input class="mulselbtn" type="button" name="" value="多选">
+            <input class="mulselbtn btn btn-default" type="button" name="" value="多选">
         </div>
         <div class="filterMulGroup floatcenter">
-            <input class="mulselEnsure" type="button" name="" value="确定">
-            <input class="mulselCancel" type="button" name="" value="取消">
+            <input class="mulselEnsure btn btn-default" type="button" name="" value="确定">
+            <input class="mulselCancel btn btn-default" type="button" name="" value="取消">
         </div>
     </div>
     <!-- 筛选Item 重量 hidden-->
@@ -83,11 +83,11 @@
             <a class="col-md-24" href="javascript:void(0);" data-val="500" title="">500</a>
         </div>
         <div class="filterside col-md-10">
-            <input class="mulselbtn" type="button" name="" value="多选">
+            <input class="mulselbtn btn btn-default" type="button" name="" value="多选">
         </div>
         <div class="filterMulGroup floatcenter">
-            <input class="mulselEnsure" type="button" name="" value="确定">
-            <input class="mulselCancel" type="button" name="" value="取消">
+            <input class="mulselEnsure btn btn-default" type="button" name="" value="确定">
+            <input class="mulselCancel btn btn-default" type="button" name="" value="取消">
         </div>
     </div>
     <!-- 筛选Item 重量 hidden-->
@@ -98,26 +98,16 @@
             <a class="col-md-24" href="javascript:void(0);" data-val="b" title="">B</a>
         </div>
         <div class="filterside col-md-10">
-            <input class="mulselbtn" type="button" name="" value="多选">
+            <input class="mulselbtn btn btn-default" type="button" name="" value="多选">
         </div>
         <div class="filterMulGroup floatcenter">
-            <input class="mulselEnsure" type="button" name="" value="确定">
-            <input class="mulselCancel" type="button" name="" value="取消">
+            <input class="mulselEnsure btn btn-default" type="button" name="" value="确定">
+            <input class="mulselCancel btn btn-default" type="button" name="" value="取消">
         </div>
     </div>
     <!-- 更多选项 -->
     <div class="filtermore floatcenter">
-        <input class="moreitem" type="button" name="" value="更多选项">
-        <input class="lessitem hidden" type="button" name="" value="收起">
-    </div>
-</div>
-<div id="categorylistfloor">
-    <div class="mypagecontroller">
-        <a id='firstBtn' class="firstBtn" style="cursor: default; color: gray;" href="javascript:void(0)">首页</a>
-        <a id='preBtn' class="preBtn" style="cursor: default; color: gray;" href="javascript:void(0)">上一页</a>
-        <label id='pageText'></label>
-        <a id='nextBtn' class="nextBtn" style="cursor: default; color: gray;" href="javascript:void(0)">下一页</a>
-        <a id='lastBtn' class="lastBtn" style="cursor: default; color: gray;" href="javascript:void(0)">尾页</a>
-        <label id='msgText'></label>
+        <input class="moreitem btn btn-default" type="button" name="" value="更多选项">
+        <input class="lessitem hidden btn btn-default" type="button" name="" value="收起">
     </div>
 </div>

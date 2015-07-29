@@ -21,7 +21,7 @@
         <div class="menuHeader">
             <div class="navbar-header">
                 <button type="button" class="catergroybtn navbar-toggle collapsed
-                 visible-sm-block visible-xs-block" style="border:solid 1px #ccc" >
+                 visible-sm-block visible-xs-block" style="border:solid 1px #ccc">
                     <span class="sr-only">分类导航栏</span>
                     <span style="background-color: #888888;" class="icon-bar"></span>
                     <span style="background-color: #888888;" class="icon-bar"></span>
@@ -30,9 +30,8 @@
             </div>
         </div>
         <div>
-
             <a class="logimg" href="javascript:void(0);"><img src="picBase/log.png" alt="" height="100px" /></a>
-            <ul class="logmenu  hidden-sm hidden-xs">                
+            <ul class="logmenu  hidden-sm hidden-xs">
                 <li style="min-width: 30px;"><a href="javascript:void(0);" tab="#tab1">吉他</a></li>
                 <li style="min-width: 30px;"><a href="javascript:void(0);" tab="#tab2">贝司</a></li>
                 <li style="min-width: 30px;"><a href="javascript:void(0);" tab="#tab3">鼓</a></li>
@@ -56,5 +55,5 @@
                 </li>
             </ul>
         </div>
-    </div> 
+    </div>
 </div>
