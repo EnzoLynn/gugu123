@@ -39,7 +39,7 @@
                 <li style="min-width: 50px;"><a href="javascript:void(0);" tab="#tab5">效果器</a></li>
                 <li class="hidden-sm hidden-md"><a href="javascript:void(0);" tab="#tab6">通用配件</a></li>
                 <li class="hidden-sm hidden-md"><a href="javascript:void(0);" tab="#tab7">改装配件</a></li>
-                <li class="cartGroup" style="min-width:198px;border-bottom: none !important;cursor: auto;">
+                <li class="cartGroup">
                     <div class="left" style="margin-top:-5px;">
                         <input class="serInput" style="height:28px;" type="text" name="serInput" placeholder="Marshall暑期特惠" value="">
                     </div>
