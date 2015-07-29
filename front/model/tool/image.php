@@ -45,4 +45,16 @@ class ModelToolImage extends Model {
 			return $this->config->get('config_url') . 'image/' . $new_image;
 		}
 	}
+
+    //返回原图
+    public function url($filename) {
+        if (!is_file(DIR_IMAGE . $filename)) {
+            return '/image/no_image.png';
+        }
+        if ($this->request->server['HTTPS']) {
+            return HTTPS_CATALOG . 'image/' . $filename;
+        } else {
+            return HTTP_CATALOG . 'image/' . $filename;
+        }
+    }
 }

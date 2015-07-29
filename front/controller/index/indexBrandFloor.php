@@ -20,9 +20,13 @@ class ControllerIndexIndexBrandFloor extends Controller {
 //        $data['header'] = $this->load->controller('common/header');
 
         $this->load->model('design/banner');
+        $this->load->model('tool/image');
 
         $banner_images = $this->model_design_banner->getBanner(9);
-        $data['banner_images'] = $banner_images;
+
+        foreach ($banner_images as $banner_image) {
+            $data['banner_images'][] = $this->model_tool_image->url($banner_image['image']);
+        }
 
         return $this->load->view('index/indexBrandFloor.tpl', $data);
     }
