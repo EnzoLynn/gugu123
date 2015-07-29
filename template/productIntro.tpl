@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-lg-120">
+        <label style="float:left;">ddddd</label>
         <ul id="headNav" class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#introduction" aria-controls="introduction" role="tab" data-toggle="tab">商品介绍</a></li>
             <li role="presentation"><a href="#specifParam" aria-controls="specifParam" role="tab" data-toggle="tab">规格参数</a></li>
