@@ -24,5 +24,6 @@ config.php
 /system/logs/*.*
 /image/cache/*.*
 /image/catalog/*.*
+/image/catalog/*/*
 /zzz
 /data/*
