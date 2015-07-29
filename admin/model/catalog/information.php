@@ -97,20 +97,20 @@ class ModelCatalogInformation extends Model {
 			$sql = "SELECT * FROM " . DB_PREFIX . "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE id.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 
 			$sort_data = array(
-				'id.title',
-				'i.sort_order'
+				'i.sort_order',
+                'id.title'
 			);
 
 			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 				$sql .= " ORDER BY " . $data['sort'];
 			} else {
-				$sql .= " ORDER BY id.title";
+				$sql .= " ORDER BY i.sort_order";
 			}
 
-			if (isset($data['order']) && ($data['order'] == 'DESC')) {
-				$sql .= " DESC";
-			} else {
+			if (isset($data['order']) && ($data['order'] == 'ASC')) {
 				$sql .= " ASC";
+			} else {
+				$sql .= " DESC";
 			}
 
 			if (isset($data['start']) || isset($data['limit'])) {
@@ -132,7 +132,7 @@ class ModelCatalogInformation extends Model {
 			$information_data = $this->cache->get('information.' . (int)$this->config->get('config_language_id'));
 
 			if (!$information_data) {
-				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE id.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY id.title");
+				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE id.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY i.sort_order");
 
 				$information_data = $query->rows;
 

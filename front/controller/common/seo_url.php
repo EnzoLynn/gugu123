@@ -8,8 +8,6 @@ class ControllerCommonSeoUrl extends Controller {
 		}
 
         $url_current = $this->request->server['PHP_SELF'] . isset($this->request->server['QUERY_STRING'])? $this->request->server['QUERY_STRING']:'';
-//_route_=_p49.html&a=1
-//echo $url_current;
 
         if (isset($this->request->get['_route_'])) {
             $url_current = substr($url_current, strpos($url_current, '=') + 1);
