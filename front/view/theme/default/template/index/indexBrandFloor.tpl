@@ -11,64 +11,64 @@
   <div class="row">
     <div class="col-md-72 col-sm-72">
       <a href="#" class="thum">
-        <img class="img-responsive" lazy_src="<?php echo $banner_images[0]['image']; ?>" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[0]['origin_image']; ?>" alt="">
       </a>
       <a href="#" class="thum ">
-        <img class="img-responsive" lazy_src="<?php echo $banner_images[1]['image']; ?>" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[1]['origin_image']; ?>" alt="">
       </a>
     </div>
     <div class="col-md-48 col-sm-48">
       <a href="#" class="thum">
-        <img class="img-responsive" lazy_src="picBase/pic/takamine.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[2]['origin_image']; ?>" alt="">
       </a>
       <a href="#" class="thum notop">
-        <img class="img-responsive" lazy_src="picBase/pic/vicfirth.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[3]['origin_image']; ?>" alt="">
       </a>
     </div>
   </div>
   <div class="row">
     <div class="col-md-48 col-sm-48 thum">
       <a href="#">
-        <img class="img-responsive" lazy_src="picBase/pic/duende.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[4]['origin_image']; ?>" alt="">
       </a>
     </div>
     <div class="col-md-72 col-sm-72 thum">
       <a href="#" class="thum">
-        <img class="img-responsive" lazy_src="picBase/pic/natal.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[5]['origin_image']; ?>" alt="">
       </a>
     </div>
   </div>
   <div class="row">
     <div class="col-md-120 col-sm-120">
       <a href="#" class="thum">
-        <img class="img-responsive" lazy_src="picBase/pic/esp.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[6]['origin_image']; ?>" alt="">
       </a>
     </div>
   </div>
   <div class="row">
     <div class="col-md-48 col-sm-48">
       <a href="#" class="thum">
-        <img class="img-responsive" lazy_src="picBase/pic/deanmarkley.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[7]['origin_image']; ?>" alt="">
       </a>
       <a href="#" class="thum notop">
-        <img class="img-responsive" lazy_src="picBase/pic/monstercable.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[8]['origin_image']; ?>" alt="">
       </a>
     </div>
     <div class="col-md-72 col-sm-72">
       <a href="#" class="thum">
-        <img class="img-responsive" lazy_src="picBase/pic/dunlop.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[9]['origin_image']; ?>" alt="">
       </a>
     </div>
   </div>
   <div class="row">
     <div class="col-md-48 col-sm-48">
       <a href="#" class="thum">
-        <img class="img-responsive" lazy_src="picBase/pic/mxr.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[10]['origin_image']; ?>" alt="">
       </a>
     </div>
     <div class="col-md-72 col-sm-72">
       <a href="#" class="thum">
-        <img class="img-responsive" lazy_src="picBase/pic/eden.jpg" alt="">
+        <img class="img-responsive" lazy_src="<?php echo $banner_images[11]['origin_image']; ?>" alt="">
       </a>
     </div>
   </div>

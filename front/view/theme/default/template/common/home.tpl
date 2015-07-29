@@ -7,7 +7,7 @@
   <script type="text/javascript" src="/framework/sea.js"></script>
   <script type="text/javascript" src="/framework/seajs-text.js"></script>
   <script type="text/javascript" src="/framework/seajs-css.js"></script>
-  <script type="text/javascript" src="js/seaConfig.js"></script>
+  <script type="text/javascript" src="/js/seaConfig.js"></script>
   <script type="text/javascript">
     seajs.use("modules/main-index");
   </script>

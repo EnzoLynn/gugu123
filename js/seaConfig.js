@@ -14,5 +14,5 @@ seajs.config({
     ],
     charset: 'utf-8'
 });
-var global={};global.debug = false;
+var global={};global.debug = true;
 global.smPx = 992;

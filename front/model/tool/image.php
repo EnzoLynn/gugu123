@@ -52,9 +52,9 @@ class ModelToolImage extends Model {
             return '/image/no_image.png';
         }
         if ($this->request->server['HTTPS']) {
-            return HTTPS_CATALOG . 'image/' . $filename;
+            return HTTPS_SERVER . 'image/' . $filename;
         } else {
-            return HTTP_CATALOG . 'image/' . $filename;
+            return HTTP_SERVER . 'image/' . $filename;
         }
     }
 }
