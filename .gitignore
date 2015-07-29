@@ -22,7 +22,7 @@ config.php
 /.idea/*
 /system/cache
 /system/logs
-/image/cache
-/image/catalog
+/image/cache/
+/image/catalog/
 /zzz
 /data/*
