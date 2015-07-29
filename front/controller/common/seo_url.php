@@ -8,8 +8,6 @@ class ControllerCommonSeoUrl extends Controller {
 		}
 
         $url_current = $this->request->server['PHP_SELF'] . isset($this->request->server['QUERY_STRING'])? $this->request->server['QUERY_STRING']:'';
-//_route_=_p49.html&a=1
-//echo $url_current;
 
         if (isset($this->request->get['_route_'])) {
             $url_current = substr($url_current, strpos($url_current, '=') + 1);
@@ -97,7 +95,9 @@ class ControllerCommonSeoUrl extends Controller {
 
 		foreach ($data as $key => $value) {
 			if (isset($data['route'])) {
-				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+                if ($data['route'] == 'common/home') {
+                    $url .= '/';
+                } else if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
 
                     if ($data['route'] == 'product/product' && $key == 'product_id') {
                         $this->load->model('catalog/product');

@@ -22,6 +22,28 @@ function getURLVar(key) {
 	}
 }
 
+(function($) {
+    $.fn.imgShow = function(){
+        var img = $(this);
+        if(img.attr("origin-src") == ''){
+            return;
+        }else{
+            var src = img.attr("origin-src");
+        }
+        img.mouseenter(function(){
+            var temp = document.createElement("div");
+            temp.id = "temp_img_div";
+            temp.style.cssText = "position:fixed; border:1px solid #f60; top:5px; right:5px;";
+            temp.innerHTML = '<img src="'+ src +'"/>';
+            document.body.appendChild(temp);
+        }).mouseleave(function(){
+            if($("#temp_img_div").length>0){
+                $("#temp_img_div").remove();
+            }
+        });
+    }
+})(window.jQuery);
+
 $(document).ready(function() {
 	//Form Submit for IE Browser
 	$('button[type=\'submit\']').on('click', function() {
@@ -126,7 +148,10 @@ $(document).ready(function() {
 			}
 		});	
 	});
-	
+
+    $('img[origin-src]').each(function(){
+        $(this).imgShow();
+    });
 	// Image Manager
 	$(document).delegate('a[data-toggle=\'image\']', 'click', function(e) {
 		e.preventDefault();
@@ -136,7 +161,7 @@ $(document).ready(function() {
 		});
 					
 		var element = this;
-		
+
 		$(element).popover({
 			html: true,
 			placement: 'right',
@@ -148,11 +173,17 @@ $(document).ready(function() {
 		
 		$(element).popover('show');
 
+        if($(element).attr("directory") == '') {
+            var ajax_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
+        }else{
+            var ajax_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&directory=' + $(element).attr("directory") + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
+        }
+
 		$('#button-image').on('click', function() {
 			$('#modal-image').remove();
-		
+
 			$.ajax({
-				url: 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id'),
+				url: ajax_url,
 				dataType: 'html',
 				beforeSend: function() {
 					$('#button-image i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');

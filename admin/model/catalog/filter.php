@@ -205,6 +205,22 @@ WHERE fgd.language_id = '1' AND fgd.`name` LIKE '%" . $this->db->escape($data['f
         return $query->rows;
     }
 
+    public function getFiltersByGroupID($filter_group_id) {
+        $filter_data = array();
+
+        $filter_query = $this->db->query("SELECT fd.* FROM " . DB_PREFIX . "filter f LEFT JOIN " . DB_PREFIX . "filter_description fd ON (f.filter_id = fd.filter_id) WHERE fd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND f.filter_group_id = '" . (int)$filter_group_id . "' ORDER BY f.sort_order");
+
+        foreach ($filter_query->rows as $filter) {
+
+            $filter_data[] = array(
+                'filter_id'          => $filter['filter_id'],
+                'filter_description' => $filter['name']
+            );
+        }
+
+        return $filter_data;
+    }
+
 	public function getFilterDescriptions($filter_group_id) {
 		$filter_data = array();
 
@@ -234,4 +250,28 @@ WHERE fgd.language_id = '1' AND fgd.`name` LIKE '%" . $this->db->escape($data['f
 
 		return $query->row['total'];
 	}
+    /**
+     * 根据过滤组的排序规则，进行过滤项排序
+     * @author 周辉
+     * @date 20150723
+     * @access public
+     * @param mixed $data 过滤项ID数组
+     * @return array 排序后的过滤项ID数组
+     */
+    public function sortOrderFilterIds($filter_ids) {
+        $this->db_ci->distinct();
+        $this->db_ci->select('f.filter_id');
+        $this->db_ci->from('product_filter gf');
+        $this->db_ci->join('filter f', 'gf.filter_id = f.filter_id');
+        $this->db_ci->join('filter_group fg', 'f.filter_group_id = fg.filter_group_id');
+        $this->db_ci->where_in('f.filter_id', $filter_ids);
+        //$this->db_ci->where('gf.product_id=52');
+        $this->db_ci->order_by('fg.sort_order');
+
+        $query = $this->db_ci->get();
+
+        $temp = array();
+        $temp = $query->fetch_column();
+        return $temp;
+    }
 }

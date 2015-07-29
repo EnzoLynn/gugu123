@@ -52,21 +52,21 @@ class ControllerInformationSitemap extends Controller {
 				foreach ($categories_3 as $category_3) {
 					$level_3_data[] = array(
 						'name' => $category_3['name'],
-						'href' => $this->url->link('product/category', 'path=' . $category_1['category_id'] . '_' . $category_2['category_id'] . '_' . $category_3['category_id'])
+						'href' => $this->url->link('product/category', 'category_id=' . $category_3['category_id'])
 					);
 				}
 
 				$level_2_data[] = array(
 					'name'     => $category_2['name'],
 					'children' => $level_3_data,
-					'href'     => $this->url->link('product/category', 'path=' . $category_1['category_id'] . '_' . $category_2['category_id'])
+					'href'     => $this->url->link('product/category', 'category_id=' . $category_2['category_id'])
 				);
 			}
 
 			$data['categories'][] = array(
 				'name'     => $category_1['name'],
 				'children' => $level_2_data,
-				'href'     => $this->url->link('product/category', 'path=' . $category_1['category_id'])
+				'href'     => $this->url->link('product/category', 'category_id=' . $category_1['category_id'])
 			);
 		}
 

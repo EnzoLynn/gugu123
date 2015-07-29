@@ -43,7 +43,7 @@ class ModelToolImage extends Model {
     //返回原图
     public function url($filename) {
         if (!is_file(DIR_IMAGE . $filename)) {
-            return;
+            return '/image/no_image.png';
         }
         if ($this->request->server['HTTPS']) {
             return HTTPS_CATALOG . 'image/' . $filename;

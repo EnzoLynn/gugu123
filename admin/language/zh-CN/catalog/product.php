@@ -16,7 +16,7 @@ $_['text_option_value']      = '选项值';
 $_['text_percent']           = '百分比';
 $_['text_amount']            = '固定值';
 
-$_['text_confirm_customize'] = '重建属性会清除原有的属性信息，确定吗？';
+$_['text_confirm_change_type'] = '重新选择商品类型会清除原有的属性信息，确定吗？';
 
 // Column
 $_['column_id']              = '商品编号';
@@ -51,6 +51,8 @@ $_['entry_quantity']         = '数量';
 $_['entry_minimum']          = '最小购买数量';
 $_['entry_stock_status']     = '缺货时状态';
 $_['entry_price']            = '价格';
+$_['entry_price']            = '价格';
+$_['entry_category_id']     = '分类';
 $_['entry_tax_class']        = '税率';
 $_['entry_points']           = 'Points';
 $_['entry_option_points']    = 'Points';
@@ -85,7 +87,7 @@ $_['entry_reward']           = '奖励积分';
 $_['entry_layout']           = '布局覆盖';
 $_['entry_recurring']        = '分期付款';
 
-$_['entry_customize_attribute']  = '选择自定义属性组';
+$_['entry_product_type']  = '选择商品类型';
 
 // Help
 $_['help_keyword']           = '网址中显示的关键词：只能用英文字母和数字，不要用空格，使用-链接关键字。';

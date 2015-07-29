@@ -238,6 +238,18 @@ class ControllerCatalogProduct extends Controller {
 			$filter_model = null;
 		}
 
+        $this->load->model('catalog/category');
+        if (isset($this->request->get['filter_category_id'])) {
+            $filter_category_id = $this->request->get['filter_category_id'];
+
+            $category = $this->model_catalog_category->getCategory($this->request->get['filter_category_id']);
+
+            $filter_category = $category['name'];
+        } else {
+            $filter_category_id = null;
+            $filter_category = null;
+        }
+
 		if (isset($this->request->get['filter_price'])) {
 			$filter_price = $this->request->get['filter_price'];
 		} else {
@@ -286,6 +298,10 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_model=' . urlencode(html_entity_decode($this->request->get['filter_model'], ENT_QUOTES, 'UTF-8'));
 		}
 
+        if (isset($this->request->get['filter_category_id'])) {
+            $url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
+        }
+
 		if (isset($this->request->get['filter_price'])) {
 			$url .= '&filter_price=' . $this->request->get['filter_price'];
 		}
@@ -331,6 +347,7 @@ class ControllerCatalogProduct extends Controller {
 		$filter_data = array(
 			'filter_name'	  => $filter_name,
 			'filter_model'	  => $filter_model,
+            'filter_category_id'=> $filter_category_id,
 			'filter_price'	  => $filter_price,
 			'filter_quantity' => $filter_quantity,
 			'filter_status'   => $filter_status,
@@ -383,6 +400,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['text_list'] = $this->language->get('text_list');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
+        $data['text_none'] = $this->language->get('text_none');
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
 
@@ -397,6 +415,7 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_model'] = $this->language->get('entry_model');
+        $data['entry_category_id'] = $this->language->get('entry_category_id');
 		$data['entry_price'] = $this->language->get('entry_price');
 		$data['entry_quantity'] = $this->language->get('entry_quantity');
 		$data['entry_status'] = $this->language->get('entry_status');
@@ -439,6 +458,10 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_model=' . urlencode(html_entity_decode($this->request->get['filter_model'], ENT_QUOTES, 'UTF-8'));
 		}
 
+        if (isset($this->request->get['filter_category_id'])) {
+            $url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
+        }
+
 		if (isset($this->request->get['filter_price'])) {
 			$url .= '&filter_price=' . $this->request->get['filter_price'];
 		}
@@ -479,6 +502,10 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_model=' . urlencode(html_entity_decode($this->request->get['filter_model'], ENT_QUOTES, 'UTF-8'));
 		}
 
+        if (isset($this->request->get['filter_category_id'])) {
+            $url .= '&filter_category_id=' . $this->request->get['filter_category_id'];
+        }
+
 		if (isset($this->request->get['filter_price'])) {
 			$url .= '&filter_price=' . $this->request->get['filter_price'];
 		}
@@ -511,6 +538,8 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['filter_name'] = $filter_name;
 		$data['filter_model'] = $filter_model;
+        $data['filter_category_id'] = $filter_category_id;
+        $data['filter_category'] = $filter_category;
 		$data['filter_price'] = $filter_price;
 		$data['filter_quantity'] = $filter_quantity;
 		$data['filter_status'] = $filter_status;
@@ -542,7 +571,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['text_select'] = $this->language->get('text_select');
 		$data['text_percent'] = $this->language->get('text_percent');
 		$data['text_amount'] = $this->language->get('text_amount');
-        $data['text_confirm_customize'] = $this->language->get('text_confirm_customize');
+        $data['text_confirm_change_type'] = $this->language->get('text_confirm_change_type');
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_description'] = $this->language->get('entry_description');
@@ -598,7 +627,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_reward'] = $this->language->get('entry_reward');
 		$data['entry_layout'] = $this->language->get('entry_layout');
 		$data['entry_recurring'] = $this->language->get('entry_recurring');
-        $data['entry_customize_attribute'] = $this->language->get('entry_customize_attribute');
+        $data['entry_product_type'] = $this->language->get('entry_product_type');
 
 		$data['help_keyword'] = $this->language->get('help_keyword');
 		$data['help_sku'] = $this->language->get('help_sku');
@@ -1081,28 +1110,28 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		// Filters
-		$this->load->model('catalog/filter');
-
-		if (isset($this->request->post['product_filter'])) {
-			$filters = $this->request->post['product_filter'];
-		} elseif (isset($this->request->get['product_id'])) {
-			$filters = $this->model_catalog_product->getProductFilters($this->request->get['product_id']);
-		} else {
-			$filters = array();
-		}
-
-		$data['product_filters'] = array();
-
-		foreach ($filters as $filter_id) {
-			$filter_info = $this->model_catalog_filter->getFilter($filter_id);
-
-			if ($filter_info) {
-				$data['product_filters'][] = array(
-					'filter_id' => $filter_info['filter_id'],
-					'name'      => $filter_info['group'] . ' &gt; ' . $filter_info['name']
-				);
-			}
-		}
+//		$this->load->model('catalog/filter');
+//
+//		if (isset($this->request->post['product_filter'])) {
+//			$filters = $this->request->post['product_filter'];
+//		} elseif (isset($this->request->get['product_id'])) {
+//			$filters = $this->model_catalog_product->getProductFilters($this->request->get['product_id']);
+//		} else {
+//			$filters = array();
+//		}
+//
+//		$data['product_filters'] = array();
+//
+//		foreach ($filters as $filter_id) {
+//			$filter_info = $this->model_catalog_filter->getFilter($filter_id);
+//
+//			if ($filter_info) {
+//				$data['product_filters'][] = array(
+//					'filter_id' => $filter_info['filter_id'],
+//					'name'      => $filter_info['group'] . ' &gt; ' . $filter_info['name']
+//				);
+//			}
+//		}
 
 		// Attributes
 		$this->load->model('catalog/attribute');
@@ -1117,15 +1146,46 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['product_attributes'] = $product_attributes;
 
-        // 自定义属性组
-        $this->load->model('catalog/attribute_group_customize');
+        // Filters(New)
+        $this->load->model('catalog/filter');
 
-        $data['attribute_group_customizes'] = array();
-        $results = $this->model_catalog_attribute_group_customize->getAttributeGroupsCustomizes();
+        if (isset($this->request->post['product_filter'])) {
+            $filters = $this->request->post['product_filter'];
+        } elseif (isset($this->request->get['product_id'])) {
+            $filters = $this->model_catalog_product->getProductFilters($this->request->get['product_id']);
+        } else {
+            $filters = array();
+        }
+
+        $data['product_filters'] = array();
+        //排序
+        $filters = $this->model_catalog_filter->sortOrderFilterIds($filters);
+
+        foreach ($filters as $filter_id) {
+            $filter_info = $this->model_catalog_filter->getFilter($filter_id);
+
+            if ($filter_info) {
+
+                $filters = $this->model_catalog_filter->getFiltersByGroupID($filter_info['filter_group_id']);
+
+                $data['product_filters'][] = array(
+                    'filter_id' => $filter_info['filter_id'],
+                    'group_name'=> $filter_info['group'],
+                    'filters'      => $filters
+                );
+            }
+        }
+
+
+        // 自定义商品类型
+        $this->load->model('catalog/product_type');
+
+        $data['product_types'] = array();
+        $results = $this->model_catalog_product_type->getProductTypes();
         foreach ($results as $result) {
-            $data['attribute_group_customizes'][] = array(
-                'customize_id'  => $result['customize_id'],
-                'customize_name'=> $result['customize_name']
+            $data['product_types'][] = array(
+                'type_id'  => $result['type_id'],
+                'type_name'=> $result['type_name']
             );
         }
 

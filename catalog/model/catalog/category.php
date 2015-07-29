@@ -66,4 +66,51 @@ class ModelCatalogCategory extends Model {
 
 		return $query->row['total'];
 	}
+
+    /**
+     * 通过种类ID得到包含自身和所有上级类数组（只有ID）
+     * @author 周辉
+     * @access public
+     * @param int $category_id
+     * @return array 分类ID的数组
+     */
+    function getPrefixCategoriesID($category_id) {
+        $arr_temp[] = $category_id;
+        $query = $this->db->query("select parent_id from " . DB_PREFIX . "category where category_id = $category_id");
+        $parent_id = $query->row['parent_id'];
+        $i = 0;
+        while($parent_id > 0) {
+            $arr_temp[] = $parent_id;
+            $category_id = $parent_id;
+            $query = $this->db->query("select parent_id from " . DB_PREFIX . "category where category_id = $category_id");
+            $parent_id = $query->row['parent_id'];
+
+            if($i>5) {
+                unset($arr_temp);
+                echo 'categories init error';
+                break;
+            }
+            $i++;
+        }
+        return $arr_temp;
+    }
+
+    /**
+     * 通过种类ID得到包含自身和所有上级类数组（包含ID和Name）
+     * @author 周辉
+     * @access public
+     * @param minxed $category_ids
+     * @return array 分类信息的数组
+     */
+    function getPrefixCategoriesName($category_ids) {//, $language_id = 1
+        if(count($category_ids) == 0) {
+            return false;
+        }
+
+        $sql_category_ids = implode(',', $category_ids);
+
+        $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd ON (c.category_id = cd.category_id) LEFT JOIN " . DB_PREFIX . "category_to_store c2s ON (c.category_id = c2s.category_id) WHERE c.category_id IN (" . $sql_category_ids . ") AND cd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND c2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND c.status = '1' ORDER BY field(c.category_id, " . $sql_category_ids . ")");
+
+        return $query->rows;
+    }
 }

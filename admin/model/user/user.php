@@ -1,7 +1,6 @@
 <?php
 class ModelUserUser extends Model {
 	public function addUser($data) {
-		//$this->db->query("INSERT INTO `" . DB_PREFIX . "user` SET username = '" . $this->db->escape($data['username']) . "', user_group_id = '" . (int)$data['user_group_id'] . "', salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', fullname = '" . $this->db->escape($data['fullname']) . "', email = '" . $this->db->escape($data['email']) . "', image = '" . $this->db->escape($data['image']) . "', status = '" . (int)$data['status'] . "', date_added = NOW()");
         $user = array(
             'username'      => $data['username'],
             'user_group_id'=> (int)$data['user_group_id'],
@@ -15,6 +14,8 @@ class ModelUserUser extends Model {
         );
         $user['password'] = user_password($user);
         $this->db_ci->insert('user', $user);
+
+        return $this->db_ci->insert_id();
     }
 
 	public function editUser($user_id, $data) {

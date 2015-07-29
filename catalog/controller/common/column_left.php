@@ -11,13 +11,21 @@ class ControllerCommonColumnLeft extends Controller {
 
 		$layout_id = 0;
 
-		if ($route == 'product/category' && isset($this->request->get['path'])) {
-			$this->load->model('catalog/category');
-			
-			$path = explode('_', (string)$this->request->get['path']);
+//		if ($route == 'product/category' && isset($this->request->get['path'])) {
+//			$this->load->model('catalog/category');
+//
+//			$path = explode('_', (string)$this->request->get['path']);
+//
+//			$layout_id = $this->model_catalog_category->getCategoryLayoutId(end($path));
+//		}
 
-			$layout_id = $this->model_catalog_category->getCategoryLayoutId(end($path));
-		}
+        if ($route == 'product/category' && isset($this->request->get['category_id'])) {
+            $this->load->model('catalog/category');
+
+            $category_id = (int)$this->request->get['category_id'];
+
+            $layout_id = $this->model_catalog_category->getCategoryLayoutId($category_id);
+        }
 
 		if ($route == 'product/product' && isset($this->request->get['product_id'])) {
 			$this->load->model('catalog/product');
@@ -49,6 +57,7 @@ class ControllerCommonColumnLeft extends Controller {
 			$part = explode('.', $module['code']);
 			
 			if (isset($part[0]) && $this->config->get($part[0] . '_status')) {
+
 				$data['modules'][] = $this->load->controller('module/' . $part[0]);
 			}
 						
@@ -56,6 +65,7 @@ class ControllerCommonColumnLeft extends Controller {
 				$setting_info = $this->model_extension_module->getModule($part[1]);
 				
 				if ($setting_info && $setting_info['status']) {
+
 					$data['modules'][] = $this->load->controller('module/' . $part[0], $setting_info);
 				}
 			}

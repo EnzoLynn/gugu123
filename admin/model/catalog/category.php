@@ -325,5 +325,33 @@ WHERE cf.filter_id = f.filter_id AND cf.category_id = '" . (int)$category_id . "
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category_to_layout WHERE layout_id = '" . (int)$layout_id . "'");
 
 		return $query->row['total'];
-	}	
+	}
+
+    /**
+     * 通过种类ID得到包含自身和所有上级类数组（只有ID）
+     * @author 周辉
+     * @access public
+     * @param int $category_id
+     * @return array 分类ID的数组
+     */
+    function getPrefixCategoriesID($category_id) {
+        $arr_temp[] = $category_id;
+        $query = $this->db->query("select parent_id from " . DB_PREFIX . "category where category_id = $category_id");
+        $parent_id = $query->row['parent_id'];
+        $i = 0;
+        while($parent_id > 0) {
+            $arr_temp[] = $parent_id;
+            $category_id = $parent_id;
+            $query = $this->db->query("select parent_id from " . DB_PREFIX . "category where category_id = $category_id");
+            $parent_id = $query->row['parent_id'];
+
+            if($i > 5) {
+                unset($arr_temp);
+                echo 'categories init error';
+                break;
+            }
+            $i++;
+        }
+        return $arr_temp;
+    }
 }

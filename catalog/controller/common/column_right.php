@@ -11,13 +11,13 @@ class ControllerCommonColumnRight extends Controller {
 
 		$layout_id = 0;
 
-		if ($route == 'product/category' && isset($this->request->get['path'])) {
-			$this->load->model('catalog/category');
-			
-			$path = explode('_', (string)$this->request->get['path']);
+        if ($route == 'product/category' && isset($this->request->get['category_id'])) {
+            $this->load->model('catalog/category');
 
-			$layout_id = $this->model_catalog_category->getCategoryLayoutId(end($path));
-		}
+            $category_id = (int)$this->request->get['category_id'];
+
+            $layout_id = $this->model_catalog_category->getCategoryLayoutId($category_id);
+        }
 
 		if ($route == 'product/product' && isset($this->request->get['product_id'])) {
 			$this->load->model('catalog/product');

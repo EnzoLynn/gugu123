@@ -54,7 +54,7 @@ class ControllerCommonHeader extends Controller {
 		$data['text_category'] = $this->language->get('text_category');
 		$data['text_all'] = $this->language->get('text_all');
 
-		$data['home'] = $this->url->link('common/home');
+        $data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
 		$data['logged'] = $this->customer->isLogged();
 		$data['account'] = $this->url->link('account/account', '', 'SSL');
@@ -107,7 +107,8 @@ class ControllerCommonHeader extends Controller {
 
 					$children_data[] = array(
 						'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-						'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
+						//'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
+                        'href'  => $this->url->link('product/category', 'category_id=' . $child['category_id'])
 					);
 				}
 
@@ -116,7 +117,7 @@ class ControllerCommonHeader extends Controller {
 					'name'     => $category['name'],
 					'children' => $children_data,
 					'column'   => $category['column'] ? $category['column'] : 1,
-					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
+					'href'     => $this->url->link('product/category', 'category_id=' . $category['category_id'])
 				);
 			}
 		}
@@ -130,8 +131,10 @@ class ControllerCommonHeader extends Controller {
 		if (isset($this->request->get['route'])) {
 			if (isset($this->request->get['product_id'])) {
 				$class = '-' . $this->request->get['product_id'];
-			} elseif (isset($this->request->get['path'])) {
-				$class = '-' . $this->request->get['path'];
+//			} elseif (isset($this->request->get['path'])) {
+//				$class = '-' . $this->request->get['path'];
+            } elseif (isset($this->request->get['category_id'])) {
+                $class = '-' . $this->request->get['category_id'];
 			} elseif (isset($this->request->get['manufacturer_id'])) {
 				$class = '-' . $this->request->get['manufacturer_id'];
 			} else {

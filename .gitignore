@@ -16,4 +16,13 @@ compiler.jar
 *.zip
 web.config
 /js/seaConfig.js
+config_db.php
+config.php
+/admin/config.php
+/.idea/*
+/system/cache/
+/system/logs/
+/image/cache/
+/image/catalog/
+/zzz
 /data/*
