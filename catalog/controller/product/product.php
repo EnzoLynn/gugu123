@@ -14,58 +14,62 @@ class ControllerProductProduct extends Controller {
 
 		$this->load->model('catalog/category');
 
-		if (isset($this->request->get['path'])) {
-			$path = '';
 
-			$parts = explode('_', (string)$this->request->get['path']);
 
-			$category_id = (int)array_pop($parts);
 
-			foreach ($parts as $path_id) {
-				if (!$path) {
-					$path = $path_id;
-				} else {
-					$path .= '_' . $path_id;
-				}
 
-				$category_info = $this->model_catalog_category->getCategory($path_id);
-
-				if ($category_info) {
-					$data['breadcrumbs'][] = array(
-						'text' => $category_info['name'],
-						'href' => $this->url->link('product/category', 'path=' . $path)
-					);
-				}
-			}
-
-			// Set the last category breadcrumb
-			$category_info = $this->model_catalog_category->getCategory($category_id);
-
-			if ($category_info) {
-				$url = '';
-
-				if (isset($this->request->get['sort'])) {
-					$url .= '&sort=' . $this->request->get['sort'];
-				}
-
-				if (isset($this->request->get['order'])) {
-					$url .= '&order=' . $this->request->get['order'];
-				}
-
-				if (isset($this->request->get['page'])) {
-					$url .= '&page=' . $this->request->get['page'];
-				}
-
-				if (isset($this->request->get['limit'])) {
-					$url .= '&limit=' . $this->request->get['limit'];
-				}
-
-				$data['breadcrumbs'][] = array(
-					'text' => $category_info['name'],
-					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
-				);
-			}
-		}
+//		if (isset($this->request->get['path'])) {
+//			$path = '';
+//
+//			$parts = explode('_', (string)$this->request->get['path']);
+//
+//			$category_id = (int)array_pop($parts);
+//
+//			foreach ($parts as $path_id) {
+//				if (!$path) {
+//					$path = $path_id;
+//				} else {
+//					$path .= '_' . $path_id;
+//				}
+//
+//				$category_info = $this->model_catalog_category->getCategory($path_id);
+//
+//				if ($category_info) {
+//					$data['breadcrumbs'][] = array(
+//						'text' => $category_info['name'],
+//						'href' => $this->url->link('product/category', 'path=' . $path)
+//					);
+//				}
+//			}
+//
+//			// Set the last category breadcrumb
+//			$category_info = $this->model_catalog_category->getCategory($category_id);
+//
+//			if ($category_info) {
+//				$url = '';
+//
+//				if (isset($this->request->get['sort'])) {
+//					$url .= '&sort=' . $this->request->get['sort'];
+//				}
+//
+//				if (isset($this->request->get['order'])) {
+//					$url .= '&order=' . $this->request->get['order'];
+//				}
+//
+//				if (isset($this->request->get['page'])) {
+//					$url .= '&page=' . $this->request->get['page'];
+//				}
+//
+//				if (isset($this->request->get['limit'])) {
+//					$url .= '&limit=' . $this->request->get['limit'];
+//				}
+//
+//				$data['breadcrumbs'][] = array(
+//					'text' => $category_info['name'],
+//					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
+//				);
+//			}
+//		}
 
 		$this->load->model('catalog/manufacturer');
 
@@ -209,9 +213,25 @@ class ControllerProductProduct extends Controller {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
 
+            //breadcrumbs
+            $category_id = (int)$product_info['master_category_id'];
+
+            $prefix_category_ids = $this->model_catalog_category->getPrefixCategoriesID($category_id);
+
+            $prefix_category_ids = array_reverse($prefix_category_ids);
+
+            $temp_category = $this->model_catalog_category->getPrefixCategoriesName($prefix_category_ids);
+
+            foreach($temp_category as $category_info) {
+                $data['breadcrumbs'][] = array(
+                    'text' => $category_info['name'],
+                    'href' => $this->url->link('product/category', 'category_id=' . $category_info['category_id'] . $url)
+                );
+            }
+
 			$data['breadcrumbs'][] = array(
 				'text' => $product_info['name'],
-				'href' => $this->url->link('product/product', $url . '&product_id=' . $this->request->get['product_id'])
+				'href' => ''
 			);
 
 			$this->document->setTitle($product_info['meta_title']);

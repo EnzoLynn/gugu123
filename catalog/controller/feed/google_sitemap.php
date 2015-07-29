@@ -76,14 +76,10 @@ class ControllerFeedGoogleSitemap extends Controller {
 		$results = $this->model_catalog_category->getCategories($parent_id);
 
 		foreach ($results as $result) {
-			if (!$current_path) {
-				$new_path = $result['category_id'];
-			} else {
-				$new_path = $current_path . '_' . $result['category_id'];
-			}
+            $category_id = $result['category_id'];
 
 			$output .= '<url>';
-			$output .= '<loc>' . $this->url->link('product/category', 'path=' . $new_path) . '</loc>';
+			$output .= '<loc>' . $this->url->link('product/category', 'category_id=' . $category_id) . '</loc>';
 			$output .= '<changefreq>weekly</changefreq>';
 			$output .= '<priority>0.7</priority>';
 			$output .= '</url>';
@@ -92,13 +88,13 @@ class ControllerFeedGoogleSitemap extends Controller {
 
 			foreach ($products as $product) {
 				$output .= '<url>';
-				$output .= '<loc>' . $this->url->link('product/product', 'path=' . $new_path . '&product_id=' . $product['product_id']) . '</loc>';
+				$output .= '<loc>' . $this->url->link('product/product', 'product_id=' . $product['product_id']) . '</loc>';
 				$output .= '<changefreq>weekly</changefreq>';
 				$output .= '<priority>1.0</priority>';
 				$output .= '</url>';
 			}
 
-			$output .= $this->getCategories($result['category_id'], $new_path);
+			$output .= $this->getCategories($result['category_id'], $category_id);
 		}
 
 		return $output;

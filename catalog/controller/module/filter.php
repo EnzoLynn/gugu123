@@ -1,13 +1,17 @@
 <?php
 class ControllerModuleFilter extends Controller {
 	public function index() {
-		if (isset($this->request->get['path'])) {
-			$parts = explode('_', (string)$this->request->get['path']);
-		} else {
-			$parts = array();
-		}
-
-		$category_id = end($parts);
+//		if (isset($this->request->get['path'])) {
+//			$parts = explode('_', (string)$this->request->get['path']);
+//		} else {
+//			$parts = array();
+//		}
+//
+//		$category_id = end($parts);
+        $category_id = 0;
+        if (isset($this->request->get['category_id'])) {
+            $category_id = (int)$this->request->get['category_id'];
+        }
 
 		$this->load->model('catalog/category');
 
@@ -34,7 +38,7 @@ class ControllerModuleFilter extends Controller {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
 
-			$data['action'] = str_replace('&amp;', '&', $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url));
+            $data['action'] = str_replace('&amp;', '&', $this->url->link('product/category', 'category_id=' . $this->request->get['category_id'] . $url));
 
 			if (isset($this->request->get['filter'])) {
 				$data['filter_category'] = explode(',', $this->request->get['filter']);
