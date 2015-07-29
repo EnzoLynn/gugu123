@@ -1,8 +1,10 @@
-<div id="categorylistfloor">
-    <div class="listheader" data-key="sort">
-        <div class="col-md-100">
+<div id="categorylistfloor" data-total="100"  data-page="1">
+    <div class="row listheader" data-key="sort">
+        <div class="col-md-100 listitem">
             <a class="btn btn-default" href="javascript:void(0);" data-val="sort_totalsales_desc" title="">销量</a>
-            <a class="btn btn-default toggle" href="javascript:void(0);" data-val="sort_price_asc" title="">价格</a>
+            <a class="btn btn-default
+
+             toggle" href="javascript:void(0);" data-val="sort_price_asc" title="">价格</a>
             <a class="btn btn-default" href="javascript:void(0);" data-val="sort_comment_desc" title="">评论数</a>
             <a class="btn btn-default" href="javascript:void(0);" data-val="sort_date_desc" title="">上架时间</a>
         </div>
