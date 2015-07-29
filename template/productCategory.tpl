@@ -106,7 +106,7 @@
         </div>
     </div>
     <!-- 更多选项 -->
-    <div class="filtermore floatcenter" hidden-key="height type">
+    <div class="filtermore floatcenter">
         <input class="moreitem" type="button" name="" value="更多选项">
         <input class="lessitem hidden" type="button" name="" value="收起">
     </div>
