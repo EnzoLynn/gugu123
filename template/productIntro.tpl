@@ -1,6 +1,6 @@
 <div class="row productIntroFloor">
     <div class="col-lg-120">
-        <div class="row tab-title" >
+        <div class="row tab-title">
             <div class="objLeft">
                 <img class="productHome" src="../picBase/pics/productHome.png" alt="">
                 <label class="introTitle">DSL5c</label>
@@ -21,7 +21,10 @@
             <!-- 商品介绍 -->
             <div role="tabpanel" class="tab-pane active" id="introduction">
                 <!-- 产品灯箱 大图 -->
-                 <div class="include-productImgList container-fluid"></div>
+                <div class="include-productImgList container-fluid"></div>
+                <!-- 视频 -->
+                <vidio id="vidio1" class="include-vidio container-fluid" lazy_src="http://player.youku.com/player.php/sid/XMTI5MDcyMjkwOA==/v.swf" attr-control="vidio1">
+                </vidio>
             </div>
             <!-- 规格参数 -->
             <div role="tabpanel" class="tab-pane" id="specifParam">..规格参数.</div>
