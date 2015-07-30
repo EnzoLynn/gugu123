@@ -1,8 +1,9 @@
 <div class="bannerPlayContainer row hidden-sm hidden-xs" style="background-color: <?php echo $banner_image_first['background']; ?>;">
-  <div class="tFocus">
+  <div class="flexsidediv"></div>
+  <div class="tFocus" style="width:100%;max-width: 1200px;">
     <div class="prev" id="prev"></div>
     <div class="next" id="next"></div>
-    <ul class="tFocus-pic col-md-100 col-md-offset-20 col-lg-offset-20">
+    <ul class="tFocus-pic">
       <?php foreach($banner_images as $banner_image) { ?>
       <li data-color="<?php echo $banner_image['background']; ?>">
         <a href="<?php echo $banner_image['link']; ?>" <?php if($banner_image['is_blank']=='1') { echo 'target="_blank"'; } ?> ><img class="img-responsive" lazy_src="<?php echo $banner_image['origin_image']; ?>" alt="<?php echo $banner_image['title']; ?>" /></a>
@@ -30,4 +31,5 @@
     </div>
   </div>
   <!--tFocus end-->
+  <div class="flexsidediv"></div>
 </div>

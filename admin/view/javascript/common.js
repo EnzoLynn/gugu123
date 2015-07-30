@@ -33,7 +33,7 @@ function getURLVar(key) {
         img.mouseenter(function(){
             var temp = document.createElement("div");
             temp.id = "temp_img_div";
-            temp.style.cssText = "position:fixed; border:1px solid #f60; top:5px; right:5px;";
+            temp.style.cssText = "position:fixed; border:1px solid #f60; top:5px; right:5px; z-index:1001;";
             temp.innerHTML = '<img src="'+ src +'"/>';
             document.body.appendChild(temp);
         }).mouseleave(function(){

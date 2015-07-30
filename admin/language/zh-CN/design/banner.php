@@ -27,6 +27,7 @@ $_['entry_status']       = '状态';
 $_['entry_sort_order']   = '排序';
 
 $_['entry_image_desc']         = '图片说明';
+$_['entry_description']        = '文字说明';
 
 // Error
 $_['error_permission']   = '警告: 无权限修改广告位！';

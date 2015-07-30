@@ -49,12 +49,20 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-description"><?php echo $entry_description; ?></label>
+            <div class="col-sm-6">
+              <textarea name="description" class="form-control"  id="input-description"><?php echo $description; ?></textarea>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="col-sm-2 control-label" for="input-image-desc"><?php echo $entry_image_desc; ?></label>
             <div class="col-sm-10">
-              <a href="" id="thumb-image-desc" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $image_desc_url; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+              <a href="" id="thumb-image-desc" data-toggle="image" directory="banner" class="img-thumbnail">
+                <img src="<?php echo $image_desc_url; ?>" alt="" title="" /></a>
               <input type="hidden" name="image_desc" value="<?php echo $image_desc; ?>" id="input-image_desc" />
             </div>
           </div>
+
           <table id="images" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
