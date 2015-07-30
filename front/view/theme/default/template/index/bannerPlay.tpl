@@ -1,4 +1,4 @@
-<div class="row hidden-sm hidden-xs" style="background-color: <?php echo $banner_image_first['background']; ?>;">
+<div class="bannerPlayContainer row hidden-sm hidden-xs" style="background-color: <?php echo $banner_image_first['background']; ?>;">
   <div class="tFocus">
     <div class="prev" id="prev"></div>
     <div class="next" id="next"></div>
@@ -13,11 +13,16 @@
       <a href="javascript:void(0);" class="tFocus-leftbtn">上一张</a>
       <div class="tFocus-btn">
         <ul>
+          <?php foreach($banner_images as $key=>$banner_image) { ?>
+          <?php if($key==0){ ?>
           <li class="active">
-            <?php foreach($banner_images as $banner_image) { ?>
-          <li data-color="<?php echo $banner_image['background']; ?>">
             <img lazy_src="<?php echo $banner_image['thumb']; ?>" width="87" height="55" alt="<?php echo $banner_image['title']; ?>" /></li>
           </li>
+          <?php }else{ ?>
+          <li>
+          <img lazy_src="<?php echo $banner_image['thumb']; ?>" width="73" height="45" alt="<?php echo $banner_image['title']; ?>" /></li>
+          </li>
+          <?php } ?>
           <?php } ?>
         </ul>
       </div>
