@@ -86,15 +86,15 @@
             <label>商品编码:</label>            
             <label>MSL.100.100</label>
         </div>
-        <div class="form-group">
+        <div class="form-group cartbtn-group">
             <div class="input-group numberGroup objLeft">
                 <span class="input-group-addon">-</span>
                 <input type="text" class="form-control txtNum" placeholder="数量">
                 <span class="input-group-addon">+</span>
             </div>
             <div class="objLeft">
-                <button type="button" class="btn btn-default">加入购物车</button>
-                <button type="button" class="btn btn-default">关注</button>
+                <button type="button" class="btn btn-default joinCart">加入购物车</button>
+                <button type="button" class="btn btn-default attention">关注</button>
             </div>
         </div>
     </div>

@@ -1,25 +1,30 @@
-<div class="row">
+<div class="row productIntroFloor">
     <div class="col-lg-120">
-        <label style="float:left;">ddddd</label>
-        <ul id="headNav" class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#introduction" aria-controls="introduction" role="tab" data-toggle="tab">商品介绍</a></li>
-            <li role="presentation"><a href="#specifParam" aria-controls="specifParam" role="tab" data-toggle="tab">规格参数</a></li>
-            <li role="presentation"><a href="#evaluation" aria-controls="evaluation" role="tab" data-toggle="tab">商品评价</a></li>
-            <li role="presentation"><a href="#suport" aria-controls="surport" role="tab" data-toggle="tab">售后保障</a></li>
-        </ul>
-        <div class="tab-content">
+        <div class="row tab-title">
+            <div class="objLeft">
+                <img class="productHome" src="../picBase/pics/productHome.png" alt="">
+                <label class="introTitle">DSL5c</label>
+            </div>
+            <div class="objRight">
+                <a href="" title=""><img src="../picBase/pics/gugupweibo.png" alt=""></a>
+                <a href="" title=""><img src="../picBase/pics/gugupweibo.png" alt=""></a>
+            </div>
+            <ul id="headNav" class="nav nav-tabs objRight" role="tablist" style="border-bottom: none;">
+                <li role="presentation" class="active"><a href="#introduction" aria-controls="introduction" role="tab" data-toggle="tab">商品介绍</a></li>
+                <li role="presentation"><a href="#specifParam" aria-controls="specifParam" role="tab" data-toggle="tab">规格参数</a></li>
+                <li role="presentation"><a href="#evaluation" aria-controls="evaluation" role="tab" data-toggle="tab">商品评价</a></li>
+                <li role="presentation"><a href="#suport" aria-controls="surport" role="tab" data-toggle="tab">售后保障</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <div class="tab-content ">
             <!-- 商品介绍 -->
             <div role="tabpanel" class="tab-pane active" id="introduction">
-                <div class="row">
-                    <div class="title text-center">Marshall DSL5c</div>
-                </div>
-                <div class="rtitle row">
-                    <div class="col-md-120">GENERAL</div>
-                </div>
-                <div class="body row">
-                    <div class="col-xs-40 col-sm-40 col-md-40">Model</div>
-                    <div class="col-xs-40 col-sm-40 col-md-80">MG10CE</div>
-                </div>
+                <!-- 产品灯箱 大图 -->
+                <div class="include-productImgList container-fluid"></div>
+                <!-- 视频 -->
+                <vidio id="vidio1" class="include-vidio container-fluid" lazy_src="http://player.youku.com/player.php/sid/XMTI5MDcyMjkwOA==/v.swf" attr-control="vidio1">
+                </vidio>
             </div>
             <!-- 规格参数 -->
             <div role="tabpanel" class="tab-pane" id="specifParam">..规格参数.</div>
@@ -35,10 +40,8 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="eva_all">
                         <div class="content">
-                             ..全部                     
-                
+                            ..全部
                         </div>
-                       
                         <div class="mypagecontroller">
                             <a id='firstBtn' class="firstBtn" style="cursor: default; color: gray;" href="javascript:void(0)">首页</a>
                             <a id='preBtn' class="preBtn" style="cursor: default; color: gray;" href="javascript:void(0)">上一页</a>
@@ -48,12 +51,10 @@
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="eva_a">
-
                         <div class="content">
-                           .好评.                 
-                
+                            .好评.
                         </div>.
-                         <div class="mypagecontroller">
+                        <div class="mypagecontroller">
                             <a id='firstBtn1' class="firstBtn" style="cursor: default; color: gray;" href="javascript:void(0)">首页</a>
                             <a id='preBtn1' class="preBtn" style="cursor: default; color: gray;" href="javascript:void(0)">上一页</a>
                             <label id='pageText1'></label>

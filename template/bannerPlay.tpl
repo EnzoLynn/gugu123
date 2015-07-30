@@ -1,12 +1,13 @@
-<div class="bannerPlayContainer row hidden-sm hidden-xs">
-    <div class="tFocus">
+<div class="bannerPlayContainer row ">
+    <div class="flexsidediv"></div>
+    <div class="tFocus" style="width:100%;max-width: 1200px;">
         <div class="prev" id="prev"></div>
         <div class="next" id="next"></div>
-        <ul class="tFocus-pic col-md-100 col-md-offset-20 col-lg-offset-20">
-            <li  data-color="black">
+        <ul class="tFocus-pic">
+            <li  data-color="#b8b8b8">
                 <a href="#"><img class="img-responsive" lazy_src="picBase/banner/1.jpg" alt="" /></a>
             </li>
-            <li data-color="red">
+            <li data-color="#b8b8b8">
                 <a href="#"><img class="img-responsive"  lazy_src="picBase/banner/2.jpg" alt="" /></a>
             </li>
             <li data-color="white">
@@ -38,4 +39,5 @@
         </div>
     </div>
     <!--tFocus end-->
+     <div class="flexsidediv"></div>
 </div>
