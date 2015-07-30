@@ -34,11 +34,9 @@
         </div> -->
     </div>
     <div class="col-md-48 col-lg-48">
-        <div class="row headpicIntro">
-            <div class="text-center">
-                <h3 class="title">MARSHALL 马歇尔 DSL5C</h3>
-                <h4 class="title2">电子管一体式 电吉他音箱</h4>
-            </div>
+        <div class="row headpicTitle">
+            <div class="title">DSL5C</div>
+            <div class="title2">电子管一体式 电吉他音箱</div>
         </div>
         <!--  <div class="productIntro">
             <h3>MARSHALL 马歇尔 DSL5C</h3>
@@ -54,34 +52,23 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-72 col-lg-72">
+    <div class="col-md-72 col-lg-72 headpicIntro">
         如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱
     </div>
-    <div class="col-md-48 col-lg-48 form-horizontal">
+    <div class="col-md-48 col-lg-48 form-horizontal headpicControl">
         <div class="form-group">
             <label class="p_price_title">售价:</label>
             <label class="p_price">1888</label>
             <label class="p_price_unit">元</label>
         </div>
         <div class="form-group">
-            <label class="objLeft">
-                <h4><b>数量:</b></h4></label>
-            <div class="input-group numberGroup objLeft">
-                <span class="input-group-addon">-</span>
-                <input type="text" class="form-control txtNum" placeholder="数量">
-                <span class="input-group-addon">+</span>
-            </div>
-            <label class="objLeft">
-                <h4><b>累计销售数量77件</b></h4></label>
+            <label>累计销量:</label>
+            <label>77件</label>
         </div>
         <div class="form-group">
             <label>促销信息:</label>
             <label>满123包邮</label>
-        </div>
-        <div class="form-group">
-            <label>配送区域:</label>
-            <label>上海/江浙沪地区</label>
-        </div>
+        </div>        
         <div class="form-group">
             <label class="objLeft">颜色选择:</label>
             <div class="colorSel left" style="background-color: red;"></div>
@@ -95,10 +82,20 @@
             <label>1.2</label>
             <label>1.5</label>
         </div>
+         <div class="form-group">
+            <label>商品编码:</label>            
+            <label>MSL.100.100</label>
+        </div>
         <div class="form-group">
-            <button type="button" class="btn btn-default">对比</button>
-            <button type="button" class="btn btn-default">关注</button>
-            <button type="button" class="btn btn-default">加入购物车</button>
+            <div class="input-group numberGroup objLeft">
+                <span class="input-group-addon">-</span>
+                <input type="text" class="form-control txtNum" placeholder="数量">
+                <span class="input-group-addon">+</span>
+            </div>
+            <div class="objLeft">
+                <button type="button" class="btn btn-default">加入购物车</button>
+                <button type="button" class="btn btn-default">关注</button>
+            </div>
         </div>
     </div>
 </div>
