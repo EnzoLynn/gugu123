@@ -60,10 +60,11 @@
               <tr>
                 <td class="text-left" style="width: 25%;"><?php echo $entry_title; ?></td>
                 <td class="text-left" style="width: 25%;"><?php echo $entry_link; ?></td>
+                <td class="text-center" style="width: 6%"><?php echo $entry_is_blank; ?></td>
                 <td class="text-left"><?php echo $entry_background; ?></td>
                 <td class="text-left"><?php echo $entry_image; ?></td>
                 <td class="text-left"><?php echo $entry_image2; ?></td>
-                <td class="text-right"><?php echo $entry_sort_order; ?></td>
+                <td class="text-right" style="width: 6%;"><?php echo $entry_sort_order; ?></td>
                 <td></td>
               </tr>
             </thead>
@@ -80,6 +81,7 @@
                   <?php } ?>
                   <?php } ?></td>
                 <td class="text-left"><input type="text" name="banner_image[<?php echo $image_row; ?>][link]" value="<?php echo $banner_image['link']; ?>" placeholder="<?php echo $entry_link; ?>" class="form-control" /></td>
+                <td><input type="checkbox" name="banner_image[<?php echo $image_row; ?>][is_blank]" value="1" class="form-control" <?php if($banner_image['is_blank'] == 1) { echo 'checked'; } ?> /></td>
                 <td class="text-left"><input type="text" name="banner_image[<?php echo $image_row; ?>][background]" value="<?php echo $banner_image['background']; ?>" placeholder="<?php echo $entry_background; ?>" class="form-control" /></td>
                 <td class="text-left"><a href="" id="thumb-image<?php echo $image_row; ?>" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $banner_image['thumb']; ?>" origin-src="<?php echo $banner_image['origin_image']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
                   <input type="hidden" name="banner_image[<?php echo $image_row; ?>][image]" value="<?php echo $banner_image['image']; ?>" id="input-image<?php echo $image_row; ?>" /></td>
@@ -93,7 +95,7 @@
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="6"></td>
+                <td colspan="7"></td>
                 <td class="text-left"><button type="button" onclick="addImage();" data-toggle="tooltip" title="<?php echo $button_banner_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
               </tr>
             </tfoot>
@@ -115,6 +117,7 @@ function addImage() {
 	<?php } ?>
 	html += '  </td>';	
 	html += '  <td class="text-left"><input type="text" name="banner_image[' + image_row + '][link]" value="" placeholder="<?php echo $entry_link; ?>" class="form-control" /></td>';
+  html += '  <td><input type="checkbox" name="banner_image[' + image_row + '][is_blank]" value="1" class="form-control" checked /></td>';
   html += '  <td class="text-left"><input type="text" name="banner_image[' + image_row + '][background]" value="" placeholder="<?php echo $entry_background; ?>" class="form-control" /></td>';
 	html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="banner_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
   html += '  <td class="text-left"><a href="" id="thumb-image2' + image_row + '" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="banner_image[' + image_row + '][image2]" value="" id="input-image2' + image_row + '" /></td>';

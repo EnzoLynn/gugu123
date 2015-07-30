@@ -20,9 +20,9 @@ config_db.php
 config.php
 /admin/config.php
 /.idea/*
-/system/cache/
-/system/logs/
-/image/cache/
-/image/catalog/
+/system/cache/*
+/system/logs/*
+/image/cache/*
+/image/catalog/*
 /zzz
 /data/*

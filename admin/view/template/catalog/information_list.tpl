@@ -35,11 +35,17 @@
               <thead>
                 <tr>
                   <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
+                  <td class="text-left"><?php if ($sort == 'id.information_id') { ?>
+                    <a href="<?php echo $sort_id; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_id; ?></a>
+                    <?php } else { ?>
+                    <a href="<?php echo $sort_id; ?>"><?php echo $column_id; ?></a>
+                    <?php } ?></td>
                   <td class="text-left"><?php if ($sort == 'id.title') { ?>
                     <a href="<?php echo $sort_title; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_title; ?></a>
                     <?php } else { ?>
                     <a href="<?php echo $sort_title; ?>"><?php echo $column_title; ?></a>
                     <?php } ?></td>
+                  <td class="text-left"><?php echo $column_keyword; ?></td>
                   <td class="text-right"><?php if ($sort == 'i.sort_order') { ?>
                     <a href="<?php echo $sort_sort_order; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_sort_order; ?></a>
                     <?php } else { ?>
@@ -57,7 +63,9 @@
                     <?php } else { ?>
                     <input type="checkbox" name="selected[]" value="<?php echo $information['information_id']; ?>" />
                     <?php } ?></td>
+                  <td class="text-left"><?php echo $information['information_id']; ?></td>
                   <td class="text-left"><?php echo $information['title']; ?></td>
+                  <td class="text-left"><?php echo $information['keyword']; ?></td>
                   <td class="text-right"><?php echo $information['sort_order']; ?></td>
                   <td class="text-right"><a href="<?php echo $information['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
                 </tr>

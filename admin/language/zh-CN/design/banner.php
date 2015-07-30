@@ -19,6 +19,7 @@ $_['column_action']      = '操作';
 $_['entry_name']         = '广告位名称';
 $_['entry_title']        = '标题';
 $_['entry_link']         = '链接';
+$_['entry_is_blank']     = '新窗口打开';
 $_['entry_image']        = '图像';
 $_['entry_image2']        = '图像二';
 $_['entry_background']  = '背景色';
