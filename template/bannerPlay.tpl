@@ -1,4 +1,4 @@
-<div class="row hidden-sm hidden-xs">
+<div class="bannerPlayContainer row hidden-sm hidden-xs">
     <div class="tFocus">
         <div class="prev" id="prev"></div>
         <div class="next" id="next"></div>
