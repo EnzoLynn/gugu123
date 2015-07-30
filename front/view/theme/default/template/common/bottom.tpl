@@ -15,8 +15,8 @@
         <div class="left"><img lazy_src="picBase/pics/bticon_deltype.png"></div>
         <div class="right bottomContent">
           <ul>
-            <li class="title"><a href="#">配送方式</a></li>
-            <li class="content"><a href="#">全国包邮</a></li>
+            <li class="title">配送方式</li>
+            <li class="content"><a target="_blank" href="<?php echo $informations[6]['link']; ?>">全国包邮</a></li>
           </ul>
         </div>
       </div>
@@ -25,8 +25,8 @@
         <div class="right bottomContent">
           <ul>
             <li class="title">支付方式</li>
-            <li class="content"><a href="#">在线支付</a></li>
-            <li class="content"><a href="#">公司转账</a></li>
+            <li class="content"><a target="_blank" href="<?php echo $informations[8]['link']; ?>">在线支付</a></li>
+            <li class="content"><a target="_blank" href="<?php echo $informations[9]['link']; ?>">公司转账</a></li>
           </ul>
         </div>
       </div>
@@ -36,8 +36,8 @@
         <div class="right bottomContent">
           <ul>
             <li class="title">售后服务</li>
-            <li class="content"><a href="#">常见问题</a></li>
-            <li class="content"><a href="#">退换货服务</a></li>
+            <li class="content"><a target="_blank" href="<?php echo $informations[10]['link']; ?>">常见问题</a></li>
+            <li class="content"><a target="_blank" href="<?php echo $informations[11]['link']; ?>">退换货服务</a></li>
           </ul>
         </div>
       </div>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="row text-center">
-      <a href="/about-us_info4.html">关于我们</a> | <a href="#">人才招聘</a> | <a href="/index.php?route=information/contact">联系我们</a>
+      <a target="_blank" href="/about-us_info4.html">关于我们</a> | <a target="_blank" href="<?php echo $informations[12]['link']; ?>">人才招聘</a> | <a target="_blank" href="/index.php?route=information/contact">联系我们</a>
       <br>
       沪ICP备12046537 | Copyright <span style="font-size: 20px; padding-top: 15px;">&copy;</span> 2009-2014 gugu123.com 版权所有
     </div>

@@ -177,6 +177,7 @@ class ControllerCatalogInformation extends Controller {
 			$data['informations'][] = array(
 				'information_id' => $result['information_id'],
 				'title'          => $result['title'],
+                'keyword'       => $result['keyword'],
 				'sort_order'     => $result['sort_order'],
 				'edit'           => $this->url->link('catalog/information/edit', 'token=' . $this->session->data['token'] . '&information_id=' . $result['information_id'] . $url, 'SSL')
 			);
@@ -188,7 +189,9 @@ class ControllerCatalogInformation extends Controller {
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
 
+        $data['column_id'] = $this->language->get('column_id');
 		$data['column_title'] = $this->language->get('column_title');
+        $data['column_keyword'] = $this->language->get('column_keyword');
 		$data['column_sort_order'] = $this->language->get('column_sort_order');
 		$data['column_action'] = $this->language->get('column_action');
 
@@ -228,6 +231,7 @@ class ControllerCatalogInformation extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
+        $data['sort_id'] = $this->url->link('catalog/information', 'token=' . $this->session->data['token'] . '&sort=id.information' . $url, 'SSL');
 		$data['sort_title'] = $this->url->link('catalog/information', 'token=' . $this->session->data['token'] . '&sort=id.title' . $url, 'SSL');
 		$data['sort_sort_order'] = $this->url->link('catalog/information', 'token=' . $this->session->data['token'] . '&sort=i.sort_order' . $url, 'SSL');
 

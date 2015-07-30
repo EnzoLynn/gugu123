@@ -11,7 +11,9 @@ $_['text_edit']              = '编辑文章';
 $_['text_default']           = '默认';
 
 // Column
+$_['column_id']                = '编号';
 $_['column_title']           = '文章标题';
+$_['column_keyword']         = '网址关键词';
 $_['column_sort_order']	     = '排序';
 $_['column_action']          = '操作';
 
