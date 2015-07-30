@@ -2,17 +2,17 @@
   <div class="col-lg-120">
     <div class="row">
       <div class="col-md-24">
-        <div class="left"><img lazy_src="picBase/pics/购买指南.png"></div>
+        <div class="left"><img lazy_src="picBase/pics/bticon_sale.png"></div>
         <div class="right bottomContent">
           <ul>
             <li class="title">购买指南</li>
-            <li class="content"><a href="#">购物流程</a></li>
-            <li class="content"><a href="#">联系客服</a></li>
+            <li class="content"><a target="_blank" href="<?php echo $informations[7]['link']; ?>">购物流程</a></li>
+            <li class="content"><a target="_blank" href="/index.php?route=information/contact">联系客服</a></li>
           </ul>
         </div>
       </div>
       <div class="col-md-24">
-        <div class="left"><img lazy_src="picBase/pics/配送方式.png"></div>
+        <div class="left"><img lazy_src="picBase/pics/bticon_deltype.png"></div>
         <div class="right bottomContent">
           <ul>
             <li class="title"><a href="#">配送方式</a></li>
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="col-md-24">
-        <div class="left"><img lazy_src="picBase/pics/支付方式.png"></div>
+        <div class="left"><img lazy_src="picBase/pics/bticon_paytype.png"></div>
         <div class="right bottomContent">
           <ul>
             <li class="title">支付方式</li>
@@ -32,7 +32,7 @@
       </div>
 
       <div class="col-md-24">
-        <div class="left"><img lazy_src="picBase/pics/售后服务.png"></div>
+        <div class="left"><img lazy_src="picBase/pics/bticon_surport.png"></div>
         <div class="right bottomContent">
           <ul>
             <li class="title">售后服务</li>
@@ -43,8 +43,8 @@
       </div>
 
       <div class="col-md-24">
-        <div class="left"><img lazy_src="picBase/pics/联系我们.png"></div>
-        <div class="right bottomContent">
+        <div class="left"><img lazy_src="picBase/pics/bticon_contact.png"></div>
+        <div class="bottomContent">
           <ul>
             <li class="title">联系我们</li>
             <li class="content">客服邮箱：</li>
@@ -56,9 +56,9 @@
     </div>
 
     <div class="row text-center">
-      <a href="#">关于我们</a>|<a href="#">人才招聘</a>|<a href="#">联系我们</a>
+      <a href="/about-us_info4.html">关于我们</a> | <a href="#">人才招聘</a> | <a href="/index.php?route=information/contact">联系我们</a>
       <br>
-      沪ICP备12046537 | Copyright©2009-2014 gugu123.com 版权所有
+      沪ICP备12046537 | Copyright <span style="font-size: 20px; padding-top: 15px;">&copy;</span> 2009-2014 gugu123.com 版权所有
     </div>
   </div>
 </div>

@@ -460,6 +460,8 @@ class ControllerCatalogInformation extends Controller {
             if (!checkURLString($keyword)) {
                 $this->error['keyword'] = sprintf($this->language->get('error_keyword'));
             }
+        } else {
+            $this->error['keyword'] = sprintf($this->language->get('error_keyword'));
         }
 
 		if ($this->error && !isset($this->error['warning'])) {

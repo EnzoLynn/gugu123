@@ -12,7 +12,7 @@
     <div class="row" >
       <div class="col-md-40 avtiveDiv">
         <div class="row title">
-          <div class="left log"><img lazy_src="picBase/pics/谷谷微博.png" alt=""></div>
+          <div class="left log"><img lazy_src="picBase/pics/gugupweibo.png" alt=""></div>
           <div class="left text">谷谷微博</div>
         </div>
         <div class="media row">
@@ -30,7 +30,7 @@
       </div>
       <div class="col-md-40 avtiveDiv">
         <div class="row title">
-          <div class="left log"><img lazy_src="picBase/pics/谷谷视频.png" alt=""></div>
+          <div class="left log"><img lazy_src="picBase/pics/guguvidio.png" alt=""></div>
           <div class="left text">谷谷视频</div>
         </div>
         <div class="row media">
@@ -48,7 +48,7 @@
       </div>
       <div class="col-md-40 avtiveDiv">
         <div class="row title">
-          <div class="left log"><img lazy_src="picBase/pics/谷谷相册.png" alt=""></div>
+          <div class="left log"><img lazy_src="picBase/pics/guguphoto.png" alt=""></div>
           <div class="left text">谷谷相册</div>
         </div>
         <div class="row media">
@@ -76,7 +76,7 @@
     <div class="row serverLogFloor">
       <div class="col-md-24 col-sm-60 col-xs-120">
         <div class="serverlog">
-          <img class="img-responsive" lazy_src="picBase/pics/包邮.png" alt="">
+          <img class="img-responsive" lazy_src="picBase/pics/baoyou.png" alt="">
           <div class="title">满123包邮</div>
           <div class="content">￥123</div>
           <div class="content">package mail</div>
@@ -84,7 +84,7 @@
       </div>
       <div class="col-md-24 col-sm-60  col-xs-120">
         <div class="serverlog">
-          <img class="img-responsive" lazy_src="picBase/pics/包换.png" alt="">
+          <img class="img-responsive" lazy_src="picBase/pics/baohuan.png" alt="">
           <div class="title">15天包换</div>
           <div class="content">7days</div>
           <div class="content">exchangable</div>
@@ -92,7 +92,7 @@
       </div>
       <div class="col-md-24 col-sm-60  col-xs-120">
         <div class="serverlog">
-          <img class="img-responsive" lazy_src="picBase/pics/发货.png" alt="">
+          <img class="img-responsive" lazy_src="picBase/pics/fahuo.png" alt="">
           <div class="title">24小时内发货</div>
           <div class="content">Within 24 hours</div>
           <div class="content">of delivery</div>
@@ -101,7 +101,7 @@
 
       <div class="col-md-24 col-sm-60  col-xs-120">
         <div class="serverlog">
-          <img class="img-responsive" lazy_src="picBase/pics/联保.png" alt="">
+          <img class="img-responsive" lazy_src="picBase/pics/lianbao.png" alt="">
           <div class="title">全国正品 全国联保</div>
           <div class="content">Nationwide Warranty</div>
           <div class="content"></div>
@@ -110,7 +110,7 @@
 
       <div class="col-md-24 col-sm-60  col-xs-120">
         <div class="serverlog">
-          <img class="img-responsive" lazy_src="picBase/pics/客服.png" alt="">
+          <img class="img-responsive" lazy_src="picBase/pics/kefu.png" alt="">
           <div class="title">每周6x8小时</div>
           <div class="content">专 业 在 线 咨 询</div>
           <div class="content">professional consultation</div>
