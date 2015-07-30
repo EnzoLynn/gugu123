@@ -35,8 +35,10 @@
     </div>
     <div class="col-md-48 col-lg-48">
         <div class="row headpicIntro">
-            <h3 class="title">MARSHALL 马歇尔 DSL5C</h3>
-            <h4 class="title2">电子管一体式 电吉他音箱</h4>
+            <div class="text-center">
+                <h3 class="title">MARSHALL 马歇尔 DSL5C</h3>
+                <h4 class="title2">电子管一体式 电吉他音箱</h4>
+            </div>
         </div>
         <!--  <div class="productIntro">
             <h3>MARSHALL 马歇尔 DSL5C</h3>
