@@ -6,8 +6,8 @@
 				<div class="right bottomContent">
 					<ul>
 						<li class="title">购买指南</li>
-						<li>购物流程</li>
-						<li>联系客服</li>
+						<li class="content"><a href="" title="">购物流程</a></li>
+						<li class="content"><a href="" title="">购物流程</a></li>
 					</ul>
 				</div>
 			</div>
@@ -16,8 +16,8 @@
 				<div class="right bottomContent">
 					<ul>
 						<li class="title">购买指南</li>
-						<li>购物流程</li>
-						<li>联系客服</li>
+						<li class="content"><a href="" title="">购物流程</a></li>
+						<li class="content"><a href="" title="">联系客服</a></li>
 					</ul>
 				</div>
 			</div>
@@ -26,8 +26,8 @@
 				<div class="right bottomContent">
 					<ul>
 						<li class="title">购买指南</li>
-						<li>购物流程</li>
-						<li>联系客服</li>
+						<li class="content"><a href="" title="">购物流程</a></li>
+						<li class="content"><a href="" title="">联系客服</a></li>
 					</ul>
 				</div>
 			</div>
@@ -37,8 +37,8 @@
 				<div class="right bottomContent">
 					<ul>
 						<li class="title">购买指南</li>
-						<li>购物流程</li>
-						<li>联系客服</li>
+						<li class="content"><a href="" title="">购物流程</a></li>
+						<li class="content"><a href="" title="">联系客服</a></li>
 					</ul>
 				</div>
 			</div>
@@ -48,8 +48,8 @@
 				<div class="right bottomContent">
 					<ul>
 						<li class="title">购买指南</li>
-						<li>购物流程</li>
-						<li>联系客服</li>
+						<li class="content"><a href="" title="">购物流程</a></li>
+						<li class="content"><a href="" title="">联系客服</a></li>
 					</ul>
 				</div>
 			</div>
@@ -57,7 +57,7 @@
 		</div>
 
 		<div class="row text-center">
-			关于我们|人才招聘|联系我们
+			<a class="" href="">关于我们|人才招聘|联系我们</a>
 			<br>
 			沪ICP备12046537 | Copyright©2009-2014 gugu123.com 版权所有
 		</div>
