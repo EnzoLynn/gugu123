@@ -16,10 +16,10 @@
             <li data-color="blue">
                 <a href="#"><img class="img-responsive"  lazy_src="picBase/banner/4.jpg" alt="" /></a>
             </li>
-            <li data-color="gray">
-                <a href="#"><img class="img-responsive"  lazy_src="picBase/banner/1.jpg" alt="" /></a>
+            <li data-color="#626262">
+                <a href="#"><img class="img-responsive"  lazy_src="picBase/banner/5.jpg" alt="" /></a>
             </li>
-            <li data-color="green">
+            <li data-color="#626262">
                 <a href="#"><img class="img-responsive"  lazy_src="picBase/banner/1.jpg" alt="" /></a>
             </li>
         </ul>
