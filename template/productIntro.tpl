@@ -19,12 +19,24 @@
         <div class="clearfix"></div>
         <div class="tab-content ">
             <!-- 商品介绍 -->
-            <div role="tabpanel" class="tab-pane active" id="introduction">
+            <div role="tabpanel" class="tab-pane active"  id="introduction">
                 <!-- 产品灯箱 大图 -->
-                <div class="include-productImgList container-fluid"></div>
+                <div class="include-productImgList container-fluid" ></div>
                 <!-- 视频 -->
-                <vidio id="vidio1" class="include-vidio container-fluid" lazy_src="http://player.youku.com/player.php/sid/XMTI5MDcyMjkwOA==/v.swf" attr-control="vidio1">              
+                <vidio id="vidio1" class="include-vidio container-fluid" lazy_src="http://player.youku.com/player.php/sid/XMTI5MDcyMjkwOA==/v.swf" attr-control="vidio1">
                 </vidio>
+                <!-- 图文介绍 -->
+                <div class="row pro_intro_li" >
+                    <div class="intro_left col-md-60">
+                        <img class="img-responsive" src="../picBase/p_detail/3.png" alt="">
+                    </div>
+                    <div class="intro_right col-md-60">
+                        <div>Create Your Dream Collection</div>
+                        <div class="line">
+                        </div>
+                        <div>With the V-Plano,you can choose from beautifully craffed</div>
+                    </div>
+                </div>
             </div>
             <!-- 规格参数 -->
             <div role="tabpanel" class="tab-pane" id="specifParam">..规格参数.</div>

@@ -1,5 +1,8 @@
 <div class="row headpicfloor">
-    <div class='zoom col-md-72 col-lg-72'>
+    <div class="col-md-120"> 
+         <img class="img-responsive headerPic" lazy_src='../picBase/p_detail/1.png' alt='' />
+    </div>  
+   <!-- <div class='zoom col-md-72 col-lg-72'>
         <div class="row">
             <img class="img-responsive headerPic" lazy_src='../picBase/proheadPic.jpg' id='proMainPic' alt='' />
         </div>
@@ -32,7 +35,7 @@
                 </li>
             </ul>
         </div> -->
-    </div>
+     <!-- </div>
     <div class="col-md-48 col-lg-48">
         <div class="row headpicTitle">
             <div class="title">DSL5C</div>
@@ -49,7 +52,7 @@
                 <label>MSL.100.100</label>
             </div>
         </div> -->
-    </div>
+     <!-- </div> -->
 </div>
 <div class="row">
     <div class="col-md-72 col-lg-72 headpicIntro">
