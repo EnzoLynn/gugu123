@@ -23,6 +23,7 @@ $_['text_unselect_all']             = '取消选择';
 $_['text_all_zones']                = '所有区域';
 $_['text_default']                  = ' <b>(默认)</b>';
 $_['text_close']                    = '关闭';
+$_['text_total']                    = '共 %d 条记录';
 $_['text_pagination']               = '显示 %d 到 %d / %d (总 %d 页)';
 $_['text_loading']                  = '加载中...';
 $_['text_no_results']               = '没有符合条件的结果！';
@@ -30,6 +31,7 @@ $_['text_confirm']                  = '确定吗？';
 $_['text_home']                     = '首页';
 
 // Button
+$_['button_list']                   = '列表';
 $_['button_add']                    = '新增';
 $_['button_delete']                 = '删除';
 $_['button_save']                   = '保存';

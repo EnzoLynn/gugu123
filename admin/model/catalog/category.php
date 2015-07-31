@@ -1,11 +1,17 @@
 <?php
 class ModelCatalogCategory extends Model {
+
+    var $category_ids = array();
+    var $category_ids_relation = array();
+
 	public function addCategory($data) {
 		$this->event->trigger('pre.admin.category.add', $data);
 
 		$this->db->query("INSERT INTO " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "', keyword = '". $this->db->escape($data['keyword']) ."', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
 
 		$category_id = $this->db->getLastId();
+
+        $this->repairDeep($category_id);
 
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "category SET image = '" . $this->db->escape($data['image']) . "' WHERE category_id = '" . (int)$category_id . "'");
@@ -62,6 +68,8 @@ class ModelCatalogCategory extends Model {
 		$this->event->trigger('pre.admin.category.edit', $data);
 
 		$this->db->query("UPDATE " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "', keyword = '". $this->db->escape($data['keyword']) ."', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW() WHERE category_id = '" . (int)$category_id . "'");
+
+        $this->repairDeep($category_id);
 
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "category SET image = '" . $this->db->escape($data['image']) . "' WHERE category_id = '" . (int)$category_id . "'");
@@ -215,47 +223,54 @@ class ModelCatalogCategory extends Model {
 	}
 
 	public function getCategories($data = array()) {
-		$sql = "SELECT cp.category_id AS category_id, GROUP_CONCAT(cd1.name ORDER BY cp.level SEPARATOR '&nbsp;&gt;&nbsp;') AS name, c1.parent_id, c1.sort_order FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "category c1 ON (cp.category_id = c1.category_id) LEFT JOIN " . DB_PREFIX . "category c2 ON (cp.path_id = c2.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd1 ON (cp.path_id = cd1.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (cp.category_id = cd2.category_id) WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT cp.category_id AS category_id, GROUP_CONCAT(cd1.name ORDER BY cp.level SEPARATOR '&nbsp;&gt;&nbsp;') AS name, c1.parent_id, c1.deep, c1.sort_order FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "category c1 ON (cp.category_id = c1.category_id) LEFT JOIN " . DB_PREFIX . "category c2 ON (cp.path_id = c2.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd1 ON (cp.path_id = cd1.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (cp.category_id = cd2.category_id) WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 
+        if (isset($data['parent_id'])) {
+            $sql .= " AND c1.parent_id = ' " . (int)$data['parent_id'] . " '";
+        }
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND cd2.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
 		$sql .= " GROUP BY cp.category_id";
 
-		$sort_data = array(
-			'name',
-			'sort_order'
-		);
-
-		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			$sql .= " ORDER BY " . $data['sort'];
-		} else {
-			$sql .= " ORDER BY sort_order";
-		}
-
-		if (isset($data['order']) && ($data['order'] == 'DESC')) {
-			$sql .= " DESC";
-		} else {
-			$sql .= " ASC";
-		}
-
-		if (isset($data['start']) || isset($data['limit'])) {
-			if ($data['start'] < 0) {
-				$data['start'] = 0;
-			}
-
-			if ($data['limit'] < 1) {
-				$data['limit'] = 20;
-			}
-
-			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-		}
+        $sql .= " ORDER BY c1.sort_order ASC";
 
 		$query = $this->db->query($sql);
 
-		return $query->rows;
+        //分类信息，key为category_id
+        $all_categories = array();
+
+        foreach($query->rows as $row) {
+            $this->category_ids_relation[$row["parent_id"]][] = $row["category_id"];
+            $all_categories[$row['category_id']] = $row;
+        }
+
+        $this->category_ids = array();
+        $this->initChildIds(0);
+
+        $result = array();
+        foreach($this->category_ids as $category_id) {
+            $result[] = $all_categories[$category_id];
+        }
+
+		return $result;
 	}
+
+    public function initChildIds($category_id) {
+        if(isset($this->category_ids_relation[$category_id]) && is_array($this->category_ids_relation[$category_id])) {
+            foreach ($this->category_ids_relation[$category_id] as $c_id) {
+                if (isset($this->category_ids_relation[$c_id]) && is_array($this->category_ids_relation[$c_id])) {
+                    $this->category_ids[] = $c_id;
+                    $this->initChildIds($c_id);
+                } else {
+                    $this->category_ids[] = $c_id;
+                }
+            }
+        }else {
+            $this->category_ids[] = $category_id;
+        }
+    }
 
 	public function getCategoryDescriptions($category_id) {
 		$category_description_data = array();
@@ -353,5 +368,46 @@ WHERE cf.filter_id = f.filter_id AND cf.category_id = '" . (int)$category_id . "
             $i++;
         }
         return $arr_temp;
+    }
+
+    /**
+     * 通过种类ID修改层级深度
+     * @author 周辉
+     * @access public
+     * @param int $category_id
+     */
+    function repairDeep($category_id) {
+        $deep = $this->getDeep($category_id);
+        $this->db->query("UPDATE " . DB_PREFIX . "category SET deep = '" . $deep . "' WHERE category_id = '" . (int)$category_id . "'");
+    }
+
+    /**
+     * 通过种类ID得到层级深度，默认为0
+     * @author 周辉
+     * @access public
+     * @param int $category_id
+     * @return int 深度
+     */
+    function getDeep($category_id) {
+        $deep = 0;
+        $query = $this->db->query("select parent_id from " . DB_PREFIX . "category where category_id = $category_id");
+        $parent_id = $query->row['parent_id'];
+        $i = 0;
+        while($parent_id != 0)
+        {
+            $deep++;
+            $category_id = $parent_id;
+            $query = $this->db->query("select parent_id from " . DB_PREFIX . "category where category_id = $category_id");
+            $parent_id = $query->row['parent_id'];
+
+            if($i>5)
+            {
+                return $i;
+                echo 'categories init error';
+                break;
+            }
+            $i++;
+        }
+        return $deep;
     }
 }
