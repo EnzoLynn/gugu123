@@ -23,7 +23,7 @@
                 <!-- 产品灯箱 大图 -->
                 <div class="include-productImgList container-fluid"></div>
                 <!-- 视频 -->
-                <vidio id="vidio1" class="include-vidio container-fluid" lazy_src="http://player.youku.com/player.php/sid/XMTI5MDcyMjkwOA==/v.swf" attr-control="vidio1">
+                <vidio id="vidio1" class="include-vidio container-fluid" lazy_src="http://player.youku.com/player.php/sid/XMTI5MDcyMjkwOA==/v.swf" attr-control="vidio1">              
                 </vidio>
             </div>
             <!-- 规格参数 -->
