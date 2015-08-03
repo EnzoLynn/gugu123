@@ -151,7 +151,6 @@ class ControllerCatalogProductType extends Controller {
         $data['column_name'] = $this->language->get('column_name');
 
         $data['column_action'] = $this->language->get('column_action');
-        $data['column_attribute_num'] = $this->language->get('column_attribute_num');
 
         $data['button_copy'] = $this->language->get('button_copy');
         $data['button_add'] = $this->language->get('button_add');

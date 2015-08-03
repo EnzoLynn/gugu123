@@ -86,6 +86,18 @@ class ModelCatalogOption extends Model {
 			$sql .= " AND od.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
+        if (isset($data['type'])) {
+            $temp = array();
+
+            foreach($data['type'] as $type) {
+                $temp[] = "'" . $type . "'";
+            }
+
+            $temp = implode(',', $temp);
+
+            $sql .= " AND o.type IN(". $temp .")";
+        }
+
 		$sort_data = array(
 			'od.name',
 			'o.type',
@@ -95,7 +107,7 @@ class ModelCatalogOption extends Model {
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY od.name";
+			$sql .= " ORDER BY o.sort_order";
 		}
 
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {

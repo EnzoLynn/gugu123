@@ -114,7 +114,7 @@
               <tr>
                 <td class="text-left required"><?php echo $entry_option_value; ?></td>
                 <td class="text-left"><?php echo $entry_image; ?></td>
-                <td class="text-right"><?php echo $entry_sort_order; ?></td>
+                <td class="text-right" width="6%"><?php echo $entry_sort_order; ?></td>
                 <td></td>
               </tr>
             </thead>
