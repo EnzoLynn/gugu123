@@ -74,16 +74,16 @@
         </div>        
         <div class="form-group">
             <label class="objLeft">颜色选择:</label>
-            <div class="colorSel left" style="background-color: red;"></div>
-            <div class="colorSel left" style="background-color: gray;"></div>
-            <div class="colorSel left" style="background-color: black;"></div>
+            <a  href="#" ><div class="colorSel left" style="background-color: red;"></div></a>
+            <a class="active" href="#"><div class="colorSel left" style="background-color: gray;"></div></a>
+            <a href="#"><div class="colorSel left" style="background-color: black;"></div></a>
         </div>
-        <div class="form-group">
+        <div class="form-group sizeSel">
             <label>规格选择:</label>
-            <label>0.73</label>
-            <label>1.0</label>
-            <label>1.2</label>
-            <label>1.5</label>
+            <a class="active" href="#"><label>0.73</label></a>
+            <a href="#"><label>1.0</label></a>
+            <a href="#"><label>1.2</label></a>
+            <a href="#"><label>1.5</label></a>
         </div>
          <div class="form-group">
             <label>商品编码:</label>            
@@ -91,9 +91,9 @@
         </div>
         <div class="form-group cartbtn-group">
             <div class="input-group numberGroup objLeft">
-                <span class="input-group-addon">-</span>
-                <input type="text" class="form-control txtNum" placeholder="数量">
-                <span class="input-group-addon">+</span>
+                <span class="input-group-addon addon-control btn-default" controller="txtNum" data-limit="1" data-step="-1">-</span>
+                <input type="text" class="form-control txtNum text-center" value="1" placeholder="数量">
+                <span class="input-group-addon addon-control btn-default" controller="txtNum" data-limit="99" data-step="1">+</span>
             </div>
             <div class="objLeft">
                 <button type="button" class="btn btn-default joinCart">加入购物车</button>
