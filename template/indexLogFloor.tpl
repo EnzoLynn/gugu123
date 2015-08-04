@@ -30,7 +30,7 @@
             </div>
         </div>
         <div>
-            <a class="logimg" href="javascript:void(0);"><img src="picBase/log.png" alt="" height="100px" /></a>
+            <a class="logimg" href="javascript:void(0);"><img src="picBase/log.png" alt="" /></a>
             <ul class="logmenu  hidden-sm hidden-xs">
                 <li style="min-width: 30px;"><a href="javascript:void(0);" tab="#tab1">吉他</a></li>
                 <li style="min-width: 30px;"><a href="javascript:void(0);" tab="#tab2">贝司</a></li>
