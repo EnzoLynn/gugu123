@@ -8,25 +8,24 @@
             <ul class="nav nav-tabs objRight col-xs-120 col-sm-120 col-md-40" role="tablist" style="border-bottom: none;">
                 <li role="presentation" class="active col-xs-60 col-sm-60 col-md-20"><a href="#introduction" aria-controls="introduction" role="tab" data-toggle="tab">详情</a></li>
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#specifParam" aria-controls="specifParam" role="tab" data-toggle="tab">参数</a></li>
-                <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#evaluation" aria-controls="evaluation" role="tab" data-toggle="tab">组合</a></li>
-                <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#evaluation" aria-controls="evaluation" role="tab" data-toggle="tab">配件</a></li>
+                <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#group" aria-controls="group" role="tab" data-toggle="tab">组合</a></li>
+                <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#parts" aria-controls="parts" role="tab" data-toggle="tab">配件</a></li>
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#evaluation" aria-controls="evaluation" role="tab" data-toggle="tab">评价</a></li>
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#suport" aria-controls="surport" role="tab" data-toggle="tab">咨询</a></li>
             </ul>
             <div class="col-sm-120 col-md-10 text-right">
                 <!-- JiaThis Button BEGIN -->
-                <div class="jiathis_style_32x32">                    
+                <div class="jiathis_style_32x32">
                     <a class="jiathis_button_weixin"></a>
-                    <a class="jiathis_button_tsina"></a>                     
+                    <a class="jiathis_button_tsina"></a>
                 </div>
                 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
                 <!-- JiaThis Button END -->
-             
             </div>
         </div>
         <div class="clearfix"></div>
         <div class="tab-content ">
-            <!-- 商品介绍 -->
+            <!-- 详情 -->
             <div role="tabpanel" class="tab-pane active" id="introduction">
                 <!-- 产品灯箱 大图 -->
                 <div class="include-productImgList container-fluid"></div>
@@ -68,9 +67,13 @@
                     </div>
                 </div>
             </div>
-            <!-- 规格参数 -->
-            <div role="tabpanel" class="tab-pane" id="specifParam">..规格参数.</div>
-            <!-- 商品评价 -->
+            <!-- 参数 -->
+            <div role="tabpanel" class="tab-pane" id="specifParam">..参数.</div>
+            <!-- 组合 -->
+            <div role="tabpanel" class="tab-pane" id="group">..组合.</div>
+            <!-- 配件 -->
+            <div role="tabpanel" class="tab-pane" id="parts">..配件.</div>
+            <!-- 评价 -->
             <div role="tabpanel" class="tab-pane" id="evaluation">
                 <ul id="headNav" class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#eva_all" aria-controls="eva_all" role="tab" data-toggle="tab">全部评价</a></li>
@@ -81,8 +84,28 @@
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="eva_all">
-                        <div class="content">
-                            ..全部
+                        <div class="contentContainer container-fluid">
+                            <div class="row hidden-xs hidden-sm contenthead">
+                                <div class="col-md-60 text-center">
+                                    评价心得
+                                </div>
+                                <div class="col-md-20 text-center">
+                                    顾客满意度
+                                </div>
+                                <div class="col-md-20 text-center">
+                                    购买信息
+                                </div>
+                                <div class="col-md-20 text-center">
+                                    评论者
+                                </div>
+                            </div>
+
+                            <!-- 内容 参看模版 pro_eva_content -->
+
+                        </div>
+
+                        <div class="row text-center">
+                            <a class="btn_eva_more" href="javascript:void(0);">加载后10条评论</a> 
                         </div>
                         <!-- <div class="mypagecontroller">
                             <a id='firstBtn' class="firstBtn" style="cursor: default; color: gray;" href="javascript:void(0)">首页</a>
@@ -96,7 +119,7 @@
                         <div class="content">
                             .好评.
                         </div>.
-                       <!--  <div class="mypagecontroller">
+                        <!--  <div class="mypagecontroller">
                             <a id='firstBtn1' class="firstBtn" style="cursor: default; color: gray;" href="javascript:void(0)">首页</a>
                             <a id='preBtn1' class="preBtn" style="cursor: default; color: gray;" href="javascript:void(0)">上一页</a>
                             <label id='pageText1'></label>
@@ -107,12 +130,12 @@
                     <div role="tabpanel" class="tab-pane" id="eva_b">
                         ..中评
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="eva_c">..差评.</div>
+                    <div role="tabpanel" class="tab-pane" id="eva_c">..暂无评论..</div>
                     <div role="tabpanel" class="tab-pane" id="eva_s">..有图片的评价.</div>
                 </div>
             </div>
-            <!-- 售后保障 -->
-            <div role="tabpanel" class="tab-pane" id="suport">..售后保障.</div>
+            <!-- 咨询 -->
+            <div role="tabpanel" class="tab-pane" id="suport">..咨询.</div>
         </div>
     </div>
 </div>
