@@ -104,8 +104,8 @@
 
                         </div>
 
-                        <div class="row text-center">
-                            <a class="btn_eva_more" href="javascript:void(0);">加载后10条评论</a> 
+                        <div class="row text-center ctn_eva_more">
+                            <a class="btn_eva_more"  href="javascript:void(0);">加载后10条评论</a> 
                         </div>
                         <!-- <div class="mypagecontroller">
                             <a id='firstBtn' class="firstBtn" style="cursor: default; color: gray;" href="javascript:void(0)">首页</a>
