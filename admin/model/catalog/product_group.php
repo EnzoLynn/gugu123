@@ -11,7 +11,7 @@ class ModelCatalogProductGroup extends Model
     {
         $product_group = array(
             'group_name' => $data['group_name'],
-            'option_ids' => $data['option_ids']
+            'option_value_ids' => $data['option_value_ids']
         );
         $this->db_ci->insert('product_group', $product_group);
 
@@ -22,7 +22,7 @@ class ModelCatalogProductGroup extends Model
     {
         $product_group = array(
             'group_name' => $data['group_name'],
-            'option_ids' => $data['option_ids']
+            'option_value_ids' => $data['option_value_ids']
         );
         $this->db_ci->where('group_id', $group_id);
         $this->db_ci->update('product_group', $product_group);
@@ -72,5 +72,47 @@ class ModelCatalogProductGroup extends Model
 
         $product_group['group_name'] = $product_group['group_name'] . '_copy';
         return $this->addProductGroup($product_group);
+    }
+
+
+    public function addProductGroupItem($data)
+    {
+        $product_group_item = array(
+            'group_id' => $data['group_id'],
+            'option_value_ids' => $data['option_value_ids'],
+            'title' => $data['title'],
+            'product_id' => $data['product_id']
+        );
+        $this->db_ci->insert('product_group_item', $product_group_item);
+
+        return $this->db_ci->insert_id();
+    }
+
+    public function editProductGroupItem($data)
+    {
+        $ci = $this->db_ci;
+        $ci->where('group_id', $data['group_id']);
+        $ci->where('option_value_ids', $data['option_value_ids']);
+        $ci->from('product_group_item');
+        $count = $ci->count_all_results();
+        if($count == 0) {
+            $this->addProductGroupItem($data);
+        } else {
+            $product_group_item = array(
+                'title' => $data['title'],
+                'product_id' => $data['product_id']
+            );
+
+            $ci->where('group_id', $data['group_id']);
+            $ci->where('option_value_ids', $data['option_value_ids']);
+            $ci->update('product_group_item', $product_group_item);
+        }
+    }
+
+    public function getProductGroupItem($group_id)
+    {
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_group_item WHERE group_id = '" . (int)$group_id . "'");
+
+        return $query->rows;
     }
 }

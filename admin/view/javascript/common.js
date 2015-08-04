@@ -173,7 +173,7 @@ $(document).ready(function() {
 		
 		$(element).popover('show');
 
-        if($(element).attr("directory") == '') {
+        if(typeof($(element).attr("directory"))=="undefined" || $(element).attr("directory")==undefined || $(element).attr("directory") == '') {
             var ajax_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
         }else{
             var ajax_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&directory=' + $(element).attr("directory") + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');

@@ -198,4 +198,27 @@ class ModelCatalogOption extends Model {
 
 		return $query->row['total'];
 	}
+
+    /**
+     * 周辉改进
+     * 通过GroupName来返回结果
+     */
+    public function getOptionValuesByOptionName($data) {
+        if (empty($data['filter_name'])) {
+            return [];
+        }
+
+        $sql = "SELECT ov.*, ovd.language_id, ovd.`name`, (SELECT name FROM " . DB_PREFIX . "option_description od WHERE ov.option_id = od.option_id AND od.language_id = 1) AS `group`,
+(SELECT type FROM " . DB_PREFIX . "option o WHERE o.option_id = ov.option_id) AS `type`
+FROM " . DB_PREFIX . "option_value ov LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE ovd.language_id = 1 AND ov.option_id =
+(SELECT od.option_id
+FROM " . DB_PREFIX . "option_description od
+WHERE od.language_id = '1' AND od.`name` LIKE '%" . $this->db->escape($data['filter_name']) ."%')";
+
+        $sql .= " ORDER BY ov.sort_order ASC";
+
+        $query = $this->db->query($sql);
+
+        return $query->rows;
+    }
 }

@@ -355,19 +355,6 @@
                   </div>
                 </div>
               </div>
-              <!--<div class="form-group">
-                <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
-                  <div id="product-filter" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_filters as $product_filter) { ?>
-                    <div id="product-filter<?php echo $product_filter['filter_id']; ?>" class="col-xs-3"><i class="fa fa-minus-circle"></i> <?php echo $product_filter['name']; ?>
-                      <input type="hidden" name="product_filter[]" value="<?php echo $product_filter['filter_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>-->
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
                 <div class="col-sm-10">
@@ -538,6 +525,31 @@
                           </select>
                         </div>
                       </div>
+
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-option-value-id<?php echo $option_row; ?>"><?php echo $entry_is_default; ?></label>
+                        <div class="col-sm-10">
+                          <select name="product_option[<?php echo $option_row; ?>][option_value_id]" id="input-option-value-id<?php echo $option_row; ?>" class="form-control">
+                            <option value="0"><?php echo $text_none; ?></option>
+                            <?php if (isset($option_values[$product_option['option_id']])) { ?>
+                            <?php foreach ($option_values[$product_option['option_id']] as $option_value) { ?>
+                            <option value="<?php echo $option_value['option_value_id']; ?>"><?php echo $option_value['name']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                          </select>
+                          <script>
+                            $("#input-option-value-id<?php echo $option_row; ?>").val("<?php echo $product_option['option_value_id']; ?>");
+                          </script>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-option-sort-order<?php echo $option_row; ?>"><?php echo $entry_sort_order; ?></label>
+                        <div class="col-sm-10">
+                          <input type="text" name="product_option[<?php echo $option_row; ?>][sort_order]" value="<?php echo $product_option['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" />
+                        </div>
+                      </div>
+
                       <?php if ($product_option['type'] == 'text') { ?>
                       <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-value<?php echo $option_row; ?>"><?php echo $entry_option_value; ?></label>
@@ -604,6 +616,7 @@
                           <thead>
                             <tr>
                               <td class="text-left"><?php echo $entry_option_value; ?></td>
+                              <td class="text-left"><?php echo $entry_link_product_id; ?></td>
                               <td class="text-right"><?php echo $entry_quantity; ?></td>
                               <td class="text-left"><?php echo $entry_subtract; ?></td>
                               <td class="text-right"><?php echo $entry_price; ?></td>
@@ -626,7 +639,13 @@
                                   <?php } ?>
                                   <?php } ?>
                                 </select>
-                                <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" /></td>
+                                <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" />
+                              </td>
+
+                              <td class="text-right">
+                                <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][link_product_id]" value="<?php echo $product_option_value['link_product_id']; ?>" placeholder="<?php echo $entry_link_product_id; ?>" class="form-control" />
+                              </td>
+
                               <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
                               <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
                                   <?php if ($product_option_value['subtract']) { ?>
@@ -683,7 +702,7 @@
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td colspan="6"></td>
+                              <td colspan="7"></td>
                               <td class="text-left"><button type="button" onclick="addOptionValue('<?php echo $option_row; ?>');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
                             </tr>
                           </tfoot>
@@ -1021,7 +1040,6 @@ $('input[name=\'master_category\']').autocomplete({
       $('input[name="master_category_id"]').val(item['value']);
   }
 });
-
 // Category
 $('input[name=\'category\']').autocomplete({
 	'source': function(request, response) {
@@ -1050,35 +1068,6 @@ $('input[name=\'category\']').autocomplete({
 $('#product-category').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
-
-// Filter
-//$('input[name=\'filter\']').autocomplete({
-//	'source': function(request, response) {
-//		$.ajax({
-//			url: 'index.php?route=catalog/filter/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
-//			dataType: 'json',
-//			success: function(json) {
-//				response($.map(json, function(item) {
-//					return {
-//						label: item['name'],
-//						value: item['filter_id']
-//					}
-//				}));
-//			}
-//		});
-//	},
-//	'select': function(item) {
-//		$('input[name=\'filter\']').val('');
-//
-//		$('#product-filter' + item['value']).remove();
-//
-//		$('#product-filter').append('<div id="product-filter' + item['value'] + '" class="col-xs-3"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_filter[]" value="' + item['value'] + '" /></div>');
-//	}
-//});
-//
-//$('#product-filter').delegate('.fa-minus-circle', 'click', function() {
-//	$(this).parent().remove();
-//});
 
 // Downloads
 $('input[name=\'download\']').autocomplete({
@@ -1347,6 +1336,7 @@ $('input[name=\'option\']').autocomplete({
 			html += '  	 <thead>'; 
 			html += '      <tr>';
 			html += '        <td class="text-left"><?php echo $entry_option_value; ?></td>';
+      html += '        <td class="text-left"><?php echo $entry_link_product_id; ?></td>';
 			html += '        <td class="text-right"><?php echo $entry_quantity; ?></td>';
 			html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
 			html += '        <td class="text-right"><?php echo $entry_price; ?></td>';
@@ -1359,7 +1349,7 @@ $('input[name=\'option\']').autocomplete({
 			html += '    </tbody>';
 			html += '    <tfoot>';
 			html += '      <tr>';
-			html += '        <td colspan="6"></td>';
+			html += '        <td colspan="7"></td>';
 			html += '        <td class="text-left"><button type="button" onclick="addOptionValue(' + option_row + ');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>';
 			html += '      </tr>';
 			html += '    </tfoot>';
@@ -1407,6 +1397,7 @@ function addOptionValue(option_row) {
 	html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
 	html += $('#option-values' + option_row).html();
 	html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" /></td>';
+  html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][link_product_id]" value="" placeholder="<?php echo $entry_link_product_id; ?>" class="form-control" /></td>';
 	html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][quantity]" value="" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>'; 
 	html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" class="form-control">';
 	html += '    <option value="1"><?php echo $text_yes; ?></option>';

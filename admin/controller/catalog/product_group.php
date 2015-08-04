@@ -56,7 +56,7 @@ class ControllerCatalogProductGroup extends Controller {
             $data = array();
             $temp = $this->request->post;
             $data['group_name'] = $temp['group_name'];
-            $data['option_ids'] = implode(',', $temp['option_id']);
+            $data['option_value_ids'] = implode(',', $temp['option_value']);
 
             $this->model_catalog_product_group->editProductGroup($this->request->get['group_id'], $data);
 
@@ -133,6 +133,7 @@ class ControllerCatalogProductGroup extends Controller {
                 'group_id'  => $result['group_id'],
                 'group_name'=> $result['group_name'],
                 'edit'               => $this->url->link('catalog/product_group/edit', 'token=' . $this->session->data['token'] . '&group_id=' . $result['group_id'] . $url, 'SSL'),
+                'list_item'           => $this->url->link('catalog/product_group_item', 'token=' . $this->session->data['token'] . '&group_id=' . $result['group_id'] . $url, 'SSL'),
                 'delete'               => $this->url->link('catalog/product_group/delete', 'token=' . $this->session->data['token'] . '&group_id=' . $result['group_id'] . $url, 'SSL')
             );
         }
@@ -188,7 +189,7 @@ class ControllerCatalogProductGroup extends Controller {
         $data['text_form'] = !isset($this->request->get['group_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 
         $data['entry_group_name'] = $this->language->get('entry_group_name');
-        $data['entry_option_ids'] = $this->language->get('entry_option_ids');
+        $data['entry_option_value_ids'] = $this->language->get('entry_option_value_ids');
 
         $data['button_save'] = $this->language->get('button_save');
         $data['button_cancel'] = $this->language->get('button_cancel');
@@ -238,20 +239,31 @@ class ControllerCatalogProductGroup extends Controller {
         // Options
         $this->load->model('catalog/option');
 
-        $product_option_ids = array();
-        if (isset($this->request->post['product_option_id'])) {
-            $product_option_ids = $this->request->post['product_option_id'];
-        } elseif (isset($this->request->get['group_id']) && !empty($data['product_group_info']['product_option_id'])) {
-            $product_option_ids = explode(',', $data['product_group_info']['product_option_ids']);
+        $option_values_ids = array();
+        if (isset($this->request->post['option_value_id'])) {
+            $option_values_ids = $this->request->post['option_value_id'];
+        } elseif (isset($this->request->get['group_id']) && !empty($data['product_group_info']['option_value_ids'])) {
+            $option_values_ids = explode(',', $data['product_group_info']['option_value_ids']);
         }
 
-        $data['product_option_ids'] = $product_option_ids;
+        $data['option_values'] = array();
 
-        $temp = array();
-        $temp['type'] = array(
-            'image', 'radio'
-        );
-        $data['product_options'] = $this->model_catalog_option->getOptions($temp);
+        foreach ($option_values_ids as $option_values_id) {
+            $option_value_info = $this->model_catalog_option->getOptionValue($option_values_id);
+
+            $option_info = $this->model_catalog_option->getOption($option_value_info['option_id']);
+
+            if ($option_value_info) {
+                $data['option_values'][] = array(
+                    'option_value_id' => $option_value_info['option_value_id'],
+                    'name'      => $option_info['name'] . ' &gt; ' . $option_value_info['name']
+                );
+            }
+        }
+
+
+
+        $data['option_values_ids'] = $option_values_ids;
 
         $this->load->model('localisation/language');
 

@@ -34,16 +34,16 @@
           </div>
 
           <div class="form-group required">
-            <label class="col-sm-2 control-label"><?php echo $entry_option_ids; ?></label>
-            <div class="col-sm-10 form-inline">
-              <?php foreach ($product_options as $product_option) { ?>
-              <div class="checkbox" style="margin-left: 10px;">
-                <label>
-                  <input type="checkbox" name="product_option_id[]" value="<?php echo $product_option['option_id'];?>" <?php if(in_array($product_option['option_id'], $product_option_ids)){ echo 'checked';} ?>> <?php echo $product_option['name'];?>
-                </label>
+            <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip"><?php echo $entry_option_value_ids; ?></span></label>
+            <div class="col-sm-10">
+              <input type="text" name="option_value" value="" placeholder="<?php echo $entry_option_value_ids; ?>" id="input-option-value" class="form-control" />
+              <div id="option_value" class="well well-sm" style="height: 220px; overflow: auto;">
+                <?php foreach ($option_values as $option_value) { ?>
+                <div id="option_value<?php echo $option_value['option_value_id']; ?>" class="col-md-3"><i class="fa fa-minus-circle"></i> <?php echo $option_value['name']; ?>
+                  <input type="hidden" name="option_value[]" value="<?php echo $option_value['option_value_id']; ?>" />
+                </div>
+                <?php } ?>
               </div>
-              <?php } ?>
-
             </div>
           </div>
 
@@ -52,4 +52,33 @@
     </div>
   </div>
 </div>
+<script type="text/javascript"><!--
+  $('input[name=\'option_value\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=catalog/option/autocomplete_option_name&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+        dataType: 'json',
+        success: function(json) {
+          response($.map(json, function(item) {
+            return {
+              label: item['group'] + ' &gt; ' + item['name'],
+              value: item['option_value_id']
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      //$('input[name=\'filter\']').val('');
+
+      $('#option_value' + item['value']).remove();
+
+      $('#option_value').append('<div id="option_value' + item['value'] + '" class="col-xs-3"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="option_value[]" value="' + item['value'] + '" /></div>');
+    }
+  });
+
+  $('#option_value').delegate('.fa-minus-circle', 'click', function() {
+    $(this).parent().remove();
+  });
+  //--></script>
 <?php echo $footer; ?>

@@ -23,7 +23,7 @@ $_['column_attribute_num']     = '属性数目';
 
 // Entry
 $_['entry_group_name']        = '商品组名称';
-$_['entry_option_ids']        = '选项';
+$_['entry_option_value_ids']        = '选项';
 
 
 // Error

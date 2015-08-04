@@ -54,6 +54,7 @@
                 <td class="text-left"><?php echo $product_group['group_name']; ?></td>
                 <td class="text-right">
                   <a href="<?php echo $product_group['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                  <a href="<?php echo $product_group['list_item']; ?>" data-toggle="tooltip" class="btn btn-success"><i class="fa fa-list"></i></a>
                   <a onclick="deleteByConfirm('<?php echo $product_group['delete']; ?>', '<?php echo $text_confirm; ?>')" href="javascript:void(0)" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                 </td>
               </tr>
