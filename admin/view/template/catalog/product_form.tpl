@@ -527,7 +527,7 @@
                       </div>
 
                       <div class="form-group">
-                        <label class="col-sm-2 control-label" for="input-option-value-id<?php echo $option_row; ?>"><?php echo $entry_is_default; ?></label>
+                        <label class="col-sm-2 control-label" for="input-option-value-id<?php echo $option_row; ?>"><?php echo $entry_default_option_value; ?></label>
                         <div class="col-sm-10">
                           <select name="product_option[<?php echo $option_row; ?>][option_value_id]" id="input-option-value-id<?php echo $option_row; ?>" class="form-control">
                             <option value="0"><?php echo $text_none; ?></option>
@@ -616,7 +616,6 @@
                           <thead>
                             <tr>
                               <td class="text-left"><?php echo $entry_option_value; ?></td>
-                              <td class="text-left"><?php echo $entry_link_product_id; ?></td>
                               <td class="text-right"><?php echo $entry_quantity; ?></td>
                               <td class="text-left"><?php echo $entry_subtract; ?></td>
                               <td class="text-right"><?php echo $entry_price; ?></td>
@@ -640,10 +639,6 @@
                                   <?php } ?>
                                 </select>
                                 <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" />
-                              </td>
-
-                              <td class="text-right">
-                                <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][link_product_id]" value="<?php echo $product_option_value['link_product_id']; ?>" placeholder="<?php echo $entry_link_product_id; ?>" class="form-control" />
                               </td>
 
                               <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
@@ -702,7 +697,7 @@
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td colspan="7"></td>
+                              <td colspan="6"></td>
                               <td class="text-left"><button type="button" onclick="addOptionValue('<?php echo $option_row; ?>');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
                             </tr>
                           </tfoot>
@@ -989,6 +984,7 @@ $('#input-description<?php echo $language['language_id']; ?>').summernote({heigh
   <script type="text/javascript"><!--
 // Manufacturer
 $('input[name=\'manufacturer\']').autocomplete({
+  'multiple' : false,
 	'source': function(request, response) {
 		$.ajax({
 			url: 'index.php?route=catalog/manufacturer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
@@ -1011,11 +1007,12 @@ $('input[name=\'manufacturer\']').autocomplete({
 	'select': function(item) {
 		$('input[name=\'manufacturer\']').val(item['label']);
 		$('input[name=\'manufacturer_id\']').val(item['value']);
-	}	
+	}
 });
 
 // Master Category
 $('input[name=\'master_category\']').autocomplete({
+  'multiple' : false,
   'source': function(request, response) {
       $.ajax({
           url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
@@ -1255,7 +1252,8 @@ $("#product_type").change(function() {
   <script type="text/javascript"><!--	
 var option_row = <?php echo $option_row; ?>;
 
-$('input[name=\'option\']').autocomplete({
+$('input[name="option"]').autocomplete({
+  'multiple' : false,
 	'source': function(request, response) {
 		$.ajax({
 			url: 'index.php?route=catalog/option/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
@@ -1287,7 +1285,25 @@ $('input[name=\'option\']').autocomplete({
 		html += '	      <option value="0"><?php echo $text_no; ?></option>';
 		html += '	  </select></div>';
 		html += '	</div>';
-		
+
+    html += '	<div class="form-group">';
+    html += '	  <label class="col-sm-2 control-label" for="input-option-value-id' + option_row + '"><?php echo $entry_default_option_value; ?></label>';
+    html += '	  <div class="col-sm-10"><select name="product_option[' + option_row + '][option_value_id]" id="input-option-value-id' + option_row + '" class="form-control">';
+    html += '   <option value="0"><?php echo $text_none; ?></option>';
+    for (i = 0; i < item['option_value'].length; i++) {
+      html += '  <option value="' + item['option_value'][i]['option_value_id'] + '">' + item['option_value'][i]['name'] + '</option>';
+    }
+    html += '	  </select></div>';
+    html += '	</div>';
+
+    html += '	<div class="form-group">';
+    html += '	  <label class="col-sm-2 control-label" for="input-option-sort-order' + option_row + '"><?php echo $entry_sort_order; ?></label>';
+    html += '	  <div class="col-sm-10">';
+    html += '   <input type="text" name="product_option[' + option_row + '][sort_order]" id="input-option-sort-order' + option_row + '" value="0" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" />';
+    html += '	  </div>';
+    html += '	</div>';
+
+
 		if (item['type'] == 'text') {
 			html += '	<div class="form-group">';
 			html += '	  <label class="col-sm-2 control-label" for="input-value' + option_row + '"><?php echo $entry_option_value; ?></label>';
@@ -1336,7 +1352,6 @@ $('input[name=\'option\']').autocomplete({
 			html += '  	 <thead>'; 
 			html += '      <tr>';
 			html += '        <td class="text-left"><?php echo $entry_option_value; ?></td>';
-      html += '        <td class="text-left"><?php echo $entry_link_product_id; ?></td>';
 			html += '        <td class="text-right"><?php echo $entry_quantity; ?></td>';
 			html += '        <td class="text-left"><?php echo $entry_subtract; ?></td>';
 			html += '        <td class="text-right"><?php echo $entry_price; ?></td>';
@@ -1349,7 +1364,7 @@ $('input[name=\'option\']').autocomplete({
 			html += '    </tbody>';
 			html += '    <tfoot>';
 			html += '      <tr>';
-			html += '        <td colspan="7"></td>';
+			html += '        <td colspan="6"></td>';
 			html += '        <td class="text-left"><button type="button" onclick="addOptionValue(' + option_row + ');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>';
 			html += '      </tr>';
 			html += '    </tfoot>';
@@ -1363,7 +1378,7 @@ $('input[name=\'option\']').autocomplete({
             }
 
             html += '  </select>';	
-			html += '</div>';	
+			html += '</div>';
 		}
 		
 		$('#tab-option .tab-content').append(html);
@@ -1386,6 +1401,8 @@ $('input[name=\'option\']').autocomplete({
 		});
 				
 		option_row++;
+
+    $('input[name="option"]').val('');
 	}	
 });
 //--></script> 
@@ -1397,7 +1414,6 @@ function addOptionValue(option_row) {
 	html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
 	html += $('#option-values' + option_row).html();
 	html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" /></td>';
-  html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][link_product_id]" value="" placeholder="<?php echo $entry_link_product_id; ?>" class="form-control" /></td>';
 	html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][quantity]" value="" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>'; 
 	html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" class="form-control">';
 	html += '    <option value="1"><?php echo $text_yes; ?></option>';

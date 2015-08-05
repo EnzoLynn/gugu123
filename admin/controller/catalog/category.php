@@ -179,7 +179,7 @@ class ControllerCatalogCategory extends Controller {
 
 		$category_total = $this->model_catalog_category->getTotalCategories();
 
-		$results = $this->model_catalog_category->getCategories($filter_data);
+		$results = $this->model_catalog_category->getAllCategories($filter_data);
 
 		foreach ($results as $result) {
 			$data['categories'][] = array(

@@ -616,8 +616,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_text'] = $this->language->get('entry_text');
 		$data['entry_option'] = $this->language->get('entry_option');
 		$data['entry_option_value'] = $this->language->get('entry_option_value');
-        $data['entry_is_default'] = $this->language->get('entry_is_default');
-        $data['entry_link_product_id'] = $this->language->get('entry_link_product_id');
+        $data['entry_default_option_value'] = $this->language->get('entry_default_option_value');
 		$data['entry_required'] = $this->language->get('entry_required');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$data['entry_status'] = $this->language->get('entry_status');
@@ -1188,8 +1187,6 @@ class ControllerCatalogProduct extends Controller {
 					$product_option_value_data[] = array(
 						'product_option_value_id' => $product_option_value['product_option_value_id'],
 						'option_value_id'         => $product_option_value['option_value_id'],
-                        'link_product_id'       => $product_option_value['link_product_id'],
-                        'link_product_name'     => $product_option_value['link_product_name'],
 						'quantity'                => $product_option_value['quantity'],
 						'subtract'                => $product_option_value['subtract'],
 						'price'                   => $product_option_value['price'],
