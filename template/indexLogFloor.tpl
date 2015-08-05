@@ -1,34 +1,36 @@
-  <div class="menuHeader">
-            <div class="navbar-header">
-                <button type="button" class="catergroybtn navbar-toggle collapsed
+<div class="menuHeader">
+    <div class="navbar-header">
+        <button type="button" class="catergroybtn navbar-toggle collapsed
                  visible-sm-block visible-xs-block" style="border:solid 1px #ccc">
-                    <span class="sr-only">分类导航栏</span>
-                    <span style="background-color: #888888;" class="icon-bar"></span>
-                    <span style="background-color: #888888;" class="icon-bar"></span>
-                    <span style="background-color: #888888;" class="icon-bar"></span>
-                </button>
-            </div>
-        </div>
-
-
+            <span class="sr-only">分类导航栏</span>
+            <span style="background-color: #888888;" class="icon-bar"></span>
+            <span style="background-color: #888888;" class="icon-bar"></span>
+            <span style="background-color: #888888;" class="icon-bar"></span>
+        </button>
+    </div>
+</div>
 <div class="row logFloor">
     <div class="col-sm-120 col-xs-120 col-md-20">
-        <a href="#"><img class="img-responsive" src="picBase/log.png" alt="" /></a>      
+        <a href="#"><img class="img-responsive" src="picBase/log.png" alt="" /></a>
     </div>
     <div class="col-md-100  hidden-sm hidden-xs">
         <div class="row ">
             <div class="col-md-20"></div>
             <div class="cartGroup col-md-70">
                 <div class="left col-md-70">
-                    <input class="serInput"  type="text" name="serInput" placeholder="Marshall暑期特惠" value="">
+                    <input class="serInput" type="text" name="serInput" placeholder="Marshall暑期特惠" value="">
                 </div>
                 <div class="col-md-50">
                     <input class="serBtn" type="image" src="picBase/pics/search btn.png" onmousemove="this.src='picBase/pics/search btn.png'" onmouseout="this.src='picBase/pics/search btn.png'" />
                 </div>
             </div>
             <div class="col-md-30">
-                <img class="cartImg" src='picBase/pics/cart.png' width="23px" height="20px">
-                <span class="cartBtn" style="margin-left: 5px;font-size: 14px;">购物车</span>
+                <div class="joinCartGrop text-right">
+                    <div class="joinc">
+                        <img class="cartImg" src='picBase/pics/cart.png'>
+                        <span class="cartBtn">购物车</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="cate-ul-container">
