@@ -1,9 +1,8 @@
-<div class="bannerPlayContainer row ">
-    <div class="flexsidediv"></div>
-    <div class="tFocus" style="width:100%;max-width: 1200px;">
+<div class="bannerPlayContainer row "> 
+    <div class="tFocus col-md-120" style="max-width: 1200px;">
         <div class="prev" id="prev"></div>
         <div class="next" id="next"></div>
-        <ul class="tFocus-pic">
+        <ul class="tFocus-pic col-md-120 row">
             <li  data-color="#b8b8b8">
                 <a href="#"><img class="img-responsive" lazy_src="picBase/banner/1.jpg" alt="" /></a>
             </li>
@@ -23,7 +22,7 @@
                 <a href="#"><img class="img-responsive"  lazy_src="picBase/banner/1.jpg" alt="" /></a>
             </li>
         </ul>
-        <div class="tFocusBtn col-md-70 col-md-offset-50   col-lg-offset-50">
+        <div class="tFocusBtn col-md-70 col-xs-offset-10  col-sm-offset-40 col-md-offset-50   col-lg-offset-50">
             <a href="javascript:void(0);" class="tFocus-leftbtn">上一张</a>
             <div class="tFocus-btn">
                 <ul>
@@ -38,6 +37,5 @@
             <a href="javascript:void(0);" class="tFocus-rightbtn">下一张</a>
         </div>
     </div>
-    <!--tFocus end-->
-     <div class="flexsidediv"></div>
+    <!--tFocus end--> 
 </div>
