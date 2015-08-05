@@ -203,6 +203,9 @@
               <label class="control-label"><?php echo $option['name']; ?></label>
               <div id="input-option<?php echo $option['product_option_id']; ?>">
                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                <?php if ($option_value['link_product_id'] > 0) { ?>
+                  <a href="<?php echo $option_value['link_product_href']; ?>"><?php echo $option_value['name']; ?></a>
+                <?php }else{ ?>
                 <div class="radio">
                   <label>
                     <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" <?php if($option_value['option_value_id']==$option['option_value_id']) { echo 'checked'; } ?> />
@@ -212,6 +215,7 @@
                     <?php } ?>
                   </label>
                 </div>
+                <?php } ?>
                 <?php } ?>
               </div>
             </div>
@@ -239,6 +243,12 @@
               <label class="control-label"><?php echo $option['name']; ?></label>
               <div id="input-option<?php echo $option['product_option_id']; ?>">
                 <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                <?php if ($option_value['link_product_id'] > 0) { ?>
+                <div <?php if($option_value['option_value_id']==$option['option_value_id']) { echo 'style="border:1px solid #f60;"'; } ?> >
+                  <!--<input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" <?php if($option_value['option_value_id']==$option['option_value_id']) { echo 'checked'; } ?>  style="display:none"/>-->
+                  <label><a href="<?php echo $option_value['link_product_href']; ?>"><img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /><?php echo $option_value['name']; ?></a></label>
+                </div>
+                <?php }else{ ?>
                 <div class="radio">
                   <label>
                     <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" <?php if($option_value['option_value_id']==$option['option_value_id']) { echo 'checked'; } ?>/>
@@ -248,6 +258,7 @@
                     <?php } ?>
                   </label>
                 </div>
+                <?php } ?>
                 <?php } ?>
               </div>
             </div>

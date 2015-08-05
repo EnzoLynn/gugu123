@@ -30,6 +30,7 @@ $_['column_action']       = '操作';
 $_['entry_name']          = '选项名称';
 $_['entry_type']          = '类型';
 $_['entry_option_value']  = '选项值';
+$_['entry_link_product_id']  = '关联商品';
 $_['entry_image']         = '图像';
 $_['entry_sort_order']    = '排序';
 

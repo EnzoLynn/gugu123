@@ -312,9 +312,11 @@ class ControllerProductProduct extends Controller {
 							'product_option_value_id' => $option_value['product_option_value_id'],
 							'option_value_id'         => $option_value['option_value_id'],
 							'name'                    => $option_value['name'],
-							'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
+							'image'                   => $this->model_tool_image->resize($option_value['image'], 25, 25),
 							'price'                   => $price,
-							'price_prefix'            => $option_value['price_prefix']
+							'price_prefix'            => $option_value['price_prefix'],
+                            'link_product_id'        => $option_value['link_product_id'],
+                            'link_product_href'        => $this->url->link('product/product', 'product_id=' . $option_value['link_product_id'])
 						);
 					}
 				}
@@ -330,8 +332,6 @@ class ControllerProductProduct extends Controller {
 					'required'             => $option['required']
 				);
 			}
-
-            //echo '<pre>';print_r($data['options']);exit;
 
 			if ($product_info['minimum']) {
 				$data['minimum'] = $product_info['minimum'];

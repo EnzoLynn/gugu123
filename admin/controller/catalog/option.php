@@ -52,6 +52,7 @@ class ControllerCatalogOption extends Controller {
 		$this->load->model('catalog/option');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+
 			$this->model_catalog_option->editOption($this->request->get['option_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -279,6 +280,7 @@ class ControllerCatalogOption extends Controller {
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_type'] = $this->language->get('entry_type');
 		$data['entry_option_value'] = $this->language->get('entry_option_value');
+        $data['entry_link_product_id'] = $this->language->get('entry_link_product_id');
 		$data['entry_image'] = $this->language->get('entry_image');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 
@@ -385,6 +387,8 @@ class ControllerCatalogOption extends Controller {
 
 		$data['option_values'] = array();
 
+        $this->load->model('catalog/product');
+
 		foreach ($option_values as $option_value) {
 			if (is_file(DIR_IMAGE . $option_value['image'])) {
 				$image = $option_value['image'];
@@ -394,12 +398,22 @@ class ControllerCatalogOption extends Controller {
 				$thumb = 'no_image.png';
 			}
 
+
+            $temp_product_name = '';
+            if($option_value['link_product_id'] > 0) {
+                $temp_product = $this->model_catalog_product->getProduct($option_value['link_product_id']);
+                $temp_product_name = $temp_product['name'];
+            }
+
+
 			$data['option_values'][] = array(
 				'option_value_id'          => $option_value['option_value_id'],
 				'option_value_description' => $option_value['option_value_description'],
 				'image'                    => $image,
 				'thumb'                    => $this->model_tool_image->resize($thumb, 100, 100),
-				'sort_order'               => $option_value['sort_order']
+				'sort_order'               => $option_value['sort_order'],
+                'link_product_id'         => $option_value['link_product_id'],
+                'link_product_name'       => $temp_product_name
 			);
 		}
 
