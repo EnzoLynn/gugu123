@@ -129,7 +129,7 @@ function addImage() {
   html += '  <td class="text-left"><input type="text" name="banner_image[' + image_row + '][background]" value="" placeholder="<?php echo $entry_background; ?>" class="form-control" /></td>';
 	html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="banner_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
   html += '  <td class="text-left"><a href="" id="thumb-image2' + image_row + '" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="banner_image[' + image_row + '][image2]" value="" id="input-image2' + image_row + '" /></td>';
-	html += '  <td class="text-right"><input type="text" name="banner_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+	html += '  <td class="text-right"><input type="text" name="banner_image[' + image_row + '][sort_order]" value="0" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
 	html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row  + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 	html += '</tr>';
 	
