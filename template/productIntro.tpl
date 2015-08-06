@@ -5,7 +5,7 @@
                 <img class="productHome" src="../picBase/pics/productHome.png" alt="">
                 <label class="introTitle">DSL5c</label>
             </div>
-            <ul class="nav nav-tabs objRight col-xs-120 col-sm-120 col-md-40" role="tablist" style="border-bottom: none;">
+            <ul class="nav nav-tabs  col-xs-120 col-sm-120 col-md-40" role="tablist" style="border-bottom: none;">
                 <li role="presentation" class="active col-xs-60 col-sm-60 col-md-20"><a href="#introduction" aria-controls="introduction" role="tab" data-toggle="tab">详情</a></li>
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#specifParam" aria-controls="specifParam" role="tab" data-toggle="tab">参数</a></li>
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#group" aria-controls="group" role="tab" data-toggle="tab">组合</a></li>
@@ -13,14 +13,17 @@
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#evaluation" aria-controls="evaluation" role="tab" data-toggle="tab">评价</a></li>
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#suport" aria-controls="surport" role="tab" data-toggle="tab">咨询</a></li>
             </ul>
-            <div class="col-sm-120 col-md-10 text-right">
-                <!-- JiaThis Button BEGIN -->
-                <div class="jiathis_style_32x32">
-                    <a class="jiathis_button_weixin"></a>
-                    <a class="jiathis_button_tsina"></a>
+            <div class="share col-xs-120  col-sm-120 col-md-10 text-center">
+                分享<img src="../picBase/pics/share.png" alt="">
+                <div class="share-fdiv col-xs-offset-55 col-sm-offset-55 col-md-offset-30">
+                    <!-- JiaThis Button BEGIN -->
+                    <div class="jiathis_style">
+                        <a class="jiathis_button_tsina"></a>                        
+                        <a class="jiathis_button_weixin"></a>
+                    </div>
+                    <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+                    <!-- JiaThis Button END -->
                 </div>
-                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-                <!-- JiaThis Button END -->
             </div>
         </div>
         <div class="clearfix"></div>
@@ -99,13 +102,10 @@
                                     评论者
                                 </div>
                             </div>
-
                             <!-- 内容 参看模版 pro_eva_content -->
-
                         </div>
-
                         <div class="row text-center ctn_eva_more">
-                            <a class="btn_eva_more"  href="javascript:void(0);">加载后10条评论</a> 
+                            <a class="btn_eva_more" href="javascript:void(0);">加载后10条评论</a>
                         </div>
                         <!-- <div class="mypagecontroller">
                             <a id='firstBtn' class="firstBtn" style="cursor: default; color: gray;" href="javascript:void(0)">首页</a>

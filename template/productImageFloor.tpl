@@ -96,8 +96,15 @@
                 <span class="input-group-addon addon-control btn-default" controller="txtNum" data-limit="99" data-step="1">+</span>
             </div>
             <div class="objLeft">
-                <button type="button" class="btn btn-default joinCart">加入购物车</button>
-                <button type="button" class="btn btn-default attention">关注</button>
+                <button type="button" class="btn btn-default joinCart">加入购物车</button> 
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <img src="../picBase/pics/baohuan-detail.png" alt=""><label>15天包换</label>
+               
+                &nbsp; &nbsp; &nbsp;
+                <img src="../picBase/pics/promise-detail.png" alt=""><label>全国联保</label>
             </div>
         </div>
     </div>
