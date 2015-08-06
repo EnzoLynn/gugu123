@@ -60,5 +60,8 @@
                 2009-2014 gugu123.com 版权所有
             </div>
         </div>
+        <div class="row text-center">
+            <img src="../picBase/pics/bottom-belive.png" alt="">
+        </div>
     </div>
 </div>

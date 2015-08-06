@@ -14,12 +14,12 @@
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#suport" aria-controls="surport" role="tab" data-toggle="tab">咨询</a></li>
             </ul>
             <div class="share col-xs-120  col-sm-120 col-md-10 text-center">
-                分享<img src="../picBase/pics/share.png" alt="">
-                <div class="share-fdiv col-xs-offset-55 col-sm-offset-55 col-md-offset-30">
+                <div class="share-title text-center col-xs-120  col-sm-120 col-md-120">分享<img src="../picBase/pics/share.png" alt=""></div>
+                <div class="share-fdiv hidden  text-center col-xs-120  col-sm-120 col-md-120">
                     <!-- JiaThis Button BEGIN -->
                     <div class="jiathis_style">
-                        <a class="jiathis_button_tsina"></a>                        
-                        <a class="jiathis_button_weixin"></a>
+                        <a class="jiathis_button_tsina"></a>
+                        <a class="jiathis_button_weixin" style="float:right;"></a>
                     </div>
                     <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
                     <!-- JiaThis Button END -->
@@ -78,6 +78,17 @@
             <div role="tabpanel" class="tab-pane" id="parts">..配件.</div>
             <!-- 评价 -->
             <div role="tabpanel" class="tab-pane" id="evaluation">
+                <div class="row  eva-header">
+                    商品评价 买家印象
+                    <div style="background-color: gray;width: 200px;height:20px;">
+                        <div style="background-color: red;width: 84%;height:20px;"></div>
+                    </div>
+                    <br>
+                    <div style="background-color: gray;width: 200px;height:20px;">
+                        <div style="background-color: red;width: 16%;height:20px;"></div>
+                    </div>
+                </div>
+                <!-- 评价内容 -->
                 <ul id="headNav" class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#eva_all" aria-controls="eva_all" role="tab" data-toggle="tab">全部评价</a></li>
                     <li role="presentation"><a href="#eva_a" aria-controls="eva_a" role="tab" data-toggle="tab">好评</a></li>

@@ -12,7 +12,8 @@
         </div>
     </div>
     <div class="col-md-20 grade"> 
-        <div class="grade-star  {{grade}}"></div>
+        <!-- <div class="grade-star  {{grade}}"></div>  -->
+        <div class="eva-text">{{eva-text}}</div>
     </div>
     <div class="col-md-20 info text-center">
         {{info}}
