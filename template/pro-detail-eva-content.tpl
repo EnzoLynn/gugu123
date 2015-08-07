@@ -21,6 +21,6 @@
     <div class="col-md-20 owner text-center">
         {{owner}}
     </div>
-    <div class="col-md-120 praise"><a href="javascript:void(0);">赞{{#compare praise '!=' '0'}} ({{praise}}) {{/compare}}</a></div>
+    <div class="col-md-120 praise"><a href="javascript:void(0);">赞<span class="praise-num">{{#compare praise '!=' '0'}} ({{praise}}) {{/compare}}</span></a></div>
 </div>
 {{/each}}

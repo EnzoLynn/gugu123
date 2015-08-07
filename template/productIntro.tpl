@@ -2,7 +2,7 @@
     <div class="col-lg-120">
         <div class="row tab-title">
             <div class="col-sm-120 col-md-70 hidden-sm hidden-xs">
-                <img class="productHome" src="../picBase/pics/productHome.png" alt="">
+                <a href="#"><img class="productHome" src="../picBase/pics/productHome.png" alt=""></a>
                 <label class="introTitle">DSL5c</label>
             </div>
             <ul class="nav nav-tabs  col-xs-120 col-sm-120 col-md-40" role="tablist" style="border-bottom: none;">
