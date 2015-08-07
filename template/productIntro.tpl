@@ -79,19 +79,82 @@
             <!-- 评价 -->
             <div role="tabpanel" class="tab-pane" id="evaluation">
                 <div class="row  eva-header">
-                    商品评价 买家印象
-                    <div style="background-color: gray;width: 200px;height:20px;">
-                        <div style="background-color: red;width: 84%;height:20px;"></div>
+                    <div class="col-md-70">
+                        <div class="eva-title">
+                            商品评价
+                        </div>
+                        <div class="row">
+                            <div class="eva-rate-num col-md-40">
+                                <span class="rate-num">96</span>%
+                            </div>
+                            <div class=" col-md-80">
+                                <div class="eva-rate-dis clearfix">
+                                    <div class="eva-rate-title left">好评(96%)</div>
+                                    <div class="eva-rate-ct left">
+                                        <div class="eva-rate-r" style="width:96%"></div>
+                                    </div>
+                                </div>
+                                <div class="eva-rate-dis clearfix">
+                                    <div class="eva-rate-title left">中评(4%)</div>
+                                    <div class="eva-rate-ct left">
+                                        <div class="eva-rate-r" style="width:4%"></div>
+                                    </div>
+                                </div>
+                                <div class="eva-rate-dis clearfix">
+                                    <div class="eva-rate-title left">差评(0%)</div>
+                                    <div class="eva-rate-ct left">
+                                        <div class="eva-rate-r" style="width:0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <br>
-                    <div style="background-color: gray;width: 200px;height:20px;">
-                        <div style="background-color: red;width: 16%;height:20px;"></div>
+                    <div class="col-md-50">
+                        <div class="imp-title">
+                            买家印象
+                        </div>
+                        <div class="impressions">
+                            <div class="imp-text left">
+                                包装完美
+                            </div>
+                            <div class="imp-text left">
+                                100% 正品
+                            </div>
+                            <div class="imp-text left">
+                                音色好100%正品
+                            </div>
+                            <div class="imp-text left">
+                                卖家好评快递不给力
+                            </div>
+                            <div class="imp-text left">
+                                音色好100%正品
+                            </div>
+                            <div class="imp-text left">
+                                包装完美
+                            </div>
+                            <div class="imp-text left">
+                                100% 正品
+                            </div>
+                            <div class="imp-text left">
+                                音色好100%正品
+                            </div>
+                            <div class="imp-text left">
+                                卖家好评快递不给力
+                            </div>
+                            <div class="imp-text left">
+                                包装完美
+                            </div>
+                            <div class="imp-text left">
+                                包装完美
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="clearfix"></div>
                 <!-- 评价内容 -->
                 <ul id="headNav" class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#eva_all" aria-controls="eva_all" role="tab" data-toggle="tab">全部评价</a></li>
-                    <li role="presentation"><a href="#eva_a" aria-controls="eva_a" role="tab" data-toggle="tab">好评</a></li>
+                    <li role="presentation" class="active"><a href="#eva_all" aria-controls="eva_all" role="tab" data-toggle="tab">全部评价(123)</a></li>
+                    <li role="presentation"><a href="#eva_a" aria-controls="eva_a" role="tab" data-toggle="tab">好评(100)</a></li>
                     <li role="presentation"><a href="#eva_b" aria-controls="eva_b" role="tab" data-toggle="tab">中评</a></li>
                     <li role="presentation"><a href="#eva_c" aria-controls="eva_c" role="tab" data-toggle="tab">差评</a></li>
                     <li role="presentation"><a href="#eva_s" aria-controls="eva_s" role="tab" data-toggle="tab">有图片的评价</a></li>
