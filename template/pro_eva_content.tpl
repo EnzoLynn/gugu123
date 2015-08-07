@@ -7,7 +7,7 @@
             </div>
             <div class="col-md-120 pictrue">
                 {{#each content-pictrue}}
-                <img src={{this}} alt=""> {{/each}}
+                <a href=""><img src={{this}} alt=""></a> {{/each}}
             </div>
         </div>
     </div>

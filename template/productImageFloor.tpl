@@ -92,7 +92,8 @@
         <div class="form-group cartbtn-group">
             <div class="input-group numberGroup objLeft">
                 <span class="input-group-addon addon-control btn-default" controller="txtNum" data-limit="1" data-step="-1">-</span>
-                <input type="text" class="form-control txtNum text-center" value="1" placeholder="数量">
+                <input type="text" class="form-control txtNum text-center" data-min='1' 
+                 data-max='99' value="1" placeholder="数量">
                 <span class="input-group-addon addon-control btn-default" controller="txtNum" data-limit="99" data-step="1">+</span>
             </div>
             <div class="objLeft">
