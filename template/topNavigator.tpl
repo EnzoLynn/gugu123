@@ -15,7 +15,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的谷谷 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><img src="picBase/fuli.png" alt="">Menu155555555555555555555555555</a></li>
+                        <li>
+                            <a href="#"><img src="picBase/fuli.png" alt="">Menu155555555555555555555555555</a>
+                        </li>
                         <li><a href="#">Menu2</a></li>
                         <li><a href="#">Menu3</a></li>
                         <li role="separator" class="divider"></li>
@@ -42,7 +44,17 @@
                     </ul>
                 </li>
                 <li role="separator" class="vdivider"></li>
-                <li><a href="#">关注我们</a></li>
+                <li><a href="javascript:void(0);">关注我们:</a>
+                </li>
+                <li style="padding-top:18px;">
+                    <!-- JiaThis Button BEGIN -->
+                    <span class="jiathis_style" > 
+                        <a class="jiathis_button_weixin"></a>                         
+                        <a class="jiathis_button_tsina"></a>
+                    </span>
+                    <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+                    <!-- JiaThis Button END -->
+                </li>
             </ul>
         </div>
     </div>

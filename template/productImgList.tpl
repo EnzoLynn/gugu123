@@ -1,36 +1,31 @@
-<div class="hidden-xs">
-    <div id="pushPre" style="height:150px;width: 15px;background-color: gray;float: left;"></div>
-    <div id="pushNext" style="height: 150px;width: 15px;background-color: gray;float: right; "></div>
-    <div id="productImgList">
-        <a class="fancybox-button" rel="fancybox-button" data-fancybox-href="../picBase/example-images/1_zoom.jpg" title="cold forest (picturesbywalther)" href="javascript:void(0);">
-            <img lazy_src="../picBase/demo/1_s.jpg" alt="" />
-        </a>
-        <a class="fancybox-button" rel="fancybox-button" data-fancybox-href="../picBase/demo/2_b.jpg" title="Holly blue (Masa_N)">
-            <img lazy_src="../picBase/demo/2_s.jpg" alt="" />
-        </a>
-        <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/3_b.jpg" title="limits (life-and-camera)">
-            <img lazy_src="../picBase/demo/3_s.jpg" alt="" />
-        </a>
-        <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/4_b.jpg" title="*** (fatiguemind)">
-            <img lazy_src="../picBase/demo/4_s.jpg" alt="" />
-        </a>
-        <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/5_b.jpg" title="*** (fatiguemind)">
-            <img lazy_src="../picBase/demo/5_s.jpg" alt="" />
-        </a>
-        <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/1_b.jpg" title="cold forest (picturesbywalther)">
-            <img lazy_src="../picBase/demo/1_s.jpg" alt="" />
-        </a>
-        <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/2_b.jpg" title="Holly blue (Masa_N)">
-            <img lazy_src="../picBase/demo/2_s.jpg" alt="" />
-        </a>
-        <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/3_b.jpg" title="limits (life-and-camera)">
-            <img lazy_src="../picBase/demo/3_s.jpg" alt="" />
-        </a>
-        <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/4_b.jpg" title="*** (fatiguemind)">
-            <img lazy_src="../picBase/demo/4_s.jpg" alt="" />
-        </a>
-        <a class="fancybox-button" rel="fancybox-button" href="../picBase/demo/5_b.jpg" title="*** (fatiguemind)">
-            <img lazy_src="../picBase/demo/5_s.jpg" alt="" />
-        </a>
+<div class="row imgListNav">
+    <div class="col-xs-100 col-md-115 text-right">
+        <ul class="imglistul">
+           
+        </ul>
     </div>
+    <div class="col-xs-20 col-md-5"></div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+    <div id="pushPre" class="col-xs-20 col-md-5"> </div>
+    <div id="productImgList" class="row col-xs-80 col-md-110">
+        <div data-index="0" class="fancybox-button col-sm-120 col-md-60" rel="fancybox-button" data-fancybox-href="../picBase/example-images/1_zoom.jpg" title="pic1" href="javascript:void(0);">
+            <img lazy_src="../picBase/p_detail/2.png" alt="" />
+        </div>
+        <div data-index="1" class="fancybox-button col-sm-120 col-md-60" rel="fancybox-button" data-fancybox-href="../picBase/demo/2_b.jpg" title="pic2">
+            <img lazy_src="../picBase/demo/2_s.jpg" alt="" />
+        </div>
+        <div data-index="2" class="fancybox-button col-sm-120 col-md-60" rel="fancybox-button" href="../picBase/demo/3_b.jpg" title="pic3">
+            <img lazy_src="../picBase/demo/3_s.jpg" alt="" />
+        </div>
+        <div data-index="3" class="fancybox-button col-sm-120 col-md-60" rel="fancybox-button" href="../picBase/demo/4_b.jpg" title="pic4">
+            <img lazy_src="../picBase/demo/4_s.jpg" alt="" />
+        </div>
+        <div data-index="4" class="fancybox-button col-sm-120 col-md-60" rel="fancybox-button" href="../picBase/demo/5_b.jpg" title="pic5">
+            <img lazy_src="../picBase/demo/5_s.jpg" alt="" />
+        </div>
+     
+    </div>
+    <div id="pushNext" class="col-xs-20 col-md-5"></div>
 </div>

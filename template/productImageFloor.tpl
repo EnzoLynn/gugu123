@@ -1,5 +1,8 @@
 <div class="row headpicfloor">
-    <div class='zoom col-md-72 col-lg-72'>
+    <div class="col-md-120"> 
+         <img class="img-responsive headerPic" lazy_src='../picBase/p_detail/1.png' alt='' />
+    </div>  
+   <!-- <div class='zoom col-md-72 col-lg-72'>
         <div class="row">
             <img class="img-responsive headerPic" lazy_src='../picBase/proheadPic.jpg' id='proMainPic' alt='' />
         </div>
@@ -32,7 +35,7 @@
                 </li>
             </ul>
         </div> -->
-    </div>
+     <!-- </div>
     <div class="col-md-48 col-lg-48">
         <div class="row headpicTitle">
             <div class="title">DSL5C</div>
@@ -49,7 +52,7 @@
                 <label>MSL.100.100</label>
             </div>
         </div> -->
-    </div>
+     <!-- </div> -->
 </div>
 <div class="row">
     <div class="col-md-72 col-lg-72 headpicIntro">
@@ -71,16 +74,16 @@
         </div>        
         <div class="form-group">
             <label class="objLeft">颜色选择:</label>
-            <div class="colorSel left" style="background-color: red;"></div>
-            <div class="colorSel left" style="background-color: gray;"></div>
-            <div class="colorSel left" style="background-color: black;"></div>
+            <a  href="#" ><div class="colorSel left" style="background-color: red;"></div></a>
+            <a class="active" href="#"><div class="colorSel left" style="background-color: gray;"></div></a>
+            <a href="#"><div class="colorSel left" style="background-color: black;"></div></a>
         </div>
-        <div class="form-group">
+        <div class="form-group sizeSel">
             <label>规格选择:</label>
-            <label>0.73</label>
-            <label>1.0</label>
-            <label>1.2</label>
-            <label>1.5</label>
+            <a class="active" href="#"><label>0.73</label></a>
+            <a href="#"><label>1.0</label></a>
+            <a href="#"><label>1.2</label></a>
+            <a href="#"><label>1.5</label></a>
         </div>
          <div class="form-group">
             <label>商品编码:</label>            
@@ -88,13 +91,21 @@
         </div>
         <div class="form-group cartbtn-group">
             <div class="input-group numberGroup objLeft">
-                <span class="input-group-addon">-</span>
-                <input type="text" class="form-control txtNum" placeholder="数量">
-                <span class="input-group-addon">+</span>
+                <span class="input-group-addon addon-control btn-default" controller="txtNum" data-limit="1" data-step="-1">-</span>
+                <input type="text" class="form-control txtNum text-center" data-min='1' 
+                 data-max='99' value="1" placeholder="数量">
+                <span class="input-group-addon addon-control btn-default" controller="txtNum" data-limit="99" data-step="1">+</span>
             </div>
             <div class="objLeft">
-                <button type="button" class="btn btn-default joinCart">加入购物车</button>
-                <button type="button" class="btn btn-default attention">关注</button>
+                <button type="button" data-id="1" class="btn btn-default joinCart">加入购物车</button> 
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <img src="../picBase/pics/baohuan-detail.png" alt=""><label>15天包换</label>
+               
+                &nbsp; &nbsp; &nbsp;
+                <img src="../picBase/pics/promise-detail.png" alt=""><label>全国联保</label>
             </div>
         </div>
     </div>

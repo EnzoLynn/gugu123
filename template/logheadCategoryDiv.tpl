@@ -1,7 +1,8 @@
 <div id="logheadCategoryDiv" class="container-fluid logheadCategoryDiv">
-    <div class="col-md-10"></div>
+    <!-- <div class="col-md-10"></div> -->
+    <div class="flexsidediv"></div>
     <!-- Tab panes -->
-    <div class="tab-content container-fluid col-md-110">
+    <div class="tab-content container-fluid">
         <div class="card visible-sm-block visible-xs-block">吉他</div>
         <div role="tabpanel" class="tab-pane active row hidden-xs hidden-sm" id="tab1">
             <div class="row">
@@ -91,4 +92,6 @@
         <div class="card visible-sm-block visible-xs-block">改装配件</div>
         <div role="tabpanel" class="tab-pane hidden-xs hidden-sm" id="tab7">.11改装配件1..</div>
     </div>
+    <div class="flexsidediv"></div>
+    <!-- <div class="col-md-10"></div> -->
 </div>

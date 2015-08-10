@@ -1,0 +1,26 @@
+{{#each this}}
+<div class="row">
+    <div class="col-md-60 content">
+        <div class="row">
+            <div class="col-md-120 text">
+                {{content-text}}
+            </div>
+            <div class="col-md-120 pictrue">
+                {{#each content-pictrue}}
+                <a href=""><img src={{this}} alt=""></a> {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-20 grade"> 
+        <!-- <div class="grade-star  {{grade}}"></div>  -->
+        <div class="eva-text">{{eva-text}}</div>
+    </div>
+    <div class="col-md-20 info text-center">
+        {{info}}
+    </div>
+    <div class="col-md-20 owner text-center">
+        {{owner}}
+    </div>
+    <div class="col-md-120 praise"><a href="javascript:void(0);">赞<span class="praise-num">{{#compare praise '!=' '0'}} ({{praise}}) {{/compare}}</span></a></div>
+</div>
+{{/each}}
