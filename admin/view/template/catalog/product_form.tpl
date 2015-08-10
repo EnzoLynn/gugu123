@@ -90,6 +90,64 @@
                       <input type="text" name="product_description[<?php echo $language['language_id']; ?>][tag]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['tag'] : ''; ?>" placeholder="<?php echo $entry_tag; ?>" id="input-tag<?php echo $language['language_id']; ?>" class="form-control" />
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-video<?php echo $language['language_id']; ?>"><?php echo $entry_video; ?></label>
+                    <div class="col-sm-10">
+                      <input type="text" name="product_description[<?php echo $language['language_id']; ?>][video]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['video'] : ''; ?>" placeholder="<?php echo $entry_video; ?>" id="input-video<?php echo $language['language_id']; ?>" class="form-control" />
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-video<?php echo $language['language_id']; ?>">新版描述</label>
+                    <div class="col-sm-10 table-responsive">
+
+                      <table id="description_new" class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <td class="text-left" style="width: 20%;">图片（白色背景，600 X 320）</td>
+                          <td class="text-left" style="width: 30%;">标题</td>
+                          <td class="text-left">描述</td>
+                          <td></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php $description_new_row = 0; ?>
+                        <?php foreach ($product_description_new as $temp) { ?>
+                        <?php foreach ($temp as $description_new) { ?>
+                        <tr id="description-new-<?php echo $language['language_id']; ?>-<?php echo $description_new_row; ?>">
+                          <td class="text-left">
+                            <a href="" id="description-image<?php echo $description_new_row; ?>" data-toggle="image" directory="product" class="img-thumbnail">
+                              <img src="<?php echo $description_new['image_thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" />
+                            </a>
+                            <input type="hidden" name="product_description_new[<?php echo $language['language_id']; ?>][<?php echo $description_new_row; ?>][image]" value="<?php echo $description_new['image']; ?>" id="input-image<?php echo $description_new_row; ?>" />
+                          </td>
+                          <td class="text-left">
+                            <input type="text" name="product_description_new[<?php echo $language['language_id']; ?>][<?php echo $description_new_row; ?>][title]" value="<?php echo $description_new['title']; ?>" placeholder="<?php echo $entry_name; ?>" class="form-control" />
+                          </td>
+                          <td class="text-left">
+                            <div class="input-group">
+                              <textarea name="product_description_new[<?php echo $language['language_id']; ?>][<?php echo $description_new_row; ?>][description]" class="form-control" rows="5" cols="100"><?php echo isset($description_new) ? $description_new['description'] : ''; ?></textarea>
+                            </div>
+                          </td>
+                          <td class="text-left"><button type="button" onclick="$('#description-new-<?php echo $language['language_id']; ?>-<?php echo $description_new_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                        </tr>
+                        <?php $description_new_row++; ?>
+                        <?php } ?>
+                        <?php } ?>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                          <td colspan="3"></td>
+                          <td class="text-left"><button type="button" onclick="addDescriptionNew(<?php echo $language['language_id']; ?>);" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                        </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+
+
                 </div>
                 <?php } ?>
               </div>
@@ -1123,7 +1181,27 @@ $('input[name=\'related\']').autocomplete({
 $('#product-related').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
-//--></script> 
+//--></script>
+
+  <script type="text/javascript"><!--
+    var description_new_row = <?php echo $description_new_row; ?>;
+
+    function addDescriptionNew(language_id) {
+      html  = '<tr id="description-new-' + language_id + '-' + description_new_row + '">';
+      html += '  <td class="text-left" style="width: 20%;"><a href="" id="description-image<?php echo $description_new_row; ?>" data-toggle="image" directory="product" class="img-thumbnail"><img src="/image/cache/no_image-50x50.png" alt="" title=""/></a><input type="hidden" name="product_attribute[' + language_id + '][' + description_new_row + '][image]" value="" class="form-control" /></td>';
+      html += '  <td class="text-left" style="width: 30%;"><input type="text" name="product_description_new['+ language_id +'][' + description_new_row + '][title]" value="" class="form-control" /></td>';
+      html += '  <td class="text-left">';
+      html += ' <div class="input-group"><textarea name="product_description_new['+ language_id +']['+ description_new_row +'][description]" class="form-control" rows="3" cols="100"></textarea></div>';
+      html += '  </td>';
+      html += '  <td class="text-left"><button type="button" onclick="$(\'#description-new-' + language_id + '-' + description_new_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+      html += '</tr>';
+
+      $('#description_new tbody').append(html);
+
+      description_new_row++;
+    }
+</script>
+
   <script type="text/javascript"><!--
 var attribute_row = <?php echo $attribute_row; ?>;
 var filter_group_row = 0;

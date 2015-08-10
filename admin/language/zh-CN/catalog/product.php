@@ -85,6 +85,7 @@ $_['entry_filter']           = '筛选';
 $_['entry_download']         = '下载文件';
 $_['entry_related']          = '相关商品';
 $_['entry_tag']          	 = '商品标签';
+$_['entry_video']           = '视频地址';
 $_['entry_reward']           = '奖励积分';
 $_['entry_layout']           = '布局覆盖';
 $_['entry_recurring']        = '分期付款';
