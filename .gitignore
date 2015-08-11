@@ -24,3 +24,4 @@ config.php
 /system/logs/*
 /image/cache/*
 /zzz 
+/dist/seamodules/*.map
