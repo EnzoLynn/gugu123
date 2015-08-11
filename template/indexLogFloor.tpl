@@ -32,9 +32,12 @@
                         <div class="cart-f-div panel panel-default" style="width: 400px;
                         position:absolute;z-index: 55;left:-200px;">
                             <div class="panel-heading text-left"><span class="pro-num">4</span> 件商品</div>
-                            <div class="panel-body cart-pro-item-ct">
-                                <!-- 参看 cart-pro-item -->
-
+                            <div class="panel-body cart-pro-item-ct">                               
+                                <table>
+                                    <tbody>
+                                     <!-- 参看 cart-pro-item -->
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="panel-footer">
                                 <div class="cart-pro-total-ct text-right left">
