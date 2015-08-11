@@ -29,6 +29,9 @@
                     <div class="joinc">
                         <img class="cartImg" src='picBase/pics/cart.png'>
                         <span class="cartBtn">购物车</span>
+                        <div class="cart-f-div panel panel-default">
+                            
+                        </div>
                     </div>
                 </div>
             </div>

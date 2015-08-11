@@ -55,8 +55,14 @@
      <!-- </div> -->
 </div>
 <div class="row">
-    <div class="col-md-72 col-lg-72 headpicIntro">
-        如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱
+    <div class="col-md-72 col-lg-72 headpicIntro">     
+        <table style="height:300px;">           
+            <tbody>
+                <tr>
+                    <td style="vertical-align: middle;"> 如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱 </td>
+                </tr>
+            </tbody>
+        </table>       
     </div>
     <div class="col-md-48 col-lg-48 form-horizontal headpicControl">
         <div class="form-group">
@@ -97,7 +103,7 @@
                 <span class="input-group-addon addon-control btn-default" controller="txtNum" data-limit="99" data-step="1">+</span>
             </div>
             <div class="objLeft">
-                <button type="button" data-id="1" class="btn btn-default joinCart">加入购物车</button> 
+                <button type="button" data-id="1" class="btn btn-danger joinCart">加入购物车</button> 
             </div>
         </div>
         <div class="form-group">

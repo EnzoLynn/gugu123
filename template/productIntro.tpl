@@ -11,7 +11,7 @@
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#group" aria-controls="group" role="tab" data-toggle="tab">组合</a></li>
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#parts" aria-controls="parts" role="tab" data-toggle="tab">配件</a></li>
                 <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#evaluation" aria-controls="evaluation" role="tab" data-toggle="tab">评价</a></li>
-                <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#suport" aria-controls="surport" role="tab" data-toggle="tab">咨询</a></li>
+                <li role="presentation" class="col-xs-60 col-sm-60 col-md-20"><a href="#support" aria-controls="surport" role="tab" data-toggle="tab">咨询</a></li>
             </ul>
             <div class="share col-xs-120  col-sm-120 col-md-10 text-center">
                 <div class="share-title text-center col-xs-120  col-sm-120 col-md-120">分享<img src="../picBase/pics/share.png" alt=""></div>
@@ -71,7 +71,9 @@
                 </div>
             </div>
             <!-- 参数 -->
-            <div role="tabpanel" class="tab-pane" id="specifParam">..参数.</div>
+            <div role="tabpanel" class="tab-pane" id="specifParam">
+                <div class="include-pro-detail-speparam-tab"></div> 
+            </div>
             <!-- 组合 -->
             <div role="tabpanel" class="tab-pane" id="group">
                 <div class="include-pro-detail-group-list"></div>
@@ -85,7 +87,9 @@
                 <div class="include-pro-detail-eva-tab"></div>
             </div>
             <!-- 咨询 -->
-            <div role="tabpanel" class="tab-pane" id="suport">..咨询.</div>
+            <div role="tabpanel" class="tab-pane" id="support">
+                <div class="include-pro-detail-support-tab"></div>
+            </div>
         </div>
     </div>
 </div>
