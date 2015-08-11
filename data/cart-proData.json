@@ -1,0 +1,25 @@
+{
+    "suc": true,
+    "data": [{
+        "pro-img": "../picBase/pics/cart-pro.png",
+        "pro-id":"1122",
+        "pro-name": "大苏打速度 的速度",
+        "pro-num": "1",
+        "pro-price": "3400"
+    }, {
+        "pro-img": "../picBase/pics/cart-pro.png",
+        "pro-id":"1132",
+        "pro-name": "大苏打速度 的速度",
+        "pro-num": "1",
+        "pro-price": "3400"
+    }, {
+        "pro-img": "../picBase/pics/cart-pro.png",
+        "pro-id":"1142",
+        "pro-name": "大苏打速度 的速度",
+        "pro-num": "1",
+        "pro-price": "3400"
+    }],
+    "total": "10",
+    "msg": "成功",
+    "code": "01"
+}

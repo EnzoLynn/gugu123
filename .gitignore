@@ -23,4 +23,4 @@ config.php
 /system/cache/*
 /system/logs/*
 /image/cache/*
-/zzz
+/zzz 

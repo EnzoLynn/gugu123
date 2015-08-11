@@ -1,0 +1,15 @@
+{
+    "suc": true,
+    "data": [{
+        "email": "253444s@qq.com",
+        "password": "2222",
+        "autoLogin": "true"
+    }, {
+        "email": "22222@qq.com",
+        "password": "1111",
+        "autoLogin": "false"
+    }],
+    "total":"200",
+    "msg": "成功",
+    "code": "01"
+}
