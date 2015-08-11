@@ -1,1 +1,2 @@
 define(function(require,exports,module){var $=require("jquery");$(".timmer").on("click",function(e){console.log($(this).parent().parent().children("a").attr("href"))});var timeDown=require("modules/timeCountDown");timeDown.fnTimeCountDown()});
+//# sourceMappingURL=indexActivity.js.map

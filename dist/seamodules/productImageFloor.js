@@ -1,1 +1,2 @@
 define(function(require,exports,moudle){var $=require("jquery");require("modules/common"),$(function(){$(".txtNum").numeral(),$(".addon-control").numcontrol()})});
+//# sourceMappingURL=productImageFloor.js.map
