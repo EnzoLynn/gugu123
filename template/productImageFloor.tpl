@@ -55,8 +55,14 @@
      <!-- </div> -->
 </div>
 <div class="row">
-    <div class="col-md-72 col-lg-72 headpicIntro">
-        如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱
+    <div class="col-md-72 col-lg-72 headpicIntro">     
+        <table style="height:300px;">           
+            <tbody>
+                <tr>
+                    <td style="vertical-align: middle;"> 如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱如果不是因为在Marshall音箱 </td>
+                </tr>
+            </tbody>
+        </table>       
     </div>
     <div class="col-md-48 col-lg-48 form-horizontal headpicControl">
         <div class="form-group">
