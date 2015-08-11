@@ -1,10 +1,10 @@
 {{#each this}}
 {{#compare @index '!=' '0'}}
-<tr>
+<tr class="{{pro-id}}">
     <td colspan="2"><div class="line"></div></td> 
 </tr>
 {{/compare}}
-<tr>
+<tr class="{{pro-id}}">
     <td>
         <a href=""><img class="cart-pro-img" src="{{pro-img}}" alt=""></a>
     </td>
@@ -15,11 +15,13 @@
             <input type="text" class="form-control txtNum{{@index}} text-center" data-min='1' data-max='99' value="{{pro-num}}" placeholder="数量">
             <span class="input-group-addon addon-control btn-default" controller="txtNum{{@index}}" data-limit="99" data-step="1">+</span>
         </div>
-        <div class="cart-pro-price">
+        <div class="cart-pro-price text-right">
             <span>{{pro-price}}</span> 
-            <span>元</span>
+            <span style="color:black;">元</span>
         </div>
-
+        <div class="text-right delpro">
+          <a class="{{pro-id}}" href="javascript:void(0);">删除</a> 
+        </div>
     </td>
 </tr>
 {{/each}}
