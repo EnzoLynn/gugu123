@@ -268,6 +268,7 @@ class ControllerDesignBanner extends Controller {
 		$data['text_default'] = $this->language->get('text_default');
 
         $data['entry_image_desc'] = $this->language->get('entry_image_desc');
+        $data['entry_description'] = $this->language->get('entry_description');
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_title'] = $this->language->get('entry_title');
 		$data['entry_link'] = $this->language->get('entry_link');
@@ -363,10 +364,22 @@ class ControllerDesignBanner extends Controller {
             $data['image_desc'] = $this->request->post['image_desc'];
         } elseif (!empty($banner_info)) {
             $data['image_desc'] = $banner_info['image_desc'];
-            $data['image_desc_url'] = $this->model_tool_image->url($banner_info['image_desc']);
+            if (empty($banner_info['image_desc'])) {
+                $data['image_desc_url'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+            } else {
+                $data['image_desc_url'] = $this->model_tool_image->url($banner_info['image_desc']);
+            }
         } else {
             $data['image_desc'] = '';
             $data['image_desc_url'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+        }
+
+        if (isset($this->request->post['description'])) {
+            $data['description'] = $this->request->post['description'];
+        } elseif (!empty($banner_info)) {
+            $data['description'] = $banner_info['description'];
+        } else {
+            $data['description'] = '';
         }
 
 		$this->load->model('localisation/language');

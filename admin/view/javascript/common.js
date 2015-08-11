@@ -33,7 +33,7 @@ function getURLVar(key) {
         img.mouseenter(function(){
             var temp = document.createElement("div");
             temp.id = "temp_img_div";
-            temp.style.cssText = "position:fixed; border:1px solid #f60; top:5px; right:5px;";
+            temp.style.cssText = "position:fixed; border:1px solid #f60; top:5px; right:5px; z-index:1001;";
             temp.innerHTML = '<img src="'+ src +'"/>';
             document.body.appendChild(temp);
         }).mouseleave(function(){
@@ -173,7 +173,7 @@ $(document).ready(function() {
 		
 		$(element).popover('show');
 
-        if($(element).attr("directory") == '') {
+        if(typeof($(element).attr("directory"))=="undefined" || $(element).attr("directory")==undefined || $(element).attr("directory") == '') {
             var ajax_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
         }else{
             var ajax_url = 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&directory=' + $(element).attr("directory") + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id');
@@ -242,24 +242,34 @@ $(document).ready(function() {
 (function($) {
 	$.fn.autocomplete = function(option) {
 		return this.each(function() {
+
             this.val_old = $(this).val();
             this.val_new = this.val_old;
 
 			this.timer = null;
 			this.items = new Array();
-	
+
+            this.multiple = true; //默认多选
+
 			$.extend(this, option);
-	
+
 			$(this).attr('autocomplete', 'off');
 			
 			// Focus
 			$(this).on('focus', function() {
-                this.val_old = $(this).val();
-                if (this.val_new == this.val_old && $(this).siblings('ul.dropdown-menu').html()!='') {
-                    this.show();
+                if(this.multiple) {
+                    this.val_old = $(this).val();
+                    if (this.val_new == this.val_old && $(this).siblings('ul.dropdown-menu').html()!='') {
+                        $(this).siblings('ul.dropdown-menu').show();
+                    }else{
+                        //this.hide();
+                        this.request();
+                    }
                 }else{
-                    //this.hide();
-                    this.request();
+                    $(this).siblings('ul.dropdown-menu').hide();
+                    if( this.val_old != '') {
+                        this.request();
+                    }
                 }
 			});
 			
@@ -275,10 +285,10 @@ $(document).ready(function() {
 			$(this).on('keyup', function(event) {
 				switch(event.keyCode) {
 					case 27: // escape
-						this.hide();
+                        $(this).siblings('ul.dropdown-menu').hide();
 						break;
 					default:
-                        this.hide();
+                        $(this).siblings('ul.dropdown-menu').hide();
 						this.request();
 						break;
 				}				
@@ -293,6 +303,9 @@ $(document).ready(function() {
 				if (value && this.items[value]) {
 					this.select(this.items[value]);
 				}
+                if(this.multiple == false) {
+                    $(this).siblings('ul.dropdown-menu').hide();
+                }
 			}
 			
 			// Show

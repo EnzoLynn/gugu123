@@ -21,7 +21,7 @@
     <?php } ?>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-pencil"></i> <?php echo $text_form; ?></h3>
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> <?php echo $text_form; ?> : <?php echo $product_description[1]['name']; ?></h3>
       </div>
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-product" class="form-horizontal">
@@ -90,6 +90,64 @@
                       <input type="text" name="product_description[<?php echo $language['language_id']; ?>][tag]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['tag'] : ''; ?>" placeholder="<?php echo $entry_tag; ?>" id="input-tag<?php echo $language['language_id']; ?>" class="form-control" />
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-video<?php echo $language['language_id']; ?>"><?php echo $entry_video; ?></label>
+                    <div class="col-sm-10">
+                      <input type="text" name="product_description[<?php echo $language['language_id']; ?>][video]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['video'] : ''; ?>" placeholder="<?php echo $entry_video; ?>" id="input-video<?php echo $language['language_id']; ?>" class="form-control" />
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-video<?php echo $language['language_id']; ?>">新版描述</label>
+                    <div class="col-sm-10 table-responsive">
+
+                      <table id="description_new" class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <td class="text-left" style="width: 20%;">图片（白色背景，600 X 320）</td>
+                          <td class="text-left" style="width: 30%;">标题</td>
+                          <td class="text-left">描述</td>
+                          <td></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php $description_new_row = 0; ?>
+                        <?php foreach ($product_description_new as $temp) { ?>
+                        <?php foreach ($temp as $description_new) { ?>
+                        <tr id="description-new-<?php echo $language['language_id']; ?>-<?php echo $description_new_row; ?>">
+                          <td class="text-left">
+                            <a href="" id="description-image<?php echo $description_new_row; ?>" data-toggle="image" directory="product" class="img-thumbnail">
+                              <img src="<?php echo $description_new['image_thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" />
+                            </a>
+                            <input type="hidden" name="product_description_new[<?php echo $language['language_id']; ?>][<?php echo $description_new_row; ?>][image]" value="<?php echo $description_new['image']; ?>" id="input-image<?php echo $description_new_row; ?>" />
+                          </td>
+                          <td class="text-left">
+                            <input type="text" name="product_description_new[<?php echo $language['language_id']; ?>][<?php echo $description_new_row; ?>][title]" value="<?php echo $description_new['title']; ?>" placeholder="<?php echo $entry_name; ?>" class="form-control" />
+                          </td>
+                          <td class="text-left">
+                            <div class="input-group">
+                              <textarea name="product_description_new[<?php echo $language['language_id']; ?>][<?php echo $description_new_row; ?>][description]" class="form-control" rows="5" cols="100"><?php echo isset($description_new) ? $description_new['description'] : ''; ?></textarea>
+                            </div>
+                          </td>
+                          <td class="text-left"><button type="button" onclick="$('#description-new-<?php echo $language['language_id']; ?>-<?php echo $description_new_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                        </tr>
+                        <?php $description_new_row++; ?>
+                        <?php } ?>
+                        <?php } ?>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                          <td colspan="3"></td>
+                          <td class="text-left"><button type="button" onclick="addDescriptionNew(<?php echo $language['language_id']; ?>);" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                        </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+
+
                 </div>
                 <?php } ?>
               </div>
@@ -355,19 +413,6 @@
                   </div>
                 </div>
               </div>
-              <!--<div class="form-group">
-                <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
-                <div class="col-sm-10">
-                  <input type="text" name="filter" value="" placeholder="<?php echo $entry_filter; ?>" id="input-filter" class="form-control" />
-                  <div id="product-filter" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_filters as $product_filter) { ?>
-                    <div id="product-filter<?php echo $product_filter['filter_id']; ?>" class="col-xs-3"><i class="fa fa-minus-circle"></i> <?php echo $product_filter['name']; ?>
-                      <input type="hidden" name="product_filter[]" value="<?php echo $product_filter['filter_id']; ?>" />
-                    </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>-->
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_store; ?></label>
                 <div class="col-sm-10">
@@ -538,6 +583,31 @@
                           </select>
                         </div>
                       </div>
+
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-option-value-id<?php echo $option_row; ?>"><?php echo $entry_default_option_value; ?></label>
+                        <div class="col-sm-10">
+                          <select name="product_option[<?php echo $option_row; ?>][option_value_id]" id="input-option-value-id<?php echo $option_row; ?>" class="form-control">
+                            <option value="0"><?php echo $text_none; ?></option>
+                            <?php if (isset($option_values[$product_option['option_id']])) { ?>
+                            <?php foreach ($option_values[$product_option['option_id']] as $option_value) { ?>
+                            <option value="<?php echo $option_value['option_value_id']; ?>"><?php echo $option_value['name']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                          </select>
+                          <script>
+                            $("#input-option-value-id<?php echo $option_row; ?>").val("<?php echo $product_option['option_value_id']; ?>");
+                          </script>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-option-sort-order<?php echo $option_row; ?>"><?php echo $entry_sort_order; ?></label>
+                        <div class="col-sm-10">
+                          <input type="text" name="product_option[<?php echo $option_row; ?>][sort_order]" value="<?php echo $product_option['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" />
+                        </div>
+                      </div>
+
                       <?php if ($product_option['type'] == 'text') { ?>
                       <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-value<?php echo $option_row; ?>"><?php echo $entry_option_value; ?></label>
@@ -626,7 +696,9 @@
                                   <?php } ?>
                                   <?php } ?>
                                 </select>
-                                <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" /></td>
+                                <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" />
+                              </td>
+
                               <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
                               <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
                                   <?php if ($product_option_value['subtract']) { ?>
@@ -970,6 +1042,7 @@ $('#input-description<?php echo $language['language_id']; ?>').summernote({heigh
   <script type="text/javascript"><!--
 // Manufacturer
 $('input[name=\'manufacturer\']').autocomplete({
+  'multiple' : false,
 	'source': function(request, response) {
 		$.ajax({
 			url: 'index.php?route=catalog/manufacturer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
@@ -992,11 +1065,12 @@ $('input[name=\'manufacturer\']').autocomplete({
 	'select': function(item) {
 		$('input[name=\'manufacturer\']').val(item['label']);
 		$('input[name=\'manufacturer_id\']').val(item['value']);
-	}	
+	}
 });
 
 // Master Category
 $('input[name=\'master_category\']').autocomplete({
+  'multiple' : false,
   'source': function(request, response) {
       $.ajax({
           url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
@@ -1021,7 +1095,6 @@ $('input[name=\'master_category\']').autocomplete({
       $('input[name="master_category_id"]').val(item['value']);
   }
 });
-
 // Category
 $('input[name=\'category\']').autocomplete({
 	'source': function(request, response) {
@@ -1050,35 +1123,6 @@ $('input[name=\'category\']').autocomplete({
 $('#product-category').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
-
-// Filter
-//$('input[name=\'filter\']').autocomplete({
-//	'source': function(request, response) {
-//		$.ajax({
-//			url: 'index.php?route=catalog/filter/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
-//			dataType: 'json',
-//			success: function(json) {
-//				response($.map(json, function(item) {
-//					return {
-//						label: item['name'],
-//						value: item['filter_id']
-//					}
-//				}));
-//			}
-//		});
-//	},
-//	'select': function(item) {
-//		$('input[name=\'filter\']').val('');
-//
-//		$('#product-filter' + item['value']).remove();
-//
-//		$('#product-filter').append('<div id="product-filter' + item['value'] + '" class="col-xs-3"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_filter[]" value="' + item['value'] + '" /></div>');
-//	}
-//});
-//
-//$('#product-filter').delegate('.fa-minus-circle', 'click', function() {
-//	$(this).parent().remove();
-//});
 
 // Downloads
 $('input[name=\'download\']').autocomplete({
@@ -1137,7 +1181,27 @@ $('input[name=\'related\']').autocomplete({
 $('#product-related').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
-//--></script> 
+//--></script>
+
+  <script type="text/javascript"><!--
+    var description_new_row = <?php echo $description_new_row; ?>;
+
+    function addDescriptionNew(language_id) {
+      html  = '<tr id="description-new-' + language_id + '-' + description_new_row + '">';
+      html += '  <td class="text-left" style="width: 20%;"><a href="" id="description-image<?php echo $description_new_row; ?>" data-toggle="image" directory="product" class="img-thumbnail"><img src="/image/cache/no_image-50x50.png" alt="" title=""/></a><input type="hidden" name="product_attribute[' + language_id + '][' + description_new_row + '][image]" value="" class="form-control" /></td>';
+      html += '  <td class="text-left" style="width: 30%;"><input type="text" name="product_description_new['+ language_id +'][' + description_new_row + '][title]" value="" class="form-control" /></td>';
+      html += '  <td class="text-left">';
+      html += ' <div class="input-group"><textarea name="product_description_new['+ language_id +']['+ description_new_row +'][description]" class="form-control" rows="3" cols="100"></textarea></div>';
+      html += '  </td>';
+      html += '  <td class="text-left"><button type="button" onclick="$(\'#description-new-' + language_id + '-' + description_new_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+      html += '</tr>';
+
+      $('#description_new tbody').append(html);
+
+      description_new_row++;
+    }
+</script>
+
   <script type="text/javascript"><!--
 var attribute_row = <?php echo $attribute_row; ?>;
 var filter_group_row = 0;
@@ -1266,7 +1330,8 @@ $("#product_type").change(function() {
   <script type="text/javascript"><!--	
 var option_row = <?php echo $option_row; ?>;
 
-$('input[name=\'option\']').autocomplete({
+$('input[name="option"]').autocomplete({
+  'multiple' : false,
 	'source': function(request, response) {
 		$.ajax({
 			url: 'index.php?route=catalog/option/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
@@ -1298,7 +1363,25 @@ $('input[name=\'option\']').autocomplete({
 		html += '	      <option value="0"><?php echo $text_no; ?></option>';
 		html += '	  </select></div>';
 		html += '	</div>';
-		
+
+    html += '	<div class="form-group">';
+    html += '	  <label class="col-sm-2 control-label" for="input-option-value-id' + option_row + '"><?php echo $entry_default_option_value; ?></label>';
+    html += '	  <div class="col-sm-10"><select name="product_option[' + option_row + '][option_value_id]" id="input-option-value-id' + option_row + '" class="form-control">';
+    html += '   <option value="0"><?php echo $text_none; ?></option>';
+    for (i = 0; i < item['option_value'].length; i++) {
+      html += '  <option value="' + item['option_value'][i]['option_value_id'] + '">' + item['option_value'][i]['name'] + '</option>';
+    }
+    html += '	  </select></div>';
+    html += '	</div>';
+
+    html += '	<div class="form-group">';
+    html += '	  <label class="col-sm-2 control-label" for="input-option-sort-order' + option_row + '"><?php echo $entry_sort_order; ?></label>';
+    html += '	  <div class="col-sm-10">';
+    html += '   <input type="text" name="product_option[' + option_row + '][sort_order]" id="input-option-sort-order' + option_row + '" value="0" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" />';
+    html += '	  </div>';
+    html += '	</div>';
+
+
 		if (item['type'] == 'text') {
 			html += '	<div class="form-group">';
 			html += '	  <label class="col-sm-2 control-label" for="input-value' + option_row + '"><?php echo $entry_option_value; ?></label>';
@@ -1373,7 +1456,7 @@ $('input[name=\'option\']').autocomplete({
             }
 
             html += '  </select>';	
-			html += '</div>';	
+			html += '</div>';
 		}
 		
 		$('#tab-option .tab-content').append(html);
@@ -1396,6 +1479,8 @@ $('input[name=\'option\']').autocomplete({
 		});
 				
 		option_row++;
+
+    $('input[name="option"]').val('');
 	}	
 });
 //--></script> 

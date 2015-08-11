@@ -6,7 +6,7 @@
  * Time: 10:35
  */
 // Heading
-$_['heading_title']     = '商品类型';
+$_['heading_title']     = '自定义商品类型';
 
 // Text
 $_['text_success']      = '成功: 已经修改商品类型！';

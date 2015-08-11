@@ -13,7 +13,7 @@ class ModelCatalogOption extends Model {
 
 		if (isset($data['option_value'])) {
 			foreach ($data['option_value'] as $option_value) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "', link_product_id = '" . (int)$option_value['link_product_id'] . "'");
 
 				$option_value_id = $this->db->getLastId();
 
@@ -45,9 +45,9 @@ class ModelCatalogOption extends Model {
 		if (isset($data['option_value'])) {
 			foreach ($data['option_value'] as $option_value) {
 				if ($option_value['option_value_id']) {
-					$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_value_id = '" . (int)$option_value['option_value_id'] . "', option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "'");
+					$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_value_id = '" . (int)$option_value['option_value_id'] . "', option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "', link_product_id = '" . (int)$option_value['link_product_id'] . "'");
 				} else {
-					$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "'");
+					$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "', link_product_id = '" . (int)$option_value['link_product_id'] . "'");
 				}
 
 				$option_value_id = $this->db->getLastId();
@@ -86,6 +86,18 @@ class ModelCatalogOption extends Model {
 			$sql .= " AND od.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
+        if (isset($data['type'])) {
+            $temp = array();
+
+            foreach($data['type'] as $type) {
+                $temp[] = "'" . $type . "'";
+            }
+
+            $temp = implode(',', $temp);
+
+            $sql .= " AND o.type IN(". $temp .")";
+        }
+
 		$sort_data = array(
 			'od.name',
 			'o.type',
@@ -95,7 +107,7 @@ class ModelCatalogOption extends Model {
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY od.name";
+			$sql .= " ORDER BY o.sort_order";
 		}
 
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -149,7 +161,8 @@ class ModelCatalogOption extends Model {
 				'option_value_id' => $option_value['option_value_id'],
 				'name'            => $option_value['name'],
 				'image'           => $option_value['image'],
-				'sort_order'      => $option_value['sort_order']
+				'sort_order'      => $option_value['sort_order'],
+                'link_product_id'=> $option_value['link_product_id']
 			);
 		}
 
@@ -174,7 +187,8 @@ class ModelCatalogOption extends Model {
 				'option_value_id'          => $option_value['option_value_id'],
 				'option_value_description' => $option_value_description_data,
 				'image'                    => $option_value['image'],
-				'sort_order'               => $option_value['sort_order']
+				'sort_order'               => $option_value['sort_order'],
+                'link_product_id'         => $option_value['link_product_id']
 			);
 		}
 
@@ -186,4 +200,27 @@ class ModelCatalogOption extends Model {
 
 		return $query->row['total'];
 	}
+
+    /**
+     * 周辉改进
+     * 通过GroupName来返回结果
+     */
+    public function getOptionValuesByOptionName($data) {
+        if (empty($data['filter_name'])) {
+            return [];
+        }
+
+        $sql = "SELECT ov.*, ovd.language_id, ovd.`name`, (SELECT name FROM " . DB_PREFIX . "option_description od WHERE ov.option_id = od.option_id AND od.language_id = 1) AS `group`,
+(SELECT type FROM " . DB_PREFIX . "option o WHERE o.option_id = ov.option_id) AS `type`
+FROM " . DB_PREFIX . "option_value ov LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE ovd.language_id = 1 AND ov.option_id =
+(SELECT od.option_id
+FROM " . DB_PREFIX . "option_description od
+WHERE od.language_id = '1' AND od.`name` LIKE '%" . $this->db->escape($data['filter_name']) ."%')";
+
+        $sql .= " ORDER BY ov.sort_order ASC";
+
+        $query = $this->db->query($sql);
+
+        return $query->rows;
+    }
 }

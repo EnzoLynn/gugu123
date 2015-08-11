@@ -6,6 +6,7 @@ class ModelDesignBanner extends Model {
         $banner = array(
             'name'           => $data['name'],
             'image_desc'    => $data['image_desc'],
+            'description'  => $data['description'],
             'status'        => (int)$data['status']
         );
 
@@ -50,7 +51,14 @@ class ModelDesignBanner extends Model {
 	public function editBanner($banner_id, $data) {
 		$this->event->trigger('pre.admin.banner.edit', $data);
 
-		$this->db->query("UPDATE " . DB_PREFIX . "banner SET name = '" . $this->db->escape($data['name']) . "', image_desc = '" . $this->db->escape($data['image_desc']) . "', status = '" . (int)$data['status'] . "' WHERE banner_id = '" . (int)$banner_id . "'");
+        $banner = array(
+            'name'           => $data['name'],
+            'image_desc'    => $data['image_desc'],
+            'description'  => $data['description'],
+            'status'        => (int)$data['status']
+        );
+        $this->db_ci->where('banner_id', $banner_id);
+        $this->db_ci->update('banner', $banner);
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "banner_image WHERE banner_id = '" . (int)$banner_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "banner_image_description WHERE banner_id = '" . (int)$banner_id . "'");

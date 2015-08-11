@@ -49,12 +49,20 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-description"><?php echo $entry_description; ?></label>
+            <div class="col-sm-6">
+              <textarea name="description" class="form-control"  id="input-description"><?php echo $description; ?></textarea>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="col-sm-2 control-label" for="input-image-desc"><?php echo $entry_image_desc; ?></label>
             <div class="col-sm-10">
-              <a href="" id="thumb-image-desc" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $image_desc_url; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+              <a href="" id="thumb-image-desc" data-toggle="image" directory="banner" class="img-thumbnail">
+                <img src="<?php echo $image_desc_url; ?>" alt="" title="" /></a>
               <input type="hidden" name="image_desc" value="<?php echo $image_desc; ?>" id="input-image_desc" />
             </div>
           </div>
+
           <table id="images" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -121,7 +129,7 @@ function addImage() {
   html += '  <td class="text-left"><input type="text" name="banner_image[' + image_row + '][background]" value="" placeholder="<?php echo $entry_background; ?>" class="form-control" /></td>';
 	html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="banner_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
   html += '  <td class="text-left"><a href="" id="thumb-image2' + image_row + '" data-toggle="image" directory="banner" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="banner_image[' + image_row + '][image2]" value="" id="input-image2' + image_row + '" /></td>';
-	html += '  <td class="text-right"><input type="text" name="banner_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+	html += '  <td class="text-right"><input type="text" name="banner_image[' + image_row + '][sort_order]" value="0" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
 	html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row  + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
 	html += '</tr>';
 	

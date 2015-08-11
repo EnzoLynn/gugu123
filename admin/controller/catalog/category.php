@@ -129,17 +129,11 @@ class ControllerCatalogCategory extends Controller {
 	}
 
 	protected function getList() {
-		if (isset($this->request->get['sort'])) {
-			$sort = $this->request->get['sort'];
-		} else {
-			$sort = 'name';
-		}
-
-		if (isset($this->request->get['order'])) {
-			$order = $this->request->get['order'];
-		} else {
-			$order = 'ASC';
-		}
+        if (isset($this->request->get['parent_id'])) {
+            $parent_id = (int)$this->request->get['parent_id'];
+        } else {
+            $parent_id = 0;
+        }
 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -149,17 +143,15 @@ class ControllerCatalogCategory extends Controller {
 
 		$url = '';
 
-		if (isset($this->request->get['sort'])) {
-			$url .= '&sort=' . $this->request->get['sort'];
-		}
-
-		if (isset($this->request->get['order'])) {
-			$url .= '&order=' . $this->request->get['order'];
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
+//		if (isset($this->request->get['parent_id'])) {
+//			$url .= '&parent_id=' . $this->request->get['parent_id'];
+//		} else {
+//            $url .= '&parent_id=0';
+//        }
+//
+//		if (isset($this->request->get['page'])) {
+//			$url .= '&page=' . $this->request->get['page'];
+//		}
 		
 		$data['breadcrumbs'] = array();
 
@@ -180,25 +172,30 @@ class ControllerCatalogCategory extends Controller {
 		$data['categories'] = array();
 
 		$filter_data = array(
-			'sort'  => $sort,
-			'order' => $order,
+            //'parent_id' => $parent_id,
 			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit' => $this->config->get('config_limit_admin')
 		);
 
 		$category_total = $this->model_catalog_category->getTotalCategories();
 
-		$results = $this->model_catalog_category->getCategories($filter_data);
+		$results = $this->model_catalog_category->getAllCategories($filter_data);
 
 		foreach ($results as $result) {
 			$data['categories'][] = array(
 				'category_id' => $result['category_id'],
 				'name'        => $result['name'],
+                'parent_id'  => $result['parent_id'],
 				'sort_order'  => $result['sort_order'],
+                'list'        => $this->url->link('catalog/category', 'token=' . $this->session->data['token'] . '&parent_id=' . $result['category_id'] . $url, 'SSL'),
 				'edit'        => $this->url->link('catalog/category/edit', 'token=' . $this->session->data['token'] . '&category_id=' . $result['category_id'] . $url, 'SSL'),
 				'delete'      => $this->url->link('catalog/category/delete', 'token=' . $this->session->data['token'] . '&category_id=' . $result['category_id'] . $url, 'SSL')
 			);
 		}
+
+        foreach($data['categories'] as $k => $v) {
+            $this->model_catalog_category->repairDeep($v['category_id']);
+        }
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
@@ -210,6 +207,7 @@ class ControllerCatalogCategory extends Controller {
 		$data['column_sort_order'] = $this->language->get('column_sort_order');
 		$data['column_action'] = $this->language->get('column_action');
 
+        $data['button_list'] = $this->language->get('button_list');
 		$data['button_add'] = $this->language->get('button_add');
 		$data['button_edit'] = $this->language->get('button_edit');
 		$data['button_delete'] = $this->language->get('button_delete');
@@ -235,43 +233,7 @@ class ControllerCatalogCategory extends Controller {
 			$data['selected'] = array();
 		}
 
-		$url = '';
-
-		if ($order == 'ASC') {
-			$url .= '&order=DESC';
-		} else {
-			$url .= '&order=ASC';
-		}
-
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
-		$data['sort_name'] = $this->url->link('catalog/category', 'token=' . $this->session->data['token'] . '&sort=name' . $url, 'SSL');
-		$data['sort_sort_order'] = $this->url->link('catalog/category', 'token=' . $this->session->data['token'] . '&sort=sort_order' . $url, 'SSL');
-
-		$url = '';
-
-		if (isset($this->request->get['sort'])) {
-			$url .= '&sort=' . $this->request->get['sort'];
-		}
-
-		if (isset($this->request->get['order'])) {
-			$url .= '&order=' . $this->request->get['order'];
-		}
-
-		$pagination = new Pagination();
-		$pagination->total = $category_total;
-		$pagination->page = $page;
-		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
-
-		$data['pagination'] = $pagination->render();
-
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($category_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($category_total - $this->config->get('config_limit_admin'))) ? $category_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $category_total, ceil($category_total / $this->config->get('config_limit_admin')));
-
-		$data['sort'] = $sort;
-		$data['order'] = $order;
+		$data['results'] = sprintf($this->language->get('text_total'), $category_total);
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
