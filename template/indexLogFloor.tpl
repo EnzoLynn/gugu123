@@ -30,7 +30,7 @@
                         <img class="cartImg" src='picBase/pics/cart.png'>
                         <span class="cartBtn">购物车</span>
                         <div class="cart-f-div panel panel-default" style="width: 400px;
-                        position:absolute;z-index: 55;left:-200px;">
+                        position:absolute;z-index: 55;left:-200px;display: none;">
                             <div class="panel-heading text-left"><span class="pro-num">4</span> 件商品</div>
                             <div class="panel-body cart-pro-item-ct">                               
                                 <table>
