@@ -25,3 +25,4 @@ config.php
 /image/cache/*
 /zzz 
 /dist/seamodules/*.map
+/dist/css/*.map
