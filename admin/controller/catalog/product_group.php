@@ -133,7 +133,7 @@ class ControllerCatalogProductGroup extends Controller {
                 'group_id'  => $result['group_id'],
                 'group_name'=> $result['group_name'],
                 'edit'               => $this->url->link('catalog/product_group/edit', 'token=' . $this->session->data['token'] . '&group_id=' . $result['group_id'] . $url, 'SSL'),
-                'list_item'           => $this->url->link('catalog/product_group_item', 'token=' . $this->session->data['token'] . '&group_id=' . $result['group_id'] . $url, 'SSL'),
+                'list_item'           => $this->url->link('catalog/product_group_item/edit', 'token=' . $this->session->data['token'] . '&group_id=' . $result['group_id'] . $url, 'SSL'),
                 'delete'               => $this->url->link('catalog/product_group/delete', 'token=' . $this->session->data['token'] . '&group_id=' . $result['group_id'] . $url, 'SSL')
             );
         }

@@ -3,8 +3,8 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
-        <a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a>
-        <button type="button" data-toggle="tooltip" title="<?php echo $button_copy; ?>" class="btn btn-default" onclick="$('#form-product-group').attr('action', '<?php echo $copy; ?>').submit()"><i class="fa fa-copy"></i></button>
+        <button type="submit" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a>
       </div>
       <h1><?php echo $heading_title; ?></h1>
       <ul class="breadcrumb">
@@ -30,10 +30,10 @@
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_form; ?></h3>
       </div>
       <div class="panel-body">
-        <form>
+        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-product-type" class="form-horizontal">
 
           <div class="tab-content">
-              <div class="tab-pane form-horizontal" style="display: block; visibility: visible;">
+              <div class="tab-pane" style="display: block; visibility: visible;">
               <?php foreach($option_data as $key => $option){ ?>
                 <div class="form-group">
                   <label class="col-sm-2 control-label"><?php echo $option['option_name']; ?></label>
