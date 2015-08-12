@@ -201,6 +201,8 @@ class ControllerCatalogProductGroupItem extends Controller {
 
     protected function getForm() {
 
+        $group_id = (int)$this->request->get['group_id'];
+
         $data['text_list'] = $this->language->get('text_list');
 
         $data['heading_title'] = $this->language->get('heading_title');
@@ -265,48 +267,67 @@ class ControllerCatalogProductGroupItem extends Controller {
 
 //        echo $this->request->get['group_id'];
 //        echo '<pre>';print_r($data['product_group_info']);exit;
-
+        // Options
         $this->load->model('catalog/option');
 
         $data['option_data'] = $this->model_catalog_option->getOptionAndValues(explode(',', $data['product_group_info']['option_value_ids']));
         //echo '<pre>';print_r($data['option_data']);
 
-        // Options
-        $this->load->model('catalog/option');
+        $option_rows = array();
 
-//        $option_values_ids = array();
-//        if (isset($this->request->post['option_value_id'])) {
-//            $option_values_ids = $this->request->post['option_value_id'];
-//        } elseif (isset($this->request->get['group_id']) && !empty($data['product_group_info']['option_value_ids'])) {
-//            $option_values_ids = explode(',', $data['product_group_info']['option_value_ids']);
-//        }
-//
-//        $data['option_values'] = array();
-//
-//        $data['option_ids'] = array();
-//
-//echo '<pre>';
-//        foreach ($option_values_ids as $option_values_id) {
-//            $option_value_info = $this->model_catalog_option->getOptionValue($option_values_id);
-//
-//            if( !in_array($option_value_info['option_id'], $data['option_ids']) ) {
-//                $data['option_ids'][] = $option_value_info['option_id'];
-//            }
-//
-//            print_r($option_value_info);
-//            $option_info = $this->model_catalog_option->getOption($option_value_info['option_id']);
-//
-//            if ($option_value_info) {
-//                $data['option_values'][] = array(
-//                    'option_value_id' => $option_value_info['option_value_id'],
-//                    'name'      => $option_info['name'] . ' &gt; ' . $option_value_info['name']
-//                );
-//            }
-//        }
-//
-//echo '<pre>';print_r($data['option_values']);exit;
-//
-//        $data['option_values_ids'] = $option_values_ids;
+        $option_num = count($data['option_data']);
+        if ($option_num == 1) {
+            for($i = 0; $i < count($data['option_data'][0]['option_value_data']); $i++) {
+                $option_rows[] = array(
+                    'html'      => '<td>'. $data['option_data'][0]['option_value_data'][$i]['name'] .'</td>',
+                    'key'       =>  $data['option_data'][0]['option_value_data'][$i]['option_value_id']
+                );
+            }
+        } else if($option_num == 2) {
+            for($i = 0; $i < count($data['option_data'][0]['option_value_data']); $i++) {
+                for($j = 0; $j < count($data['option_data'][1]['option_value_data']); $j++) {
+                    $option_rows[] = array(
+                        'html'      => '<td>'. $data['option_data'][0]['option_value_data'][$i]['name'] .'</td><td>'. $data['option_data'][1]['option_value_data'][$j]['name'] .'</td>',
+                        'key'       =>  $data['option_data'][0]['option_value_data'][$i]['option_value_id'].','.$data['option_data'][1]['option_value_data'][$j]['option_value_id']
+                    );
+                }
+            }
+        } else if($option_num == 3) {
+            for($i = 0; $i < count($data['option_data'][0]['option_value_data']); $i++) {
+                for($j = 0; $j < count($data['option_data'][1]['option_value_data']); $j++) {
+                    for($k = 0; $k < count($data['option_data'][2]['option_value_data']); $k++) {
+                        $option_rows[] = array(
+                            'html'      => '<td>'. $data['option_data'][0]['option_value_data'][$i]['name'] .'</td><td>'. $data['option_data'][1]['option_value_data'][$j]['name'] .'</td><td>'. $data['option_data'][2]['option_value_data'][$k]['name'] .'</td>',
+                            'key'       =>  $data['option_data'][0]['option_value_data'][$i]['option_value_id'].','.$data['option_data'][1]['option_value_data'][$j]['option_value_id'].','.$data['option_data'][2]['option_value_data'][$k]['option_value_id']
+                        );
+                    }
+                }
+            }
+        }
+        $data['option_rows'] = $option_rows;
+
+        $this->load->model('catalog/product');
+
+        $data['option_items'] = array();
+        $temp = $this->model_catalog_product_group->getProductGroupItem($group_id);
+        foreach($temp as $row) {
+
+            $temp_product_name = '';
+            if($row['product_id'] > 0) {
+                $temp_product = $this->model_catalog_product->getProduct($row['product_id']);
+                $temp_product_name = $temp_product['name'];
+            }
+
+            $data['option_items'][$row['option_value_ids']] = array(
+                'title' => $row['title'],
+                'product_id' => $row['product_id'],
+                'product_name' => $temp_product_name
+
+            );
+        }
+
+//        echo '<pre>';print_r($data['option_rows']);
+//        echo '<pre>';print_r($data['option_items']);exit;
 
         $this->load->model('localisation/language');
 

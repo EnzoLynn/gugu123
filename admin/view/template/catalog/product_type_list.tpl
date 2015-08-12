@@ -53,6 +53,7 @@
                             <td class="text-center"><?php echo $product_type['type_id']; ?></td>
                             <td class="text-left"><?php echo $product_type['type_name']; ?></td>
                             <td class="text-right">
+                                <a href="<?php echo $product_type['download']; ?>" class="btn btn-success" data-toggle="tooltip" title="<?php echo $button_download; ?>"><i class="fa fa-download"></i></a>
                                 <a href="<?php echo $product_type['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                                 <a onclick="deleteByConfirm('<?php echo $product_type['delete']; ?>', '<?php echo $text_confirm; ?>')" href="javascript:void(0)" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                             </td>
