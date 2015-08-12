@@ -1,8 +1,10 @@
-<nav class="navbar navbar-default row">
+
+
+<nav class="navbar navbar-default row  ">
     <div class="col-md-10"></div>
     <div class="container-fluid col-md-100">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed hidden-sm hidden-xs" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">导航栏</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -13,7 +15,7 @@
             </div>
             
         </div>
-        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse navbar-right hidden-sm hidden-xs" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的谷谷 <span class="caret"></span></a>
