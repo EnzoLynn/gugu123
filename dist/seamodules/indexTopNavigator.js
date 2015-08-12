@@ -1,1 +1,2 @@
-define(function(require,exports,module){require("jquery")});
+define(function(require,exports,module){var $=require("jquery");require("modules/jquery.cookie")($),require("handlebars"),$(function(){var userInfo=$.cookie("login-userInfo");if(userInfo)try{var userObj=$.toJSONObj(userInfo),tpl=require("template/welcome-user.tpl#"),template=Handlebars.compile(tpl),html=template(userObj);$(".loginInfo-ct").html(html)}catch(e){$.removeCookie("login-userInfo")}})});
+//# sourceMappingURL=indexTopNavigator.js.map

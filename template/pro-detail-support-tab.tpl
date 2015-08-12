@@ -17,7 +17,7 @@
             <textarea  class="form-control consult-content" row="8"></textarea>
         </div>
         
-        <button type="button" class="btn btn-primary ladda-button support-btn-commit"
+        <button type="button" class="btn btn-primary  ladda-button support-btn-commit"
            data-color="blue" data-style="zoom-out">提交</button>
     </fieldset>
 </div>
