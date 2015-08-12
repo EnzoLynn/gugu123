@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/admin/view/javascript/jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/admin/view/javascript/bootstrap/js/bootstrap.min.js"></script>
+
+    <title></title>
+    <style type="text/css">
+        .table tbody tr td { vertical-align: middle;}
+    </style>
+</head>
+<body>
+<table id="sku" class="table table-bordered"><!--table-striped table-hover-->
+    <thead>
+    <tr class="bg-success">
+        <td class="text-left" style="width: 20%;">颜色</td>
+        <td class="text-left" style="width: 20%;">电箱/原声</td>
+        <td class="text-left">文字</td>
+        <td class="text-left">商品链接</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>白色</td><td>原声</td>                        <td class="text-left">
+        <input type="hidden" name="item[0][key]" value="49,23" />
+        <input type="text" class="form-control" name="item[0][title]" />
+    </td>
+        <td class="text-left">
+            <input type="text" name="item[0][product_name]" value="" class="form-control" />
+            <input type="hidden" name="item[0][product_id]" value="" />
+        </td>
+    </tr>
+    <tr>
+        <td>白色</td><td>原声</td>                        <td class="text-left">
+        <input type="hidden" name="item[1][key]" value="49,24" />
+        <input type="text" class="form-control" name="item[1][title]" />
+    </td>
+        <td class="text-left">
+            <input type="text" name="item[1][product_name]" value="" class="form-control" />
+            <input type="hidden" name="item[1][product_id]" value="" />
+        </td>
+    </tr>
+    <tr>
+        <td>原木色</td><td>原声</td>                        <td class="text-left">
+        <input type="hidden" name="item[2][key]" value="50,23" />
+        <input type="text" class="form-control" name="item[2][title]" />
+    </td>
+        <td class="text-left">
+            <input type="text" name="item[2][product_name]" value="" class="form-control" />
+            <input type="hidden" name="item[2][product_id]" value="" />
+        </td>
+    </tr>
+    <tr>
+        <td>原木色</td><td>电箱版</td>                        <td class="text-left">
+        <input type="hidden" name="item[3][key]" value="50,24" />
+        <input type="text" class="form-control" name="item[3][title]" />
+    </td>
+        <td class="text-left">
+            <input type="text" name="item[3][product_name]" value="" class="form-control" />
+            <input type="hidden" name="item[3][product_id]" value="" />
+        </td>
+    </tr>
+    <tr>
+        <td>黑色</td><td>原声</td>                        <td class="text-left">
+        <input type="hidden" name="item[4][key]" value="53,23" />
+        <input type="text" class="form-control" name="item[4][title]" />
+    </td>
+        <td class="text-left">
+            <input type="text" name="item[4][product_name]" value="" class="form-control" />
+            <input type="hidden" name="item[4][product_id]" value="" />
+        </td>
+    </tr>
+    <tr>
+        <td>黑色</td><td>电箱版</td>                        <td class="text-left">
+        <input type="hidden" name="item[5][key]" value="53,24" />
+        <input type="text" class="form-control" name="item[5][title]" />
+    </td>
+        <td class="text-left">
+            <input type="text" name="item[5][product_name]" value="" class="form-control" />
+            <input type="hidden" name="item[5][product_id]" value="" />
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+<script>
+var trs = $("#sku tbody tr");
+var tds = trs.eq(0).find("td");
+var col_number = 0;//需要合并的文本列个数
+for(var i=0; i<tds.length; i++) {
+    var td = tds.eq(i).get(0);
+    //只合并文本列
+    if(td.childNodes.length==1 && td.childNodes[0].nodeType == 3) {
+        col_number++;
+    }
+}
+
+for(var col_idx = col_number-1; col_idx>=0; col_idx--) {//只能从右往左合并
+    for (var i = 0; i < trs.length; ) {
+        var td = trs.eq(i).children("td:eq("+ col_idx +")");
+        var txt = td.html();
+        var rowspan = 1;//默认为1
+        for (var j = i+1; j < trs.length; j++) {
+            if(txt == trs.eq(j).children("td:eq("+ col_idx +")").html()){
+                rowspan++;
+                trs.eq(j).children("td:eq("+ col_idx +")").remove();
+            }else{
+                break;
+            }
+        }
+        td.attr('rowspan', rowspan);
+        i += rowspan;
+    }
+}
+</script>
+
+</html>
