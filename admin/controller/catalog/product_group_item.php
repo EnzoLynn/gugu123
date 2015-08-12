@@ -265,13 +265,10 @@ class ControllerCatalogProductGroupItem extends Controller {
             $data['product_group_info'] = $this->model_catalog_product_group->getProductGroup($this->request->get['group_id']);
         }
 
-//        echo $this->request->get['group_id'];
-//        echo '<pre>';print_r($data['product_group_info']);exit;
         // Options
         $this->load->model('catalog/option');
 
         $data['option_data'] = $this->model_catalog_option->getOptionAndValues(explode(',', $data['product_group_info']['option_value_ids']));
-        //echo '<pre>';print_r($data['option_data']);
 
         $option_rows = array();
 
