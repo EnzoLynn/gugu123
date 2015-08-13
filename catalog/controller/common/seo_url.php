@@ -25,6 +25,8 @@ class ControllerCommonSeoUrl extends Controller {
                 '(.*)_p([0-9]+)\.html' => 'index.php?route=product/product&product_id=$2',
                 //category
                 '(.*)_c([0-9]+)' => 'index.php?route=product/category&category_id=$2',
+                //tag
+                'tag\/(.*)\.html' => 'index.php?route=product/search&tag==$1',
                 //brand
                 'brand\/(.*)_b([0-9]+)' => 'index.php?route=product/manufacturer/info&manufacturer_id=$2',
                 //information/
@@ -71,6 +73,9 @@ class ControllerCommonSeoUrl extends Controller {
                     break;
                 case 'product/category':
                     $this->request->get['category_id'] = $data['category_id'];
+                    break;
+                case 'product/search':
+                    $this->request->get['tag'] = $data['tag'];
                     break;
                 case 'product/manufacturer/info':
                     $this->request->get['manufacturer_id'] = $data['manufacturer_id'];
@@ -128,6 +133,14 @@ class ControllerCommonSeoUrl extends Controller {
                             unset($data[$key]);
                         }
                     }
+                } elseif ($data['route'] == 'product/search' && $key == 'tag') {
+
+//                    $this->load->model('catalog/category');
+//                    $category_info = $this->model_catalog_category->getCategory($data['category_id']);
+
+                    $url .= '/' . $data['tag'] . '.html';
+                    unset($data['tag']);
+
                 } elseif ($data['route'] == 'product/category' && $key == 'category_id') {
 
                     $this->load->model('catalog/category');

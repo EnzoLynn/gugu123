@@ -41,22 +41,29 @@
   <?php echo $commonTopNavigator; ?>
 </div>
 <!-- Log -->
-<div class="include-indexLogFloor container-fluid">
-  <?php echo $commonTopMenu; ?>
+<div class="logfloor-container container-fluid">
+  <div class="include-indexLogFloor container-fluid">
+    <?php echo $commonTopMenu; ?>
+  </div>
 </div>
 <div class="clearfix"></div>
-<!-- 搜索条 -->
-<!--  <div class="include-indexCategory container-fluid">
-        </div> -->
-<!-- 全幅Banner -->
-<div class="include-bannerPlay container-fluid hidden-sm hidden-xs">
-  <?php echo $indexBannerPlay; ?>
-</div>
+
 <!-- 固定最大宽度 -->
 <div class="container-fluid bodyMain">
   <div class="flexsidediv"></div>
   <!-- 页面主体 -->
   <div id="gugumain">
+    <!-- 搜索条 -->
+    <!--  <div class="include-indexCategory container-fluid">
+    </div> -->
+    <!-- 全幅Banner -->
+    <div class="include-bannerPlay container-fluid">
+      <?php echo $indexBannerPlay; ?>
+    </div>
+    <!-- 热卖商品 -->
+    <div class="include-hotProductFloor container-fluid">
+      <?php echo $indexHotProduct; ?>
+    </div>
     <!-- 商城品牌 -->
     <div class="include-indexBrandFloor container-fluid">
       <?php echo $indexBannerIndex; ?>
@@ -77,11 +84,8 @@
     </div>
   </div>
 </div>
-<!--  <div class="container-fluid indexBottom " >
-    <div style="width:100%;min-height: 1px;"></div>
 
-    <div style="width:100%;min-height: 1px;"></div>
-</div> -->
+
 </body>
 
 </html>

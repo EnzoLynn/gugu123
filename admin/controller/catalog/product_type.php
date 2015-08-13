@@ -313,7 +313,7 @@ class ControllerCatalogProductType extends Controller {
         return !$this->error;
     }
 
-    public function getOptionsJSON() {
+    public function getAttributeJSON() {
         $this->load->model('catalog/attribute');
         $this->load->model('catalog/product_type');
 
@@ -321,7 +321,6 @@ class ControllerCatalogProductType extends Controller {
 
         $product_type_info = array();
         $product_type_info = $this->model_catalog_product_type->getProductType($type_id);
-
 
         // Attributes
         $attribute_ids = explode(',', $product_type_info['attribute_ids']);
@@ -370,6 +369,10 @@ class ControllerCatalogProductType extends Controller {
 
     public function download() {
         $type_id = (int)$this->request->get['type_id'];
+
+        $this->load->model('catalog/product_type');
+        $this->load->model('catalog/filter');
+        $this->load->model('catalog/attribute');
 
         /** Error reporting */
         error_reporting(E_ALL);
@@ -422,25 +425,67 @@ class ControllerCatalogProductType extends Controller {
             ->setCellValue('W1', '')
             ->setCellValue('X1', '')
             ->setCellValue('Y1', '')
-            ->setCellValue('Z1', '')
-            ->setCellValue('AA1', '');
+            ->setCellValue('Z1', '');
+            //->setCellValue('AA1', '');
+
+        $cell_column_filter = array();
+        for($i = 65; $i < 91; $i++){//AA1 - AZ1
+            $cell_column_filter[] = 'A'.chr($i).'1';
+        }
+
+        $product_type_info = $this->model_catalog_product_type->getProductType($type_id);
+
+        // Filter group
+        $filter_group_ids = explode(',', $product_type_info['filter_group_ids']);
+        $i = 0;
+        foreach ($filter_group_ids as $filter_group_id) {
+            $filter_group = $this->model_catalog_filter->getFilterGroup($filter_group_id);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($cell_column_filter[$i], $filter_group['name']);
+            $i++;
+        }
+
+
+
+        $cell_column_attribute = array();
+        for($i = 66; $i < 91; $i++){//从BA1开始……
+            for($j = 65; $j < 91; $j++) {
+                $cell_column_attribute[] = chr($i) . chr($j) . '1';
+            }
+        }
+
+        $product_type_info = array();
+        $product_type_info = $this->model_catalog_product_type->getProductType($type_id);
+
+        // Attributes
+        $attribute_ids = explode(',', $product_type_info['attribute_ids']);
+
+        $data['attributes'] = array();
+
+        $i = 0;
+        foreach ($attribute_ids as $attribute_id) {
+            $attribute_info = $this->model_catalog_attribute->getAttribute($attribute_id);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($cell_column_attribute[$i], $attribute_info['name']);
+            $i++;
+        }
+
+
+
 
 // Miscellaneous glyphs, UTF-8
-        $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A4', 'Miscellaneous glyphs')
-            ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
+//        $objPHPExcel->setActiveSheetIndex(0)
+//            ->setCellValue('A4', 'Miscellaneous glyphs')
+//            ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
 
 // Rename worksheet
-        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+        $objPHPExcel->getActiveSheet()->setTitle($product_type_info['type_name'].'的商品模版'.date('Ymd'));
 
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $objPHPExcel->setActiveSheetIndex(0);
 
-
 // Redirect output to a client’s web browser (Excel5)
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="01simple.xls"');
+        header('Content-Disposition: attachment;filename="'.$product_type_info['type_name'].'的商品模版'.date('Ymd').'.xls"');
         header('Cache-Control: max-age=0');
 // If you're serving to IE 9, then the following may be needed
         header('Cache-Control: max-age=1');
