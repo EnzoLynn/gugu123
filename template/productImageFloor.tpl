@@ -103,7 +103,7 @@
                 <span class="input-group-addon addon-control btn-default" controller="txtNum" data-limit="99" data-step="1">+</span>
             </div>
             <div class="objLeft">
-                <button type="button" data-id="1" class="btn btn-danger joinCart">加入购物车</button> 
+                <button type="button" data-id="1" class="btn btn-danger joinCart btn-control-detail-joincart">加入购物车</button> 
             </div>
         </div>
         <div class="form-group">

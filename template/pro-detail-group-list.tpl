@@ -8,7 +8,7 @@
             </div>
         </a>
         <div class="text-center">
-            <button type="button" data-id="2" class="btn btn-default joinCart">加入购物车</button>
+            <button type="button" data-id="2" class="btn btn-default joinCart btn-control-one-joincart">加入购物车</button>
         </div>
     </div>
     <div class="col-md-40 group-pro">
@@ -20,7 +20,7 @@
             </div>
         </a>
         <div class="text-center">
-            <button type="button" data-id="2" class="btn btn-default joinCart">加入购物车</button>
+            <button type="button" data-id="2" class="btn btn-default joinCart btn-control-one-joincart">加入购物车</button>
         </div>
     </div>
     <div class="col-md-40 group-pro">
@@ -32,7 +32,7 @@
             </div>
         </a>
         <div class="text-center">
-            <button type="button" data-id="2" class="btn btn-default joinCart">加入购物车</button>
+            <button type="button" data-id="2" class="btn btn-default joinCart btn-control-one-joincart">加入购物车</button>
         </div>
     </div>
 </div>
@@ -46,7 +46,7 @@
             </div>
         </a>
         <div class="text-center">
-            <button type="button" data-id="2" class="btn btn-default joinCart">加入购物车</button>
+            <button type="button" data-id="2" class="btn btn-default joinCart btn-control-one-joincart">加入购物车</button>
         </div>
     </div>
     <div class="col-md-40 group-pro">
@@ -58,7 +58,7 @@
             </div>
         </a>
         <div class="text-center">
-            <button type="button" data-id="2" class="btn btn-default joinCart">加入购物车</button>
+            <button type="button" data-id="2" class="btn btn-default joinCart btn-control-one-joincart">加入购物车</button>
         </div>
     </div>
     <div class="col-md-40 group-pro">
@@ -70,7 +70,7 @@
             </div>
         </a>
         <div class="text-center">
-            <button type="button" data-id="2" class="btn btn-default joinCart">加入购物车</button>
+            <button type="button" data-id="2" class="btn btn-default joinCart btn-control-one-joincart">加入购物车</button>
         </div>
     </div>
 </div>
