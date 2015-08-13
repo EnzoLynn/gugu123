@@ -23,6 +23,10 @@ config.php
 /system/cache/*
 /system/logs/*
 /image/cache/*
+<<<<<<< HEAD
+/zzz/*
+=======
 /zzz 
 /dist/seamodules/*.map
 /dist/css/*.map
+>>>>>>> 9276a776a69655559375778482f49f26c723cc48

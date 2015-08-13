@@ -1298,7 +1298,7 @@ $("#product_type").change(function() {
         }
     }
     $.ajax({
-        url: 'index.php?route=catalog/product_type/getOptionsJSON&token=<?php echo $token; ?>&type_id=' +  encodeURIComponent(type_id),
+        url: 'index.php?route=catalog/product_type/getAttributeJSON&token=<?php echo $token; ?>&type_id=' +  encodeURIComponent(type_id),
         dataType: 'json',
         success: function(json) {
             attribute_row = 0;

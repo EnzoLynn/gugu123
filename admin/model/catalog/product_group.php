@@ -88,10 +88,10 @@ class ModelCatalogProductGroup extends Model
         return $this->db_ci->insert_id();
     }
 
-    public function editProductGroupItem($data)
+    public function editProductGroupItem($group_id, $data)
     {
         $ci = $this->db_ci;
-        $ci->where('group_id', $data['group_id']);
+        $ci->where('group_id', $group_id);
         $ci->where('option_value_ids', $data['option_value_ids']);
         $ci->from('product_group_item');
         $count = $ci->count_all_results();
@@ -106,6 +106,22 @@ class ModelCatalogProductGroup extends Model
             $ci->where('group_id', $data['group_id']);
             $ci->where('option_value_ids', $data['option_value_ids']);
             $ci->update('product_group_item', $product_group_item);
+        }
+    }
+
+    public function editProductGroupItems($group_id, $data)
+    {
+        $this->db_ci->delete('product_group_item', array('group_id' => $group_id));
+        foreach($data as $row) {
+            $item = array(
+                'group_id' => $group_id,
+                'option_value_ids' => $row['key'],
+                'title'             => empty($row['title']) ? $row['product_name'] : $row['title'],
+                'product_id'       => $row['product_id']
+            );
+            if($row['product_id']) {
+                $this->addProductGroupItem($item);
+            }
         }
     }
 

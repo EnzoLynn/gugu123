@@ -135,6 +135,7 @@ class ControllerCatalogProductType extends Controller {
             $data['product_types'][] = array(
                 'type_id'  => $result['type_id'],
                 'type_name'=> $result['type_name'],
+                'download'       => $this->url->link('catalog/product_type/download', 'token=' . $this->session->data['token'] . '&type_id=' . $result['type_id'] . $url, 'SSL'),
                 'edit'               => $this->url->link('catalog/product_type/edit', 'token=' . $this->session->data['token'] . '&type_id=' . $result['type_id'] . $url, 'SSL'),
                 'delete'               => $this->url->link('catalog/product_type/delete', 'token=' . $this->session->data['token'] . '&type_id=' . $result['type_id'] . $url, 'SSL')
             );
@@ -156,6 +157,7 @@ class ControllerCatalogProductType extends Controller {
         $data['button_add'] = $this->language->get('button_add');
         $data['button_edit'] = $this->language->get('button_edit');
         $data['button_delete'] = $this->language->get('button_delete');
+        $data['button_download'] = $this->language->get('button_download');
 
         if (isset($this->error['warning'])) {
             $data['error_warning'] = $this->error['warning'];
@@ -311,7 +313,7 @@ class ControllerCatalogProductType extends Controller {
         return !$this->error;
     }
 
-    public function getOptionsJSON() {
+    public function getAttributeJSON() {
         $this->load->model('catalog/attribute');
         $this->load->model('catalog/product_type');
 
@@ -319,7 +321,6 @@ class ControllerCatalogProductType extends Controller {
 
         $product_type_info = array();
         $product_type_info = $this->model_catalog_product_type->getProductType($type_id);
-
 
         // Attributes
         $attribute_ids = explode(',', $product_type_info['attribute_ids']);
@@ -364,5 +365,139 @@ class ControllerCatalogProductType extends Controller {
         }
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($data['filter_groups']));
+    }
+
+    public function download() {
+        $type_id = (int)$this->request->get['type_id'];
+
+        $this->load->model('catalog/product_type');
+        $this->load->model('catalog/filter');
+        $this->load->model('catalog/attribute');
+
+        /** Error reporting */
+        error_reporting(E_ALL);
+        ini_set('display_errors', TRUE);
+        ini_set('display_startup_errors', TRUE);
+//        date_default_timezone_set('Europe/London');
+
+        if (PHP_SAPI == 'cli')
+            die('This example should only be run from a Web Browser');
+
+        require_once(DIR_SYSTEM . 'library/excel/PHPExcel.php');
+
+        // Create new PHPExcel object
+        $objPHPExcel = new PHPExcel();
+
+// Set document properties
+        $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
+            ->setLastModifiedBy("Maarten Balliauw")
+            ->setTitle("Office 2007 XLSX Test Document")
+            ->setSubject("Office 2007 XLSX Test Document")
+            ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
+            ->setKeywords("office 2007 openxml php")
+            ->setCategory("Test result file");
+
+
+// Add some data
+        $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('A1', '商品名称')
+            ->setCellValue('B1', '商品描述')
+            ->setCellValue('C1', 'SEO title')
+            ->setCellValue('D1', '商品标签')
+            ->setCellValue('E1', '视频地址')
+            ->setCellValue('F1', '货号')
+            ->setCellValue('G1', '图像')
+            ->setCellValue('H1', '生产地')
+            ->setCellValue('I1', '价格')
+            ->setCellValue('J1', '数量')
+            ->setCellValue('K1', '最小购买数量')
+            ->setCellValue('L1', '减少库存')
+            ->setCellValue('M1', '缺货时状态')
+            ->setCellValue('N1', '需要配送')
+            ->setCellValue('O1', '上架日期')
+            ->setCellValue('P1', '重量')
+            ->setCellValue('Q1', '重量单位')
+            ->setCellValue('R1', '状态')
+            ->setCellValue('S1', '排序')
+            ->setCellValue('T1', '品牌')
+            ->setCellValue('U1', '主分类')
+            ->setCellValue('V1', '额外分类')
+            ->setCellValue('W1', '')
+            ->setCellValue('X1', '')
+            ->setCellValue('Y1', '')
+            ->setCellValue('Z1', '');
+            //->setCellValue('AA1', '');
+
+        $cell_column_filter = array();
+        for($i = 65; $i < 91; $i++){//AA1 - AZ1
+            $cell_column_filter[] = 'A'.chr($i).'1';
+        }
+
+        $product_type_info = $this->model_catalog_product_type->getProductType($type_id);
+
+        // Filter group
+        $filter_group_ids = explode(',', $product_type_info['filter_group_ids']);
+        $i = 0;
+        foreach ($filter_group_ids as $filter_group_id) {
+            $filter_group = $this->model_catalog_filter->getFilterGroup($filter_group_id);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($cell_column_filter[$i], $filter_group['name']);
+            $i++;
+        }
+
+
+
+        $cell_column_attribute = array();
+        for($i = 66; $i < 91; $i++){//从BA1开始……
+            for($j = 65; $j < 91; $j++) {
+                $cell_column_attribute[] = chr($i) . chr($j) . '1';
+            }
+        }
+
+        $product_type_info = array();
+        $product_type_info = $this->model_catalog_product_type->getProductType($type_id);
+
+        // Attributes
+        $attribute_ids = explode(',', $product_type_info['attribute_ids']);
+
+        $data['attributes'] = array();
+
+        $i = 0;
+        foreach ($attribute_ids as $attribute_id) {
+            $attribute_info = $this->model_catalog_attribute->getAttribute($attribute_id);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue($cell_column_attribute[$i], $attribute_info['name']);
+            $i++;
+        }
+
+
+
+
+// Miscellaneous glyphs, UTF-8
+//        $objPHPExcel->setActiveSheetIndex(0)
+//            ->setCellValue('A4', 'Miscellaneous glyphs')
+//            ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
+
+// Rename worksheet
+        $objPHPExcel->getActiveSheet()->setTitle($product_type_info['type_name'].'的商品模版'.date('Ymd'));
+
+
+// Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $objPHPExcel->setActiveSheetIndex(0);
+
+// Redirect output to a client’s web browser (Excel5)
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="'.$product_type_info['type_name'].'的商品模版'.date('Ymd').'.xls"');
+        header('Cache-Control: max-age=0');
+// If you're serving to IE 9, then the following may be needed
+        header('Cache-Control: max-age=1');
+
+// If you're serving to IE over SSL, then the following may be needed
+        header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+        header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+        header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+        header ('Pragma: public'); // HTTP/1.0
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        $objWriter->save('php://output');
+        exit;
     }
 }

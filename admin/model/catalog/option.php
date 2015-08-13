@@ -223,4 +223,70 @@ WHERE od.language_id = '1' AND od.`name` LIKE '%" . $this->db->escape($data['fil
 
         return $query->rows;
     }
+
+    public function getOptionValuesByIds($option_value_ids) {
+        if(count($option_value_ids) == 0) {
+            return array();
+        }
+        $option_value_data = array();
+
+        $option_value_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "option_value ov LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE ov.option_value_id IN (". implode(',', $option_value_ids) .") AND ovd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY ov.sort_order, ovd.name");
+
+        foreach ($option_value_query->rows as $option_value) {
+            $option_value_data[] = array(
+                'option_value_id' => $option_value['option_value_id'],
+                'name'            => $option_value['name'],
+                'image'           => $option_value['image'],
+                'sort_order'      => $option_value['sort_order'],
+                'link_product_id'=> $option_value['link_product_id']
+            );
+        }
+
+        return $option_value_data;
+    }
+
+    /**
+     * 根据选项组的排序规则，进行重新排序
+     * @author 周辉
+     * @date 20150811
+     * @access public
+     * @param mixed $data 选项值ID数组
+     * @return array 排序后的选项数组
+     */
+    public function getOptionAndValues($data_option_value_id) {
+
+        if( count($data_option_value_id) == 0) {
+            return;
+        }
+
+        $option_id_to_value_id = array();
+
+        $option_value_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "option_value ov LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE ov.option_value_id IN (". implode(',', $data_option_value_id) .") AND ovd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY ov.sort_order, ovd.name");
+
+        foreach ($option_value_query->rows as $option_value) {
+
+            $option_id_to_value_id[$option_value['option_id']][] = $option_value['option_value_id'];
+
+        }
+
+        $option_data = array();
+
+        $option_id_data = array();
+
+        $option_id_query = $this->db->query("SELECT DISTINCT(option_id) FROM " . DB_PREFIX . "option_value WHERE option_value_id IN (". implode(',', $data_option_value_id) .")");
+        foreach ($option_id_query->rows as $option) {
+            $option_id_data[] = $option['option_id'];
+        }
+
+        $option_data_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "option o, " . DB_PREFIX . "option_description od WHERE o.option_id=od.option_id AND od.language_id=1 AND o.option_id IN (". implode(',', $option_id_data) .") ORDER BY o.sort_order");
+        foreach ($option_data_query->rows as $option) {
+            $option_data[] = array(
+                'option_id' => $option['option_id'],
+                'option_name' => $option['name'],
+                'option_value_data' => $this->getOptionValuesByIds($option_id_to_value_id[$option['option_id']])
+            );
+        }
+
+        return $option_data;
+    }
 }
