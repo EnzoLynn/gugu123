@@ -1,9 +1,9 @@
 <div class="row barndtitlecontainer">
     <div class="col-md-120 col-lg-120">
         <div class="row brandtitle">
-            <div class="line col-sm-50 col-md-50 col-lg-50"></div>
+            <div class="brand-line col-sm-50 col-md-50 col-lg-50"></div>
             <div class="title col-sm-20 col-md-20 col-lg-20">热卖商品</div>
-            <div class="line col-sm-50 col-md-50 col-lg-50"></div>
+            <div class="brand-line col-sm-50 col-md-50 col-lg-50"></div>
         </div>
     </div>
 </div>
