@@ -1,0 +1,2 @@
+define(function(require,exports,module){var $=require("jquery");$(function(){$(".arrow").on({click:function(e){var me=$(this);me.hasClass("disabled")||(me.hasClass("a-left")?($(".hotpro-page1").show(),$(".hotpro-page2").hide(),$(".arrow.a-right").removeClass("disabled")):($(".hotpro-page1").hide(),$(".hotpro-page2").show(),$(".arrow.a-left").removeClass("disabled")),me.addClass("disabled"))}})})});
+//# sourceMappingURL=hotProductFloor.js.map
