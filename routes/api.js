@@ -34,4 +34,9 @@ router.post('/postDelCartItem', function(req, res, next) {
 	res.status(200).sendfile(apiConfig.apiConfig.postDelCartItem); 
 });
 
+//get 购物车项目
+router.get('/getCartInfo',function(req, res, next){
+	res.status(200).sendfile(apiConfig.apiConfig.getCartInfo); 
+});
+
 module.exports = router;
